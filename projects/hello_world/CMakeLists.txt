@@ -12,10 +12,10 @@ if(CARLSIM_NO_CUDA)
 endif()
 
 # Linking    
-#target_link_libraries(hello_world PRIVATE
-#    carlsim
-#    carlsim-stopwatch
-#)
+target_link_libraries(hello_world PRIVATE
+    carlsim
+    carlsim-stopwatch
+)
 target_include_directories(hello_world PRIVATE
     ../../tools/stopwatch
 )
