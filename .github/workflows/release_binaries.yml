@@ -4,6 +4,7 @@ on:
 name: Handle Release
 jobs:
   build:
+    # more appropriate permissions here? tinyurl.com/5725swh8
     permissions: write-all
     runs-on: ubuntu-latest
     steps:
