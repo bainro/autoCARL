@@ -67,8 +67,10 @@ endif()
 
 # Targets
  
+# @TODO MAKE IT SO SHARED/STATIC WORK AS EXPECTED! 
 if(CARLSIM_SHARED)
-    add_library(carlsim SHARED) 
+    # @TODO MAKE IT SO SHARED/STATIC WORK AS EXPECTED! 
+    add_library(carlsim STATIC) 
  
     set(interface_SRCS     
         carlsim/interface/src/callback_core.cpp
