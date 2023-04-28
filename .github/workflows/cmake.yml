@@ -24,4 +24,5 @@ jobs:
             cmake -DCMAKE_INSTALL_PREFIX=/tmp/carlsim6 \
                   -DCMAKE_BUILD_TYPE=Release .. \
                   -DCARLSIM_NO_CUDA=ON \
+                  -DCARLSIM_TEST=OFF
             make install
