@@ -13,8 +13,8 @@ endif()
 
 # Linking    
 target_link_libraries(hello_world PRIVATE
-    carlsim
-    carlsim-stopwatch
+    carlsim.a
+    carlsim-stopwatch.a
 )
 target_include_directories(hello_world PRIVATE
     ../../tools/stopwatch
