@@ -156,7 +156,7 @@ if(CARLSIM_SHARED)
             carlsim/kernel/src/gpu_module/snn_gpu_module.cu
             OPTIONS
                 -Xcompiler
-                -fPIC
+                #-fPIC # @TODO MAKE THIS WORK WITH STATIC/SHARED CORRECTLY!
 				${CARLSIM_CUDA_GENCODE}
 			)
 		endif()
