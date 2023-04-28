@@ -18,7 +18,6 @@ jobs:
                   -DCARLSIM_PYCARL=OFF \
                   ./..
             make install
-            ls -lah
     - name: Upload the artifacts
       uses: skx/github-action-publish-binaries@master
       env:
