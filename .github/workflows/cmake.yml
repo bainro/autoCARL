@@ -21,7 +21,7 @@ jobs:
       run:  | 
             mkdir ${{github.workspace}}/build
             cd ${{github.workspace}}/build
-            cmake -DCMAKE_INSTALL_PREFIX=/tmp/carlsim6 -DCMAKE_BUILD_TYPE=Release ../.
+            cmake -DCMAKE_INSTALL_PREFIX=/tmp/carlsim6 \
+                  -DCMAKE_BUILD_TYPE=Release .. \
+                  -DCARLSIM_NO_CUDA=ON \
             make install
-            # cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
-
