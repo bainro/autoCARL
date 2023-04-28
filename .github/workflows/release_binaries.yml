@@ -12,11 +12,10 @@ jobs:
             mkdir ${{github.workspace}}/build
             cd ${{github.workspace}}/build
             cmake -DCMAKE_INSTALL_PREFIX=/tmp/carlsim6 \
-                  -DCMAKE_BUILD_TYPE=Release \
+                  -DCMAKE_BUILD_TYPE=Release ./.. \
                   -DCARLSIM_NO_CUDA=ON \
                   -DCARLSIM_TEST=OFF \
-                  -DCARLSIM_PYCARL=OFF \
-                  ./..
+                  -DCARLSIM_PYCARL=OFF
             make install
     - name: Upload the artifacts
       uses: skx/github-action-publish-binaries@master
