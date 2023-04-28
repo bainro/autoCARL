@@ -17,12 +17,12 @@ jobs:
                   -DCARLSIM_TEST=OFF \
                   -DCARLSIM_PYCARL=OFF
             make install
-  generate:
-    name: Upload the artifacts
-    runs-on: ubuntu-latest
-    steps:
-    - uses: skx/github-action-publish-binaries@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Upload binaries to release
+      uses: svenstaro/upload-release-action@v2
       with:
-        args: './projects/hello_world/hello_world'
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: projects/hello_world/hello_world
+        asset_name: mything
+        tag: ${{ github.ref }}
+        overwrite: true
+        body: "This is my release text"
