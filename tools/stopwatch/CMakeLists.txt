@@ -1,7 +1,8 @@
 
 # Targets
 
-    add_library(carlsim-stopwatch SHARED)
+    # @TODO MAKE WORK WITH SHARED/STATIC FLAG!!!
+    add_library(carlsim-stopwatch STATIC)
 
     target_compile_definitions(carlsim-stopwatch PRIVATE CARLSIM_DLL)
 
