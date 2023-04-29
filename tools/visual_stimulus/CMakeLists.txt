@@ -23,7 +23,7 @@
 
 # Linking
 
-    target_link_libraries(carlsim-visual-stimulus PRIVATE carlsim)
+    target_link_libraries(carlsim-visual-stimulus PRIVATE -static carlsim)
 
 # Installation
 
