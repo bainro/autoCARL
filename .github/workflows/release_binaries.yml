@@ -6,7 +6,7 @@ jobs:
   build:
     # more appropriate permissions here? tinyurl.com/5725swh8
     permissions: write-all
-    runs-on: self-hosted # ubuntu_18
+    runs-on: ubu20GPU # self-hosted # ubuntu_18
     steps:
     - uses: actions/checkout@v3
     - name: Build
