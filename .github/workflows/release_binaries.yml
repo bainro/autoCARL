@@ -6,7 +6,7 @@ jobs:
   build:
     # more appropriate permissions here? tinyurl.com/5725swh8
     permissions: write-all
-    runs-on: [ubuntu_18] # ubuntu-latest
+    runs-on: ubuntu_18 # ubuntu-latest
     steps:
     - uses: actions/checkout@v3
     - name: Build
