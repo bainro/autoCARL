@@ -157,7 +157,7 @@ if(CARLSIM_SHARED)
 		if(UNIX)
 			cuda_add_library(carlsim-cuda
             carlsim/kernel/src/gpu_module/snn_gpu_module.cu
-	    STATIC
+	        STATIC
             OPTIONS
                 -Xcompiler
                 -fPIC
@@ -317,8 +317,9 @@ if(CARLSIM_SHARED)
     if(NOT CARLSIM_NO_CUDA)
         target_link_libraries(carlsim
             PUBLIC
+			-static
                carlsim-cuda
-                ${CUDA_curand_LIBRARY}
+               ${CUDA_curand_LIBRARY}
         )
     endif()
 
