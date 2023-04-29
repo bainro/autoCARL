@@ -15,7 +15,7 @@ jobs:
             cd ${{github.workspace}}/build
             cmake -DCMAKE_INSTALL_PREFIX=/tmp/carlsim6 \
                   -DCMAKE_BUILD_TYPE=Release .. \
-                  -DCARLSIM_NO_CUDA=ON \
+                  -DCARLSIM_NO_CUDA=OFF \
                   -DCARLSIM_TEST=OFF \
                   -DCARLSIM_PYCARL=OFF \
                   -DCARLSIM_SHARED=ON \
