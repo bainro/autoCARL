@@ -6,10 +6,10 @@ add_executable(hello_world
 )
 
 # definitions     
-if(CARLSIM_NO_CUDA)
-    target_compile_definitions(hello_world PUBLIC
-        -D__NO_CUDA__ )
-endif()
+#if(CARLSIM_NO_CUDA)
+#    target_compile_definitions(hello_world PUBLIC
+#        -D__NO_CUDA__ )
+#endif()
 
 # Linking    
 target_link_libraries(hello_world PRIVATE
