@@ -3,7 +3,7 @@
     if(NOT CARLSIM_NO_CUDA)
     	# @TODO restore V11 requirement!!
         # find_package(CUDA 11 REQUIRED)
-	find_package(CUDA 11 REQUIRED)
+	find_package(CUDA 10 REQUIRED)
     endif()
 
 	if(UNIX AND NOT CARLSIM_NO_PTHREADS)
