@@ -1,6 +1,6 @@
 # Targets
 
-    add_library(carlsim-visual-stimulus SHARED)
+    add_library(carlsim-visual-stimulus STATIC)
 
     target_compile_definitions(carlsim-visual-stimulus PRIVATE CARLSIM_DLL)
 
