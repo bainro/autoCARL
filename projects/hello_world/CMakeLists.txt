@@ -5,10 +5,11 @@ add_executable(hello_world
     src/main_hello_world.cpp
 )
 
+# @TODO ROB: REAPPLY CONDITIONAL i.e. IF BLOCK #DBG'ING
 # definitions     
 #if(CARLSIM_NO_CUDA)
-#    target_compile_definitions(hello_world PUBLIC
-#        -D__NO_CUDA__ )
+    target_compile_definitions(hello_world PUBLIC
+        -D__NO_CUDA__ )
 #endif()
 
 # Linking    
