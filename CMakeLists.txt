@@ -60,7 +60,9 @@ endif()
 # Dependencies
 
     if(NOT CARLSIM_NO_CUDA)
-        find_package(CUDA 11 REQUIRED)
+        # @TODO RESTORE V11 requirement!!!
+        # find_package(CUDA 11 REQUIRED)
+	find_package(CUDA 10 REQUIRED)
     endif()
 
 	if(UNIX AND NOT CARLSIM_NO_PTHREADS)
