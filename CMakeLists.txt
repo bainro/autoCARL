@@ -157,6 +157,7 @@ if(CARLSIM_SHARED)
 		if(UNIX)
 			cuda_add_library(carlsim-cuda
             carlsim/kernel/src/gpu_module/snn_gpu_module.cu
+	    STATIC
             OPTIONS
                 -Xcompiler
                 -fPIC
