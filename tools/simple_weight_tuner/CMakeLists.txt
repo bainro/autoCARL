@@ -1,7 +1,7 @@
 
 # Targets
 
-    add_library(carlsim-simple-weight-tuner SHARED)
+    add_library(carlsim-simple-weight-tuner STATIC)
 
     target_compile_definitions(carlsim-simple-weight-tuner PRIVATE CARLSIM_DLL)
 
