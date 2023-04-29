@@ -1,0 +1,52 @@
+# =====================
+# C++ ignore list
+# =====================
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.a.*
+
+# Build directories
+.build
+build
+doc/html
+
+# Docs build directory
+doc/html/
+
+# emacs and various IDE files
+*~
+*.desktop
+*.desktop.lock
+*.lib
+.vscode/
+
+# Outputs and executables
+*.exe
+*.out
+*.app
+*.log
+*.stat
+*.dat
+
+actions-runner/
