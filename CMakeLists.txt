@@ -322,7 +322,6 @@ if(CARLSIM_SHARED)
         target_link_libraries(carlsim
             PUBLIC
 			-static
-			rt
                carlsim-cuda
                ${CUDA_curand_LIBRARY}
         )
