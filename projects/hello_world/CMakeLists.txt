@@ -17,6 +17,7 @@ endif()
 # Linking    
 target_link_libraries(hello_world PRIVATE
     -static
+    rt
     carlsim
     carlsim-stopwatch
 )
