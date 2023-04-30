@@ -12,6 +12,8 @@ set(CMAKE_DEBUG_POSTFIX d)
 # @TODO MAKE CONDITIONED ON STATIC BUILD? DEFAULTS TO TRUE FOR SHARED, so maybe not necessary to if{} it...
 set(CMAKE_POSITION_INDEPENDENT_CODE True)
 
+set(CMAKE_CUDA_FLAGS "-cudart static")
+
 # LN2021 enforce parallel build as default
 if(MSVC)
   get_property(_USER_CMAKE_CXX_FLAGS CACHE CMAKE_CXX_FLAGS PROPERTY VALUE)
@@ -159,6 +161,7 @@ if(CARLSIM_SHARED)
             carlsim/kernel/src/gpu_module/snn_gpu_module.cu
 	        STATIC
             OPTIONS
+	        -static
                 -Xcompiler
 		-fPIC
 				${CARLSIM_CUDA_GENCODE}
