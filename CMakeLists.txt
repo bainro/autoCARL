@@ -12,7 +12,7 @@ set(CMAKE_DEBUG_POSTFIX d)
 # @TODO MAKE CONDITIONED ON STATIC BUILD? DEFAULTS TO TRUE FOR SHARED, so maybe not necessary to if{} it...
 set(CMAKE_POSITION_INDEPENDENT_CODE True)
 
-set(CMAKE_CUDA_FLAGS "-cudart static")
+set(CMAKE_CUDA_FLAGS "-cudart=static")
 
 # LN2021 enforce parallel build as default
 if(MSVC)
