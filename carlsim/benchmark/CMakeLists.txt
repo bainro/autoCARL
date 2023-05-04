@@ -7,7 +7,7 @@ add_executable(benchmark
     benchmark_neurons.cpp
 )
 
-find_library(librt.a)
+find_library(LIB_RT librt.a)
 
 # @TODO might not be necessary as it's in the parent CMAKE too
 set(CMAKE_CUDA_FLAGS "-cudart static")
@@ -26,8 +26,7 @@ target_link_libraries(benchmark PRIVATE
     -static
     carlsim
     carlsim-stopwatch
-    rt
-    /usr/lib/x86_64-linux-gnu/librt.a
+    ${LIB_RT}
 )
 
 target_include_directories(benchmark PRIVATE
