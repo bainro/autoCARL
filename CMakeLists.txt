@@ -6,6 +6,9 @@ cmake_minimum_required(VERSION 3.21.0)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+set(CUDA_USE_STATIC_CUDA_RUNTIME ON)
+set_target_properties(carlsim PROPERTIES CUDA_RESOLVE_DEVICE_SYMBOLS ON)
+
 #LN20201126  https://cmake.org/cmake/help/latest/guide/tutorial/index.html#id20
 set(CMAKE_DEBUG_POSTFIX d)
 
