@@ -26,7 +26,7 @@ target_link_libraries(benchmark PRIVATE
     -static
     carlsim
     carlsim-stopwatch
-    ${LIB_RT}
+    #${LIB_RT}
 )
 
 target_include_directories(benchmark PRIVATE
