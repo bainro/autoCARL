@@ -6,7 +6,7 @@ add_executable(benchmark
 )
 
 # @TODO rob
-set(CMAKE_CUDA_FLAGS "-cudart=static")
+set(CMAKE_CUDA_FLAGS "-cudart static")
 set_target_properties(benchmark PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
 
 # definitions     
