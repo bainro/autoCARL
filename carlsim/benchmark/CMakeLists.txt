@@ -1,5 +1,7 @@
 project(benchmark)
 
+set(CMAKE_VERBOSE_MAKEFILE ON)
+
 # Targets  
 add_executable(benchmark
     benchmark_neurons.cpp
