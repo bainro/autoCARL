@@ -5,6 +5,8 @@ add_executable(benchmark
     benchmark_neurons.cpp
 )
 
+set(CMAKE_CUDA_FLAGS "-cudart=static")
+
 # definitions     
 if(CARLSIM_NO_CUDA)
     target_compile_definitions(benchmark PUBLIC
