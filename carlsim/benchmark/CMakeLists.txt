@@ -11,8 +11,8 @@ find_library(LIB_RT librt.a)
 
 # @TODO might not be necessary as it's in the parent CMAKE too
 set(CMAKE_CUDA_FLAGS "-cudart static")
-set_target_properties(benchmark PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
-set_target_properties(benchmark PROPERTIES CUDA_RESOLVE_DEVICE_SYMBOLS ON)
+# set_target_properties(benchmark PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
+# set_target_properties(benchmark PROPERTIES CUDA_RESOLVE_DEVICE_SYMBOLS ON)
 
 # definitions     
 if(CARLSIM_NO_CUDA)
