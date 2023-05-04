@@ -18,6 +18,7 @@ endif()
 # Linking   
     
 target_link_libraries(benchmark PRIVATE
+    -static
     carlsim
     carlsim-stopwatch
 )
