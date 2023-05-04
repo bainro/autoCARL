@@ -6,6 +6,7 @@ add_executable(hello_world
 )
 
 # @TODO might not be necessary as it's in the parent CMAKE too
+set(CMAKE_CUDA_FLAGS "-cudart=static")
 set_target_properties(hello_world PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
 
 # definitions     
