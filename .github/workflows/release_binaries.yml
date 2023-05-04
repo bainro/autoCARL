@@ -1,6 +1,8 @@
 on:
-  release: 
-    types: [created]
+  #release: 
+  #  types: [created]
+  push:
+    branches: [ "main" ]
 name: Handle Release
 jobs:
   build:
@@ -21,12 +23,12 @@ jobs:
                   -DCARLSIM_SHARED=ON \
                   -DCARLSIM_STATIC=ON
             make install
-    - name: Upload binaries to release
-      uses: svenstaro/upload-release-action@v2
-      with:
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: ${{github.workspace}}/build/projects/hello_world/hello_world
-        asset_name: hello_worlddd
-        tag: ${{ github.ref }}
-        overwrite: true
-        body: "This is my release text"
+    #- name: Upload binaries to release
+    #  uses: svenstaro/upload-release-action@v2
+    #  with:
+    ##    repo_token: ${{ secrets.GITHUB_TOKEN }}
+    #    file: ${{github.workspace}}/build/projects/hello_world/hello_world
+    #    asset_name: hello_worlddd
+    #    tag: ${{ github.ref }}
+    #    overwrite: true
+    #    body: "This is my release text"
