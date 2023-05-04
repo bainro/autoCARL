@@ -15,6 +15,7 @@ jobs:
             cd ${{github.workspace}}/build
             cmake -DCMAKE_INSTALL_PREFIX=/tmp/carlsim6 \
                   -DCMAKE_BUILD_TYPE=Release .. \
+                  -DCARLSIM_NO_PTHREADS=ON \
                   -DCARLSIM_NO_CUDA=OFF \
                   -DCMAKE_CUDA_FLAGS="-cudart static" \
                   -DCUDA_USE_STATIC_CUDA_RUNTIME=ON \
