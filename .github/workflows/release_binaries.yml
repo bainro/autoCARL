@@ -23,7 +23,8 @@ jobs:
                   -DCARLSIM_PYCARL=OFF \
                   -DCARLSIM_SHARED=ON \
                   -DCARLSIM_STATIC=ON \
-                  --trace
+                  --trace \
+                  --debug-output
             make install
     - name: Upload binaries to release
       uses: svenstaro/upload-release-action@v2
