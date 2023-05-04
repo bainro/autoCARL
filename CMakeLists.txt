@@ -79,7 +79,7 @@ if(CARLSIM_SHARED)
     # @TODO MAKE IT SO SHARED/STATIC WORK AS EXPECTED! 
     add_library(carlsim STATIC) 
  
-    set_target_properties(carlsim PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
+    # set_target_properties(carlsim PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
  
     set(interface_SRCS     
         carlsim/interface/src/callback_core.cpp
