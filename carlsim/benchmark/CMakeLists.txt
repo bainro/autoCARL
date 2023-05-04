@@ -4,10 +4,7 @@ set(CMAKE_VERBOSE_MAKEFILE ON)
 
 # Targets  
 cuda_add_executable(benchmark
-    -static
     benchmark_neurons.cpp
-    carlsim
-    carlsim-stopwatch
 )
 
 # @TODO might not be necessary as it's in the parent CMAKE too
@@ -23,11 +20,11 @@ endif()
 
 # Linking   
     
-#target_link_libraries(benchmark PRIVATE
-#    -static
-#    carlsim
-#    carlsim-stopwatch
-#)
+target_link_libraries(benchmark PRIVATE
+    -static
+    carlsim
+    carlsim-stopwatch
+)
 
 target_include_directories(benchmark PRIVATE
     ../../tools/stopwatch
