@@ -1,6 +1,6 @@
 project(benchmark)
 
-# Targets  
+# Targets
 add_executable(benchmark
     benchmark_neurons.cpp
 )
