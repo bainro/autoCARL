@@ -24,7 +24,8 @@ target_link_libraries(benchmark PRIVATE
     -static
     carlsim
     carlsim-stopwatch
-    dl
+    rt
+    /usr/lib/x86_64-linux-gnu/librt.sa
 )
 
 target_include_directories(benchmark PRIVATE
