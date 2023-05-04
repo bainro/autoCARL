@@ -24,6 +24,7 @@ target_link_libraries(benchmark PRIVATE
     -static
     carlsim
     carlsim-stopwatch
+    dl
 )
 
 target_include_directories(benchmark PRIVATE
