@@ -5,9 +5,6 @@ add_executable(hello_world
     src/main_hello_world.cpp
 )
 
-# @TODO might not be necessary as it's in the parent CMAKE too
-set_target_properties(hello_world PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
-
 # definitions     
 if(CARLSIM_NO_CUDA)
     target_compile_definitions(hello_world PUBLIC
@@ -16,7 +13,6 @@ endif()
 
 # Linking    
 target_link_libraries(hello_world PRIVATE
-    -static
     carlsim
     carlsim-stopwatch
 )
