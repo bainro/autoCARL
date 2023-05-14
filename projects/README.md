@@ -1,2 +1,4 @@
-Start a new project like so:
-```./init.sh new_project_name```
+Start a new project like so:  
+```
+./init.sh new_project_name
+```
