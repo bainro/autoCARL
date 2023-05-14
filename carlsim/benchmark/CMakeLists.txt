@@ -1,16 +1,9 @@
 project(benchmark)
 
-set(CMAKE_VERBOSE_MAKEFILE ON)
-
 # Targets  
 add_executable(benchmark
     benchmark_neurons.cpp
 )
-
-# @TODO might not be necessary as it's in the parent CMAKE too
-#set(CMAKE_CUDA_FLAGS "-cudart static")
-# set_target_properties(benchmark PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
-# set_target_properties(benchmark PROPERTIES CUDA_RESOLVE_DEVICE_SYMBOLS ON)
 
 # definitions     
 if(CARLSIM_NO_CUDA)
@@ -21,7 +14,6 @@ endif()
 # Linking   
     
 target_link_libraries(benchmark PRIVATE
-    -static
     carlsim
     carlsim-stopwatch
 )
