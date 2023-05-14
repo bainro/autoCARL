@@ -6,15 +6,8 @@ cmake_minimum_required(VERSION 3.21.0)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-set(CUDA_USE_STATIC_CUDA_RUNTIME ON)
-
 #LN20201126  https://cmake.org/cmake/help/latest/guide/tutorial/index.html#id20
 set(CMAKE_DEBUG_POSTFIX d)
-
-# @TODO MAKE CONDITIONED ON STATIC BUILD? DEFAULTS TO TRUE FOR SHARED, so maybe not necessary to if{} it...
-set(CMAKE_POSITION_INDEPENDENT_CODE True)
-
-set(CMAKE_CUDA_FLAGS "-cudart static")
 
 # LN2021 enforce parallel build as default
 if(MSVC)
@@ -74,12 +67,8 @@ endif()
 
 # Targets
  
-# @TODO MAKE IT SO SHARED/STATIC WORK AS EXPECTED! 
 if(CARLSIM_SHARED)
-    # @TODO MAKE IT SO SHARED/STATIC WORK AS EXPECTED! 
-    add_library(carlsim STATIC) 
- 
-    # set_target_properties(carlsim PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
+    add_library(carlsim SHARED) 
  
     set(interface_SRCS     
         carlsim/interface/src/callback_core.cpp
@@ -163,10 +152,9 @@ if(CARLSIM_SHARED)
 		if(UNIX)
 			cuda_add_library(carlsim-cuda
             carlsim/kernel/src/gpu_module/snn_gpu_module.cu
-	        STATIC
             OPTIONS
                 -Xcompiler
-		-fPIC
+                -fPIC
 				${CARLSIM_CUDA_GENCODE}
 			)
 		endif()
@@ -323,9 +311,8 @@ if(CARLSIM_SHARED)
     if(NOT CARLSIM_NO_CUDA)
         target_link_libraries(carlsim
             PUBLIC
-			-static
                carlsim-cuda
-               ${CUDA_curand_LIBRARY}
+                ${CUDA_curand_LIBRARY}
         )
     endif()
 
@@ -386,7 +373,7 @@ endif()
   endif()
   
   if(CARLSIM_PYCARL)
-    add_subdirectory(pyCARL)   
+    add_subdirectory(pycarl)   
   endif()  
 
 if(CARLSIM_TUTORIALS)  
