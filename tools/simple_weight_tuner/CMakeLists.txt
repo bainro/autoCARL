@@ -24,7 +24,7 @@
 
 # Linking
 
-    target_link_libraries(carlsim-simple-weight-tuner PRIVATE -static carlsim)
+    target_link_libraries(carlsim-simple-weight-tuner PRIVATE carlsim)
 
 # Installation
 
