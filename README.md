@@ -1,3 +1,4 @@
+![](http://socsci.uci.edu/~jkrichma/images/Colored-CARL-Logo.gif)
 <div align="center">
 	<img src="http://socsci.uci.edu/~jkrichma/images/Colored-CARL-Logo.gif" width="300"/>
 </div>
