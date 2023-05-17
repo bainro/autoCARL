@@ -1,8 +1,6 @@
-![](https://sites.socsci.uci.edu/~jkrichma/.Colored-CARL-Logo.gif)
+<!--![](https://sites.socsci.uci.edu/~jkrichma/.Colored-CARL-Logo.gif)-->
 <div align="center">
 	<img src="https://sites.socsci.uci.edu/~jkrichma/.Colored-CARL-Logo.gif" width="300"/>
-	<img src="http://sites.socsci.uci.edu/~jkrichma/.Colored-CARL-Logo.gif" width="300"/>
-	<img src="http://socsci.uci.edu/~jkrichma/.Colored-CARL-Logo.gif" width="300"/>
 </div>
 
 # CARLsim 6
