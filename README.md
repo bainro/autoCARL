@@ -1,5 +1,5 @@
 <div align="center">
-	<img src="https://sites.socsci.uci.edu/~jkrichma/images/Colored-CARL-Logo.gif" width="300"/>
+	<img src="http://socsci.uci.edu/~jkrichma/images/Colored-CARL-Logo.gif" width="300"/>
 </div>
 
 # CARLsim 6
