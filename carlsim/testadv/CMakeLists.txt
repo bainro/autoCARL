@@ -47,9 +47,7 @@ FetchContent_MakeAvailable(googletest)
         PRIVATE
             carlsim-spike-generators
             ${GTEST_LIBRARIES}
-#            C:/Test/github/gtest-1-10_dist/lib/gtest_main.lib
-#            C:/Test/github/gtest-1-10_dist/lib/gtest.lib
-#            C:/Test/github/PTHREADS-BUILT/lib/pthreadVC3d.lib
+            GTest::gtest
     )
 
 if(MSVC)
@@ -57,6 +55,8 @@ if(MSVC)
     # Generate Debug Information optimized for sharing and publishing (/DEBUG:FULL)
     target_link_options(carlsim-testsadv PRIVATE $<$<CONFIG:Debug>:/DEBUG:FULL>)
 endif()
+
+include(GoogleTest)
 
 # Release
 # Param.  --gtest_filter=-*Gauss*:*eath*:*LN*
