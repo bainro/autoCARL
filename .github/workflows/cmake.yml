@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubu20GPU # ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
@@ -19,7 +19,7 @@ jobs:
             cd ${{github.workspace}}/build
             cmake -DCMAKE_INSTALL_PREFIX=/tmp/carlsim6 \
                   -DCMAKE_BUILD_TYPE=Release .. \
-                  -DCARLSIM_NO_CUDA=ON \
+                  -DCARLSIM_NO_CUDA=OFF \
                   -DCARLSIM_TEST=ON \
                   -DCARLSIM_PYCARL=OFF
             make -j$(nproc) install
