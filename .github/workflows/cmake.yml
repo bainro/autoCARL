@@ -23,3 +23,10 @@ jobs:
                   -DCARLSIM_TEST=ON \
                   -DCARLSIM_PYCARL=OFF
             make -j$(nproc) install
+            
+    - name: Run tests
+      run:  | 
+            echo $PWD
+            ./carlsim/test/carlsim-tests
+            ./carlsim/test6/carlsim-tests6
+            ./carlsim/testadv/carlsim-testsadv
