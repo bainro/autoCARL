@@ -3,7 +3,7 @@ project(carlsim)
 cmake_minimum_required(VERSION 3.21.0)
 
 # @TODO make conditional on CARL_TEST FLAG!!
-add_subdirectory(external/googletest)
+# add_subdirectory(external/googletest)
 
 # specify the C++ standard aligned to YARP
 set(CMAKE_CXX_STANDARD 14)
