@@ -27,7 +27,6 @@ jobs:
     - name: Run tests
       run:  | 
             cd ${{github.workspace}}/build
-            echo $PWD
             ./carlsim/test/carlsim-tests
             ./carlsim/test6/carlsim-tests6
             ./carlsim/testadv/carlsim-testsadv
