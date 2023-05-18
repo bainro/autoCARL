@@ -2,7 +2,7 @@ name: CMake
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main" ] 
   #pull_request:
     #branches: [ "main" ]
 
@@ -20,6 +20,6 @@ jobs:
             cmake -DCMAKE_INSTALL_PREFIX=/tmp/carlsim6 \
                   -DCMAKE_BUILD_TYPE=Release .. \
                   -DCARLSIM_NO_CUDA=ON \
-                  -DCARLSIM_TEST=OFF \
+                  -DCARLSIM_TEST=ON \
                   -DCARLSIM_PYCARL=OFF
-            make install
+            make -j$(nproc) install
