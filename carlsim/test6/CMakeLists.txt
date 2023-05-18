@@ -50,7 +50,8 @@ FetchContent_MakeAvailable(googletest)
     target_link_libraries(carlsim-tests6
         PRIVATE
             carlsim-spike-generators
-            ${GTEST_LIBRARIES}
+            ${GTEST_LIBRARIES}	    
+	    GTest::gtest
     )
 
 if(MSVC)
@@ -59,3 +60,4 @@ if(MSVC)
     target_link_options(carlsim-tests6 PRIVATE $<$<CONFIG:Debug>:/DEBUG:FULL>)
 endif()
 
+include(GoogleTest)
