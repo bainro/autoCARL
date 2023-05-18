@@ -53,6 +53,7 @@ FetchContent_MakeAvailable(googletest)
         PRIVATE
             carlsim-spike-generators
             ${GTEST_LIBRARIES}
+            GTest::gtest
 #            C:/Test/github/gtest-1-10_dist/lib/gtest_main.lib
 #            C:/Test/github/gtest-1-10_dist/lib/gtest.lib
     )
