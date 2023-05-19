@@ -18,8 +18,7 @@ jobs:
             mkdir ${{github.workspace}}/build
             cd ${{github.workspace}}/build
             cmake -DCMAKE_INSTALL_PREFIX=/tmp/carlsim6 \
-                  -DCMAKE_BUILD_TYPE=Release .. \
-                  -DCARLSIM_PYCARL=OFF
+                  -DCMAKE_BUILD_TYPE=Release .. 
             make -j$(nproc) install
             
     - name: Run tests
