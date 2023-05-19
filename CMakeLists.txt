@@ -356,16 +356,9 @@ if(CARLSIM_SHARED)
             DESTINATION include
             COMPONENT carlsim
      )    
-        
-    # unmanaged symbol
-    # https://cmake.org/cmake/help/latest/manual/cmake-buildsystem.7.html#imported-targets
-
-    #add_library(carlsim STATIC carlsim/dummy.cpp )
-
 endif()
 
 # Subdirectories
-
   add_subdirectory(carlsim)
    
   if(CARLSIM_TOOLS)
