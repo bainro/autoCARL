@@ -376,7 +376,7 @@ endif()
   endif()
   
   if(CARLSIM_PYCARL)
-    add_subdirectory(pycarl)   
+    add_subdirectory(pyCARL)   
   endif()  
 
 if(CARLSIM_TUTORIALS)  
