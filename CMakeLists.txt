@@ -26,7 +26,7 @@ endif()
     option(CARLSIM_NO_CUDA "Turn off CUDA support" OFF)         # more for boot straping and quality ensurance
     option(CARLSIM_NO_PTHREADS "Turn off PTHREADS" ON)          # since CARLsim5, Linux Release builds throw segmentation violation 
     option(CARLSIM_SHARED "Build CARLSIM als shared libray" ON)     # this is the primary supported way
-    option(CARLSIM_STATIC "Build CARLSIM als static libray" OFF)     # for trouble shooting and special requirements (e.g. single image appliances)
+    option(CARLSIM_STATIC "Build CARLSIM als static libray" ON)     # for trouble shooting and special requirements (e.g. single image appliances)
     option(CARLSIM_BENCHMARKS "Build CARLSIM benchmark tests" ON)   # 
     option(CARLSIM_SAMPLES "Build CARLSIM samples" ON)          # not for minimal version
     option(CARLSIM_TUTORIALS "Build CARLSIM tutorials" OFF)      # not for minimal version and production     
@@ -54,8 +54,12 @@ endif()
 	
 	option(CARLSIM_FIX_SYNCTHREADS "Avoid blocking synthread call for Ampere GPUs" ON)  # Ported from CARLsim 4 on A100  
 
-if(CARLSIM_SHARED EQUAL CARLSIM_STATIC)
+if(CARLSIM_SHARED AND CARLSIM_STATIC)
     message(FATAL_ERROR "Cannot build as both static and shared, choose only one.")
+endif()
+
+if(NOT CARLSIM_SHARED AND NOT CARLSIM_STATIC)
+    message(FATAL_ERROR "Cannot build without either shared or static flag.")
 endif()
 
 # Dependencies
