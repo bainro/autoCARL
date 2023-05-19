@@ -2,7 +2,7 @@ name: CMake
  
 on:
   push: # pull_request:
-    branches: [ "gpu_testing_working" ] 
+    branches: [ "main" ] 
 
 jobs:
   build:
