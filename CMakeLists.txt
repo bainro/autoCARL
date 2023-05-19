@@ -25,7 +25,7 @@ endif()
 
     option(CARLSIM_NO_CUDA "Turn off CUDA support" OFF)         # more for boot straping and quality ensurance
     option(CARLSIM_NO_PTHREADS "Turn off PTHREADS" ON)          # since CARLsim5, Linux Release builds throw segmentation violation 
-    option(CARLSIM_SHARED "Build CARLSIM as shared libray" ON)     # this is the primary supported way
+    option(CARLSIM_SHARED "Build CARLSIM as shared library" ON)     # this is the primary supported way
     # For trouble shooting and special requirements (e.g. single image appliances). CUDA is always shared.
     option(CARLSIM_STATIC "Build CARLSIM as static libray" OFF)     
     option(CARLSIM_BENCHMARKS "Build CARLSIM benchmark tests" ON)
