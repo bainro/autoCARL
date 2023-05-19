@@ -14,7 +14,8 @@ endif()
 
 if(CARLSIM_TEST)    
     add_subdirectory(test)
-    add_subdirectory(testadv)
+    # Removing v1 of CI with Github Actions. @TODO
+    # add_subdirectory(testadv)
     add_subdirectory(test6)
 endif()
 
