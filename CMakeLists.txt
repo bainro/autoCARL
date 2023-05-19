@@ -2,9 +2,6 @@ project(carlsim)
 
 cmake_minimum_required(VERSION 3.21.0)
 
-# @TODO make conditional on CARL_TEST FLAG!!
-# add_subdirectory(external/googletest)
-
 # specify the C++ standard aligned to YARP
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
@@ -56,6 +53,10 @@ endif()
 	set(CARLSIM_CUDA_GENCODE "" CACHE STRING "Enforce code generation for specific CUDA archtecture and device, e.g. -gencode arch=compute_86,code=sm_86 for RTX3090, 80 for A100, 61 for Titan Xp" )  
 	
 	option(CARLSIM_FIX_SYNCTHREADS "Avoid blocking synthread call for Ampere GPUs" ON)  # Ported from CARLsim 4 on A100  
+
+if(CARLSIM_SHARED EQUAL CARLSIM_STATIC)
+    message(FATAL_ERROR "Cannot build as both static and shared, choose only one.")
+endif()
 
 # Dependencies
 
