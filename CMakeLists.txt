@@ -330,7 +330,6 @@ if(NOT CARLSIM_NO_CUDA)
 		PUBLIC
 		   carlsim-cuda
 		   ${CUDA_curand_LIBRARY}
-		   -cudart=shared
 	)
 endif()
 
