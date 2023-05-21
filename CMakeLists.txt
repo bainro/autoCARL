@@ -71,8 +71,8 @@ endif()
 # Dependencies
 
     if(NOT CARLSIM_NO_CUDA)
-        find_package(CUDA 11 REQUIRED)
-	SET(CUDA_USE_STATIC_CUDA_RUNTIME OFF)
+        SET(CUDA_USE_STATIC_CUDA_RUNTIME OFF)
+	find_package(CUDA 11 REQUIRED)
     endif()
 
 	if(UNIX AND NOT CARLSIM_NO_PTHREADS)
