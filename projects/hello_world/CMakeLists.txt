@@ -12,13 +12,19 @@ if(CARLSIM_NO_CUDA)
 endif()
 
 # Linking    
-target_link_libraries(hello_world PRIVATE
-    if(CARLSIM_STATIC)
+if(CARLSIM_STATIC)
+    target_link_libraries(hello_world PRIVATE
         -static
-    endif()
-    carlsim
-    carlsim-stopwatch
-)
+        carlsim
+        carlsim-stopwatch
+    )
+else()
+    target_link_libraries(hello_world PRIVATE
+        carlsim
+        carlsim-stopwatch
+    )
+endif()
+
 target_include_directories(hello_world PRIVATE
     ../../tools/stopwatch
 )
