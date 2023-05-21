@@ -18,7 +18,8 @@ jobs:
             cmake -DCMAKE_INSTALL_PREFIX=/tmp/carlsim6 \
                   -DCMAKE_BUILD_TYPE=Release .. \
                   -DCARLSIM_PYCARL=OFF \
-                  -DCARLSIM_NO_CUDA=ON
+                  -DCARLSIM_NO_CUDA=ON \
+                  -DCARLSIM_TEST=OFF
             make -j$(nproc) install
             
     - name: Run tests
