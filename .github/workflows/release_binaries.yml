@@ -17,6 +17,7 @@ jobs:
                   -DCMAKE_BUILD_TYPE=Release .. \
                   -DCARLSIM_PYCARL=OFF \
                   -DCARLSIM_NO_CUDA=ON \
+                  -DCARLSIM_STATIC=ON \
                   -DCARLSIM_TEST=OFF
             make -j$(nproc) install
 
