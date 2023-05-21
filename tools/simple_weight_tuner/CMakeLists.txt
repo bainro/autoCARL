@@ -1,7 +1,12 @@
 
 # Targets
 
-    add_library(carlsim-simple-weight-tuner)
+    if(CARLSIM_STATIC)
+        add_library(carlsim-simple-weight-tuner STATIC)
+    else()
+        add_library(carlsim-simple-weight-tuner)
+    endif()
+    
 
     target_compile_definitions(carlsim-simple-weight-tuner PRIVATE CARLSIM_DLL)
 
