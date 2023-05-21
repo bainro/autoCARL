@@ -9,6 +9,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 #LN20201126  https://cmake.org/cmake/help/latest/guide/tutorial/index.html#id20
 set(CMAKE_DEBUG_POSTFIX d)
 
+# @TODO test if necessary
+if(CARLSIM_STATIC)
+	set(CMAKE_POSITION_INDEPENDENT_CODE True)
+endif()
+
 # LN2021 enforce parallel build as default
 if(MSVC)
   get_property(_USER_CMAKE_CXX_FLAGS CACHE CMAKE_CXX_FLAGS PROPERTY VALUE)
@@ -75,8 +80,12 @@ endif()
 	endif()
 
 # Targets
- 
-add_library(carlsim SHARED) 
+
+if(CARLSIM_STATIC)
+    add_library(carlsim STATIC) 
+else()
+	add_library(carlsim SHARED) 	
+endif()
 
 set(interface_SRCS     
 	carlsim/interface/src/callback_core.cpp
