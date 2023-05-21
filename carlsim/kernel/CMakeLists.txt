@@ -1,6 +1,7 @@
 # Dependencies
 
     if(NOT CARLSIM_NO_CUDA)
+    	SET(CUDA_USE_STATIC_CUDA_RUNTIME OFF)
         find_package(CUDA 11 REQUIRED)
     endif()
 
