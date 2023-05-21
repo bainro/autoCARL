@@ -14,6 +14,9 @@ endif()
 # Linking   
     
 target_link_libraries(benchmark PRIVATE
+    if(CARLSIM_STATIC)
+        -static
+    endif()
     carlsim
     carlsim-stopwatch
 )
