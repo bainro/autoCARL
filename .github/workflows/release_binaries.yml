@@ -18,6 +18,7 @@ jobs:
                   -DCARLSIM_PYCARL=OFF \
                   -DCARLSIM_NO_CUDA=ON \
                   -DCARLSIM_STATIC=ON \
+                  -DCARLSIM_SHARED=OFF \
                   -DCARLSIM_TEST=OFF
             make -j$(nproc) install
 
