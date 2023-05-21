@@ -169,9 +169,8 @@ if(NOT CARLSIM_NO_CUDA)
 
 	if(UNIX)
 		cuda_add_library(carlsim-cuda
-		carlsim/kernel/src/gpu_module/snn_gpu_module.cu
-		SHARED
-		OPTIONS
+		carlsim/kernel/src/gpu_module/snn_gpu_module.cu # SHARED
+		OPTIONS 
 			-Xcompiler
 			-fPIC
 			${CARLSIM_CUDA_GENCODE}
