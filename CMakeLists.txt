@@ -37,17 +37,17 @@ endif()
          
     # an option translates to one or more compile definitions assigned to one or multiple targets
     # it can be set manually or by a super build customized to a specific profil
-    option(CARLSIM_LN_EXT "LN's Extension" ON)	# a option is ON, if it is working (DONE), and can switched off by the context (s.build / profile)
+    option(CARLSIM_LN_EXT "LN's Extension" ON)	# can switch off using the context (s.build / profile)
     option(CARLSIM_LN_FIRING "Firing information for integration as plugin" ON) 
-    #option(CARLSIM_LN_FIRING_MT "Multi Threaded Firing (experimental)" OFF)    # still experimental
+    #option(CARLSIM_LN_FIRING_MT "Multi Threaded Firing (experimental)" OFF) # still experimental
     #option(CARLSIM_LN_FIRING_DEBUG "Debug Firing and its tests" OFF)   # optional
     option(CARLSIM_LN_FIX_ALL_DECAY "Fix NM4 Decay for CPU and GPU" ON )  # generalization of fix for DA Decay
     #option(CARLSIM_LN_FIX_DA_DECAY "Fix DA Decay for CPU and GPU" OFF )  # obsolete
     option(CARLSIM_LN_FIX_CONNLIST "Fix Connection List " OFF)    # \todo issue -> what was the status of VS2015
     #option(CARLSIM_LN_SETUP_NETWORK_MT  "Fix Performance Setup Network (experimental)" OFF)
     option(CARLSIM_LN_GPU_INFO "Enables Control which GPU to be used" ON)  # feature (buggy due dependency) 
-	option(CARLSIM_LN_I_CALC_TYPES "Enables enhanced current calculation" ON)  # feature NM4R6 (experimental) )
-	option(CARLSIM_LN_GPU_STDP "Enables GPU accelerated functions for STDP" ON)  # feature GPU device functions (experimental) )
+	option(CARLSIM_LN_I_CALC_TYPES "Enables enhanced current calculation" ON)  # feature NM4R6 (experimental)
+	option(CARLSIM_LN_GPU_STDP "Enables GPU accelerated functions for STDP" ON)  # feature GPU device functions (experimental)
 
 	option(CARLSIM_JK_CA3_SSN "J. Kopsick extensions for Neuron-Type Specific CA3 SNN" OFF) # feature ported on basis of CARLsim4 branch
 
