@@ -29,7 +29,7 @@
 		
 		if(UNIX)
 	        cuda_add_library(carlsim-kernel-cuda
-	            src/gpu_module/snn_gpu_module.cu # SHARED
+	            src/gpu_module/snn_gpu_module.cu
 	            OPTIONS
 	                -Xcompiler
 	                -fPIC
