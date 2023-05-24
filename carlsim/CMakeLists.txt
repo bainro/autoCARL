@@ -13,7 +13,7 @@ if(CARLSIM_TEST)
     add_subdirectory(test)
     add_subdirectory(test6)
     # Removing for v1 of CI with Github Actions. @TODO add back!
-    # add_subdirectory(testadv)
+    add_subdirectory(testadv)
 endif()
 
 # add benchmark as embedded sub project
