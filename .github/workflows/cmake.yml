@@ -18,8 +18,10 @@ jobs:
             cmake -DCMAKE_INSTALL_PREFIX=/tmp/carlsim6 \
                   -DCMAKE_BUILD_TYPE=Release .. \
                   -DCARLSIM_PYCARL=OFF \
-                  -DCARLSIM_NO_CUDA=ON \
-                  -DCARLSIM_TEST=OFF
+                  -DCARLSIM_NO_CUDA=OFF \
+                  -DCARLSIM_STATIC=OFF \
+                  -DCARLSIM_SHARED=ON \
+                  -DCARLSIM_TEST=ON
             make -j$(nproc) install
             
     - name: Run tests
@@ -27,3 +29,5 @@ jobs:
             cd ${{github.workspace}}/build
             ./carlsim/test/carlsim-tests
             ./carlsim/test6/carlsim-tests6
+            lcov --directory ./ --capture --output-file ./code_coverage.info -rc lcov_branch_coverage=1
+            genhtml code_coverage.info --branch-coverage --output-directory ./code_coverage_report/
