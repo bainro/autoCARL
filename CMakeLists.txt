@@ -11,9 +11,9 @@ set(CMAKE_DEBUG_POSTFIX d)
 
 # @TODO test if necessary
 # @TODO find permanent home in this file
-if(CARLSIM_STATIC)
-	set(CMAKE_POSITION_INDEPENDENT_CODE True)
-endif()
+# if(CARLSIM_STATIC)
+# 	set(CMAKE_POSITION_INDEPENDENT_CODE True)
+# endif()
 
 # LN2021 enforce parallel build as default
 if(MSVC)
