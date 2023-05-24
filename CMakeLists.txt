@@ -83,6 +83,8 @@ endif()
 		# @TODO find permanent home in this file
 		if(CARLSIM_TEST)
 			set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -g -O0 -fprofile-arcs -ftest-coverage")
+			set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} ${CMAKE_NVCC_FLAGS}")
+			set(CMAKE_NVCC_FLAGS "${CMAKE_CUDA_FLAGS}")
 		endif()
 		find_package(CUDA 11 REQUIRED)
     endif()
