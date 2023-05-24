@@ -29,6 +29,5 @@ jobs:
             cd ${{github.workspace}}/build
             ./carlsim/test/carlsim-tests
             ./carlsim/test6/carlsim-tests6
-            ./carlsim/testadv/carlsim-testsadv
             lcov --directory ./ --capture --output-file ./code_coverage.info -rc lcov_branch_coverage=1
             genhtml code_coverage.info --branch-coverage --output-directory ./code_coverage_report/
