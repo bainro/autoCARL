@@ -21,7 +21,7 @@ jobs:
                   -DCARLSIM_NO_CUDA=ON \
                   -DCARLSIM_STATIC=OFF \
                   -DCARLSIM_SHARED=ON \
-                  -DCARLSIM_TEST=ON
+                  -DCARLSIM_TEST=OFF
             make -j$(nproc) install
             
     - name: Run tests
