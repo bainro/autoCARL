@@ -5,11 +5,9 @@ include_directories(interface/inc)
 include_directories(monitor)
 
 # Subdirectories
-if (CARLSIM_STATIC)
-    add_subdirectory(interface)
-    add_subdirectory(kernel)
-    add_subdirectory(monitor)
-endif()
+add_subdirectory(interface)
+add_subdirectory(kernel)
+add_subdirectory(monitor)
 
 if(CARLSIM_TEST)    
     add_subdirectory(test)
