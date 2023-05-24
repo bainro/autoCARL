@@ -35,4 +35,11 @@ jobs:
             # https://github.com/bainro/autoCARL/actions/runs/5065893843/jobs/9095003642#step:4:422
             sed -e '/tmp/d' ./code_coverage.info > /tmp/_tmp.info
             mv /tmp/_tmp.info ./code_coverage.info
-            genhtml code_coverage.info --branch-coverage --output-directory ./code_coverage_report/
+            # for generating html to be viewed locally
+            # genhtml code_coverage.info --branch-coverage --output-directory ./code_coverage_report/
+            
+    - name: Coveralls
+      uses: coverallsapp/github-action@master
+      with: 
+            github-token: ${{ secrets.GITHUB_TOKEN }}
+            file: "./code_coverage.info"
