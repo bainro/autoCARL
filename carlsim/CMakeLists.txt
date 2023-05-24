@@ -1,12 +1,11 @@
 
 
 # Includes
-    include_directories(interface/inc)
-    include_directories(monitor)
+include_directories(interface/inc)
+include_directories(monitor)
 
 # Subdirectories
-
-if(CARLSIM_STATIC)
+if (CARLSIM_STATIC)
     add_subdirectory(interface)
     add_subdirectory(kernel)
     add_subdirectory(monitor)
