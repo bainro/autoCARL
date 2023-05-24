@@ -9,6 +9,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 #LN20201126  https://cmake.org/cmake/help/latest/guide/tutorial/index.html#id20
 set(CMAKE_DEBUG_POSTFIX d)
 
+# @TODO test if necessary
+# @TODO find permanent home in this file
+if(CARLSIM_STATIC)
+	set(CMAKE_POSITION_INDEPENDENT_CODE True)
+endif()
+
 # LN2021 enforce parallel build as default
 if(MSVC)
   get_property(_USER_CMAKE_CXX_FLAGS CACHE CMAKE_CXX_FLAGS PROPERTY VALUE)
@@ -61,12 +67,6 @@ endif()
 
 if(NOT CARLSIM_SHARED AND NOT CARLSIM_STATIC)
     message(FATAL_ERROR "Cannot build without either shared or static flag.")
-endif()
-
-# @TODO test if necessary
-# @TODO find permanent home in this file
-if(CARLSIM_STATIC)
-	set(CMAKE_POSITION_INDEPENDENT_CODE True)
 endif()
 
 # @TODO find permanent home in this file
