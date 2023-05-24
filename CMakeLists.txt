@@ -9,11 +9,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 #LN20201126  https://cmake.org/cmake/help/latest/guide/tutorial/index.html#id20
 set(CMAKE_DEBUG_POSTFIX d)
 
-# @TODO test if necessary
-if(CARLSIM_STATIC)
-	set(CMAKE_POSITION_INDEPENDENT_CODE True)
-endif()
-
 # LN2021 enforce parallel build as default
 if(MSVC)
   get_property(_USER_CMAKE_CXX_FLAGS CACHE CMAKE_CXX_FLAGS PROPERTY VALUE)
@@ -68,11 +63,28 @@ if(NOT CARLSIM_SHARED AND NOT CARLSIM_STATIC)
     message(FATAL_ERROR "Cannot build without either shared or static flag.")
 endif()
 
+# @TODO test if necessary
+# @TODO find permanent home in this file
+if(CARLSIM_STATIC)
+	set(CMAKE_POSITION_INDEPENDENT_CODE True)
+endif()
+
+# @TODO find permanent home in this file
+if(CARLSIM_TEST)
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -fprofile-arcs -ftest-coverage")
+	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -O0 -fprofile-arcs -ftest-coverage")
+endif()
+
 # Dependencies
 
     if(NOT CARLSIM_NO_CUDA)
-	# SET(CUDA_USE_STATIC_CUDA_RUNTIME OFF)
-	find_package(CUDA 11 REQUIRED)
+		# @TODO find permanent home in this file
+		# SET(CUDA_USE_STATIC_CUDA_RUNTIME OFF)
+		# @TODO find permanent home in this file
+		if(CARLSIM_TEST)
+			set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -g -O0 -fprofile-arcs -ftest-coverage")
+		endif()
+		find_package(CUDA 11 REQUIRED)
     endif()
 
 	if(UNIX AND NOT CARLSIM_NO_PTHREADS)
