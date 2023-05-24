@@ -17,8 +17,7 @@ FetchContent_MakeAvailable(googletest)
         carlsim_tests_common.cpp      
         connect_adv.cpp
         main.cpp
-        # Removing for v1 of CI with Github Actions. @TODO add back!
-        # multi_runtimes.cpp
+        multi_runtimes.cpp
         stdp_adv.cpp
     )
 
