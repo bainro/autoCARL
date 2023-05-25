@@ -6,7 +6,7 @@
 # CARLsim 6
 
 [![Build Status](https://github.com/bainro/autoCARL/actions/workflows/release_binaries.yml/badge.svg)](https://github.com/bainro/autoCARL/actions/runs)
-[![Coverage Status](https://coveralls.io/repos/github/UCI-CARL/CARLsim4/badge.svg?branch=master)](https://coveralls.io/github/UCI-CARL/CARLsim4?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/bainro/autoCARL/badge.svg)](https://coveralls.io/github/bainro/autoCARL)
 [![Docs](https://img.shields.io/badge/docs-v6.0.0-blue.svg)](http://uci-carl.github.io/CARLsim6)
 [![Google group](https://img.shields.io/badge/Google-Discussion%20group-blue.svg)](https://groups.google.com/forum/#!forum/carlsim-snn-simulator)
 
