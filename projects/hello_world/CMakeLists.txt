@@ -29,6 +29,9 @@ target_include_directories(hello_world PRIVATE
     ../../tools/stopwatch
 )
    
+if(CARLSIM_TEST)
+    target_compile_options(hello_world PUBLIC -g -O0 -fprofile-arcs -ftest-coverage)
+endif()   
         
 # Installation   
 install(TARGETS hello_world
