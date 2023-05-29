@@ -36,7 +36,7 @@ jobs:
             # sed -e '/tmp/d' ./code_coverage.lcov > /tmp/_tmp.lcov
             # mv /tmp/_tmp.lcov ./code_coverage.lcov
             lcov --remove ./code_coverage.lcov -o ./code_coverage.lcov \
-            '/usr/include/*' '/tmp/*' '${{github.workspace}}/build/*'
+            '/usr/*' '/tmp/*' '${{github.workspace}}/build/*'
             # for generating html to be viewed locally
             # genhtml code_coverage.lcov --branch-coverage --output-directory ./code_coverage_report/
             
