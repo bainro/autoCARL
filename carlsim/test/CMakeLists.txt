@@ -65,4 +65,12 @@ if(MSVC)
     target_link_options(carlsim-tests PRIVATE $<$<CONFIG:Debug>:/DEBUG:FULL>)
 endif()
 
+if(CARLSIM_TEST)
+    target_link_libraries(carlsim-tests
+        PRIVATE
+        gcov
+    )
+    target_compile_options(carlsim-tests PRIVATE -g -O0 -fprofile-arcs -ftest-coverage)
+endif()
+
 include(GoogleTest)
