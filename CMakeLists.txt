@@ -69,12 +69,6 @@ if(NOT CARLSIM_SHARED AND NOT CARLSIM_STATIC)
     message(FATAL_ERROR "Cannot build without either shared or static flag.")
 endif()
 
-# @TODO find permanent home in this file
-if(CARLSIM_TEST)
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -fprofile-arcs -ftest-coverage")
-	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -O0 -fprofile-arcs -ftest-coverage")
-endif()
-
 # Dependencies
 
     if(NOT CARLSIM_NO_CUDA)
@@ -100,6 +94,11 @@ if(CARLSIM_STATIC)
     add_library(carlsim STATIC) 
 else()
     add_library(carlsim SHARED) 	
+endif()
+
+# @TODO find permanent home in this file
+if(CARLSIM_TEST)
+        target_compile_options(carlsim PUBLIC -g -O0 -fprofile-arcs -ftest-coverage)
 endif()
 
 set(interface_SRCS     
