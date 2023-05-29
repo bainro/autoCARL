@@ -348,6 +348,14 @@ if(NOT CARLSIM_NO_CUDA)
 endif()
 
 ### Linking ###
+
+if(CARLSIM_TEST)
+    target_link_libraries(carlsim
+        PUBLIC
+        gcov
+    )
+endif()
+
 if(NOT CARLSIM_NO_CUDA)
 	target_link_libraries(carlsim
 		PUBLIC
