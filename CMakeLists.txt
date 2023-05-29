@@ -98,7 +98,7 @@ endif()
 
 # @TODO find permanent home in this file
 if(CARLSIM_TEST)
-        target_compile_options(carlsim PUBLIC -g -O0 -fprofile-arcs -ftest-coverage)
+        target_compile_options(carlsim PRIVATE -g -O0 -fprofile-arcs -ftest-coverage)
 endif()
 
 set(interface_SRCS     
@@ -169,16 +169,18 @@ target_sources(carlsim PRIVATE
 	${monitor_HDRS}
 )
 
-set_source_files_properties(
-    ${interface_SRCS} 
-    ${interface_HDRS}
-    ${kernel_SRCS} 
-    ${kernel_HDRS}
-    ${monitor_SRCS} 
-    ${monitor_HDRS}
-    PROPERTIES
-    COMPILE_FLAGS  "-g -O0 -fprofile-arcs -ftest-coverage"
-)
+if(CARLSIM_TEST)
+    set_source_files_properties(
+        ${interface_SRCS} 
+        ${interface_HDRS}
+        ${kernel_SRCS} 
+        ${kernel_HDRS}
+        ${monitor_SRCS} 
+        ${monitor_HDRS}
+        PROPERTIES
+        COMPILE_FLAGS  "-g -O0 -fprofile-arcs -ftest-coverage"
+    )
+endif()
 
 if(NOT CARLSIM_NO_CUDA)
 
