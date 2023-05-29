@@ -17,13 +17,11 @@ if(CARLSIM_STATIC)
         -static
         carlsim
         carlsim-stopwatch
-        gcov
     )
 else()
     target_link_libraries(hello_world PRIVATE
         carlsim
         carlsim-stopwatch
-        gcov
     )
 endif()
 
@@ -33,6 +31,7 @@ target_include_directories(hello_world PRIVATE
    
 if(CARLSIM_TEST)
     target_compile_options(hello_world PUBLIC -g -O0 -fprofile-arcs -ftest-coverage)
+    target_link_libraries(hello_world PRIVATE gcov)
 endif()   
         
 # Installation   
