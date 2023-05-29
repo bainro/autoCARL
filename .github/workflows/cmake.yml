@@ -33,8 +33,9 @@ jobs:
             # weird error where a single /tmp file in 250k lines of code is generated.
             # just going to filter manually for now, unless it becomes a bigger issue
             # https://github.com/bainro/autoCARL/actions/runs/5065893843/jobs/9095003642#step:4:422
-            sed -e '/tmp/d' ./code_coverage.lcov > /tmp/_tmp.lcov
-            mv /tmp/_tmp.lcov ./code_coverage.lcov
+            # sed -e '/tmp/d' ./code_coverage.lcov > /tmp/_tmp.lcov
+            # mv /tmp/_tmp.lcov ./code_coverage.lcov
+            lcov --remove ./code_coverage.lcov -o ./code_coverage.lcov '/usr/include/*' '/tmp/*'
             # for generating html to be viewed locally
             # genhtml code_coverage.lcov --branch-coverage --output-directory ./code_coverage_report/
             
