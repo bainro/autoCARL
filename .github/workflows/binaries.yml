@@ -1,7 +1,7 @@
 on:
   release: 
     types: [created]
-name: Handle Release
+name: release binaries
 jobs:
   build:
     # more appropriate permissions here? tinyurl.com/5725swh8
