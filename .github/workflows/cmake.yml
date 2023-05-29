@@ -26,9 +26,9 @@ jobs:
             
     - name: Run tests
       run:  | 
-            cd ${{github.workspace}}/build
-            ./carlsim/test/carlsim-tests
-            ./carlsim/test6/carlsim-tests6
+            cd ${{github.workspace}}
+            ./build/carlsim/test/carlsim-tests
+            ./build/carlsim/test6/carlsim-tests6
             lcov --directory ./ --capture --output-file ./code_coverage.lcov -rc lcov_branch_coverage=1
             # weird error where a single /tmp file in 250k lines of code is generated.
             # just going to filter manually for now, unless it becomes a bigger issue
