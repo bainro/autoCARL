@@ -19,7 +19,7 @@ jobs:
                   -DCARLSIM_NO_CUDA=OFF \
                   -DCARLSIM_STATIC=OFF \
                   -DCARLSIM_SHARED=ON \
-                  -DCARLSIM_TEST=ON
+                  -DCARLSIM_TEST=OFF
             make -j$(nproc) install
 
     - name: Upload binaries to release
@@ -30,4 +30,4 @@ jobs:
         asset_name: hello_world_static
         tag: ${{ github.ref }}
         overwrite: true
-        body: "This is my release text"
+        body: "release text..."
