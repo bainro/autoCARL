@@ -169,6 +169,17 @@ target_sources(carlsim PRIVATE
 	${monitor_HDRS}
 )
 
+#set_source_files_properties(
+#    ${interface_SRCS} 
+#    ${interface_HDRS}
+#    ${kernel_SRCS} 
+#    ${kernel_HDRS}
+#    ${monitor_SRCS} 
+#    ${monitor_HDRS}
+#    PROPERTIES
+#    COMPILE_FLAGS  "-g -O0 -fprofile-arcs -ftest-coverage"
+#)
+
 if(NOT CARLSIM_NO_CUDA)
 
 	if(MSVC)
