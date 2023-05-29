@@ -17,11 +17,13 @@ if(CARLSIM_STATIC)
         -static
         carlsim
         carlsim-stopwatch
+        gcov
     )
 else()
     target_link_libraries(hello_world PRIVATE
         carlsim
         carlsim-stopwatch
+        gcov
     )
 endif()
 
