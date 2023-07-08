@@ -9,6 +9,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 #LN20201126  https://cmake.org/cmake/help/latest/guide/tutorial/index.html#id20
 set(CMAKE_DEBUG_POSTFIX d)
 
+# @TODO test if necessary
+# @TODO find permanent home in this file
+# if(CARLSIM_STATIC)
+# 	set(CMAKE_POSITION_INDEPENDENT_CODE True)
+# endif()
+
 # LN2021 enforce parallel build as default
 if(MSVC)
   get_property(_USER_CMAKE_CXX_FLAGS CACHE CMAKE_CXX_FLAGS PROPERTY VALUE)
@@ -31,9 +37,9 @@ endif()
     option(CARLSIM_BENCHMARKS "Build CARLSIM benchmark tests" ON)
     option(CARLSIM_SAMPLES "Build CARLSIM samples" ON)          # not for minimal version
     option(CARLSIM_TUTORIALS "Build CARLSIM tutorials" OFF)      # not for minimal version and production     
-    option(CARLSIM_PYCARL "Build CARLSIM PyCARL" ON)            # not for CR but SNN
+    option(CARLSIM_PYCARL "Build CARLSIM PyCARL" OFF)            # not for CR but SNN
     option(CARLSIM_TOOLS "Build CARLSIM Tools" ON)              # check for dependecies
-    option(CARLSIM_TEST "Build CARLSIM Tests" ON)               # mandadory for development
+    option(CARLSIM_TEST "Build CARLSIM Tests" OFF)               # mandadory for development
          
     # an option translates to one or more compile definitions assigned to one or multiple targets
     # it can be set manually or by a super build customized to a specific profil
