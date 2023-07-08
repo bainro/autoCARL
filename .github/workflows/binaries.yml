@@ -15,19 +15,16 @@ jobs:
             cd ${{github.workspace}}/build
             cmake -DCMAKE_INSTALL_PREFIX=/tmp/carlsim6 \
                   -DCMAKE_BUILD_TYPE=Release .. \
-                  -DCARLSIM_PYCARL=OFF \
-                  -DCARLSIM_NO_CUDA=OFF \
-                  -DCARLSIM_STATIC=OFF \
-                  -DCARLSIM_SHARED=ON \
                   -DCARLSIM_TEST=OFF
             make -j$(nproc) install
+            zip -r ${{github.workspace}}/binaries.zip /tmp/carlsim6
 
     - name: Upload binaries to release
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: ${{github.workspace}}/build/projects/hello_world/hello_world
-        asset_name: hello_world_static
+        file: ${{github.workspace}}/binaries.zip
+        asset_name: binaries.zip
         tag: ${{ github.ref }}
         overwrite: true
-        body: "release text..."
+        body: "" # "release text..."
