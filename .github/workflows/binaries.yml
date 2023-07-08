@@ -4,9 +4,8 @@ on:
 name: release binaries
 jobs:
   build:
-    # more appropriate permissions here? tinyurl.com/5725swh8
     permissions: write-all
-    runs-on: ubu20GPU # self-hosted # ubuntu_18
+    runs-on: ubu20GPU # self-hosted 
     steps:
     - uses: actions/checkout@v3
     - name: Build
@@ -15,10 +14,6 @@ jobs:
             cd ${{github.workspace}}/build
             cmake -DCMAKE_INSTALL_PREFIX=/tmp/carlsim6 \
                   -DCMAKE_BUILD_TYPE=Release .. \
-                  -DCARLSIM_PYCARL=OFF \
-                  -DCARLSIM_NO_CUDA=OFF \
-                  -DCARLSIM_STATIC=OFF \
-                  -DCARLSIM_SHARED=ON \
                   -DCARLSIM_TEST=ON
             make -j$(nproc) install
 
