@@ -24,7 +24,7 @@ jobs:
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         file: ${{github.workspace}}/binaries.zip
-        asset_name: binaries.zip
+        asset_name: ubu20cuda11.zip
         tag: ${{ github.ref }}
         overwrite: true
         body: "" # "release text..."
