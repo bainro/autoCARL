@@ -39,7 +39,7 @@ endif()
     option(CARLSIM_TUTORIALS "Build CARLSIM tutorials" OFF)      # not for minimal version and production     
     option(CARLSIM_PYCARL "Build CARLSIM PyCARL" OFF)            # not for CR but SNN
     option(CARLSIM_TOOLS "Build CARLSIM Tools" ON)              # check for dependecies
-    option(CARLSIM_TEST "Build CARLSIM Tests" ON)               # mandadory for development
+    option(CARLSIM_TEST "Build CARLSIM Tests" OFF)               # mandadory for development
          
     # an option translates to one or more compile definitions assigned to one or multiple targets
     # it can be set manually or by a super build customized to a specific profil
