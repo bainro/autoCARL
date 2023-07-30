@@ -46,7 +46,10 @@ int main() {
 	int N = 1; // A single neuron
 	// One group for each compartment in the dendritic tree
 	int grpSP = sim->createGroup("excit", N, EXCITATORY_NEURON, 0, GPU_CORES);
-	// Similarly create groups grpSR, grpSLM, and grpSO
+	int grpSR = sim->createGroup("excit", N, EXCITATORY_NEURON, 0, GPU_CORES);
+	int grpSLM = sim->createGroup("excit", N, EXCITATORY_NEURON, 0, GPU_CORES);
+	int grpSO = sim->createGroup("excit", N, EXCITATORY_NEURON, 0, GPU_CORES);
+	
 	// Set parameters of the Izhikevich model (9 parameter model) for each compartment
 	sim->setNeuronParameters(grpSP, 280.0f, 6.444273f, -58.747934f, -52.902208f, 0.00008021f,
 		                4.784859f, 7.567797f, -55.334578f, 8.0f); // (soma compartment)
