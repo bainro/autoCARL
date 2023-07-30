@@ -74,11 +74,11 @@ int main() {
 	sim.connectCompartments(grpSP, grpSO);
 	sim.setConductances(true);
 	// Set-up spike monitors so that we can observe the neurons' spike times
-	NeuronMonitor* nMonSP = sim.setNeuronMonitor(grpSP, "DEFAULT"); // etc. for other compartments
+	//NeuronMonitor* nMonSP = sim.setNeuronMonitor(grpSP, "DEFAULT"); // etc. for other compartments
 	sim.setupNetwork();
-	nMonSP->startRecording(); // etc. for other compartments
+	//nMonSP->startRecording(); // etc. for other compartments
 	// Steadily inject 4070mA of current into SP (soma) layer
-	sim.setExternalCurrent(grpSP, 4070);
+	//sim.setExternalCurrent(grpSP, 4070);
 	sim.runNetwork(0, 100);
 	
 	return 0;
