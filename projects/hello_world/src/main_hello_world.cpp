@@ -45,14 +45,14 @@ int main() {
 	// create a network on GPU
 	int randSeed = 42;
 	//CARLsim sim("2 compartment neocortical cell", GPU_MODE, USER, 1, randSeed);
-	CARLsim sim("2 compartment neocortical cell", CPU_MODE, USER, 8, randSeed);
+	CARLsim sim("2 compartment neocortical cell", CPU_MODE, USER, 4, randSeed);
 	sim.setIntegrationMethod(RUNGE_KUTTA4, 30); // integration with 30 sub millisecond steps
 	int N = 1; // A single neuron
 	// One group for each compartment in the dendritic tree
-	int grpSP = sim.createGroup("excit", N, EXCITATORY_NEURON, 0, GPU_CORES);
-	int grpSR = sim.createGroup("excit", N, EXCITATORY_NEURON, 0, GPU_CORES);
-	int grpSLM = sim.createGroup("excit", N, EXCITATORY_NEURON, 0, GPU_CORES);
-	int grpSO = sim.createGroup("excit", N, EXCITATORY_NEURON, 0, GPU_CORES);
+	int grpSP = sim.createGroup("excit", N, EXCITATORY_NEURON, 0, CPU_CORES);
+	int grpSR = sim.createGroup("excit", N, EXCITATORY_NEURON, 1, CPU_CORES);
+	int grpSLM = sim.createGroup("excit", N, EXCITATORY_NEURON, 2, CPU_CORES);
+	int grpSO = sim.createGroup("excit", N, EXCITATORY_NEURON, 3, CPU_CORES);
 	
 	// Set parameters of the Izhikevich model (9 parameter model) for each compartment
 	sim.setNeuronParameters(grpSP, 280.0f, 6.444273f, -58.747934f, -52.902208f, 0.00008021f,
