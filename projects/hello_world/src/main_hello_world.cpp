@@ -28,77 +28,50 @@
 * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 *
 * *********************************************************************************************** *
-* CARLsim
-* created by: (MDR) Micah Richert, (JN) Jayram M. Nageswaran
-* maintained by:
-* (MA) Mike Avery <averym@uci.edu>
-* (MB) Michael Beyeler <mbeyeler@uci.edu>,
-* (KDC) Kristofor Carlson <kdcarlso@uci.edu>
-* (TSC) Ting-Shuo Chou <tingshuc@uci.edu>
-* (HK) Hirak J Kashyap <kashyaph@uci.edu>
+* created by: (RKB) Robert Bain
 *
 * CARLsim v1.0: JM, MDR
 * CARLsim v2.0/v2.1/v2.2: JM, MDR, MA, MB, KDC
 * CARLsim3: MB, KDC, TSC
 * CARLsim4: TSC, HK
 * CARLsim5: HK, JX, KC
-* CARLsim6: LN, JX, KC, KW
-*
-* CARLsim available from http://socsci.uci.edu/~jkrichma/CARLsim/
-* Ver 12/31/2016
+* CARLsim6: LN, JX, KC, KW, RKB
 */
 
 // include CARLsim user interface
 #include <carlsim.h>
 
-// include stopwatch for timing
-#include <stopwatch.h>
-
 int main() {
-	// keep track of execution time
-	Stopwatch watch;
-	
-
-	// ---------------- CONFIG STATE -------------------
-	
-	// create a network on GPU
-	int randSeed = 42;
-	CARLsim sim("hello world", GPU_MODE, USER, 1, randSeed);
-	int gin = sim.createSpikeGeneratorGroup("input", gridIn, EXCITATORY_NEURON, 0, GPU_CORES);
-	int gout = sim.createGroup("output", gridOut, EXCITATORY_NEURON, 0, GPU_CORES);
-
-	sim.setNeuronParameters(gout, 0.02f, 0.2f, -65.0f, 8.0f);
-	sim.connect(gin, gout, "gaussian", RangeWeight(0.05), 1.0f, RangeDelay(1), RadiusRF(3,3,1));
-	sim.setConductances(true);
-	// sim.setIntegrationMethod(FORWARD_EULER, 2);
-
-	// ---------------- SETUP STATE -------------------
-	// build the network
-	watch.lap("setupNetwork");
-	sim.setupNetwork();
-
-	// set some monitors
-	sim.setSpikeMonitor(gin,"DEFAULT");
-	sim.setSpikeMonitor(gout,"DEFAULT");
-	sim.setConnectionMonitor(gin,gout,"DEFAULT");
-
-	//setup some baseline input
-	PoissonRate in(gridIn.N);
-	in.setRates(30.0f);
-	sim.setSpikeRate(gin,&in);
-
-
-	// ---------------- RUN STATE -------------------
-	watch.lap("runNetwork");
-
-	// run for a total of 10 seconds
-	// at the end of each runNetwork call, SpikeMonitor stats will be printed
-	for (int i=0; i<10; i++) {
-		sim.runNetwork(1,0, true);
-	}
-
-	// print stopwatch summary
-	watch.stop();
+	sim->setIntegrationMethod(RUNGE_KUTTA4, 30); // integration with 30 sub millisecond steps
+	int N = 1; // A single neuron
+	// One group for each compartment in the dendritic tree
+	int grpSP = sim->createGroup("excit", N, EXCITATORY_NEURON, 0, GPU_CORES);
+	// Similarly create groups grpSR, grpSLM, and grpSO
+	// Set parameters of the Izhikevich model (9 parameter model) for each compartment
+	sim->setNeuronParameters(grpSP, 280.0f, 6.444273f, -58.747934f, -52.902208f, 0.00008021f,
+		                4.784859f, 7.567797f, -55.334578f, 8.0f); // (soma compartment)
+	sim->setNeuronParameters(grpSR, 224.0f, 3.036336f, -58.747934f, -50.928770f, 0.054379f,
+				29.960733f, -12.175124f, -48.948809f, 32.0f); // (SR dendritic compartment)
+	sim->setNeuronParameters(grpSLM, 51.0f, 3.770798f, -58.747934f, -52.296441f, 0.064657f,
+				12.182662f, -8.389762f, -49.765185f, 5.0f); // (SLM dendritic compartment)
+	sim->setNeuronParameters(grpSO, 113.0f, 3.824618f, -58.747934f, -53.564764f, 0.080905f,
+				20.252298f, -5.906874f, -52.994905f, 63.0f); // (SO dendritic compartment)
+	// Set the coupling (up & down) constants for each layer
+	sim->setCompartmentParameters(grpSR, 55.49f, 12.887f);
+	sim->setCompartmentParameters(grpSLM, 36.098f, 0.0f);
+	sim->setCompartmentParameters(grpSO, 0.0f, 57.749f);
+	sim->setCompartmentParameters(grpSP, 21.251f, 6.5038f);
+	// Connect the 4 groups (layers) compartmentally
+	sim->connectCompartments(grpSLM, grpSR);
+	sim->connectCompartments(grpSR, grpSP);
+	sim->connectCompartments(grpSP, grpSO);
+	// Set-up spike monitors so that we can observe the neurons' spike times
+	NeuronMonitor* nMonSP = sim->setNeuronMonitor(grpSP, "DEFAULT"); // etc. for other compartments
+	sim->setupNetwork();
+	nMonSP->startRecording(); // etc. for other compartments
+	// Steadily inject 4070mA of current into SP (soma) layer
+	sim->setExternalCurrent(grpSP, 4070);
+	sim->runNetwork(0, 100);
 	
 	return 0;
 }
