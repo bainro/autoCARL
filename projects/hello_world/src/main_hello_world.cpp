@@ -44,7 +44,7 @@
 int main() {
 	// create a network on GPU
 	int randSeed = 42;
-	CARLsim* sim("2 compartment neocortical cell", GPU_MODE, USER, 1, randSeed);
+	CARLsim sim("2 compartment neocortical cell", GPU_MODE, USER, 1, randSeed);
 	sim.setIntegrationMethod(RUNGE_KUTTA4, 30); // integration with 30 sub millisecond steps
 	int N = 1; // A single neuron
 	// One group for each compartment in the dendritic tree
