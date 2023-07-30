@@ -63,29 +63,9 @@ int main() {
 	
 	// create a network on GPU
 	int randSeed = 42;
-#ifdef __NO_CUDA__
-	int numGPUs = 1;
-	CARLsim sim("hello world", CPU_MODE, USER, numGPUs, randSeed);
-#else
-	//int numGPUs = 2;
-	int numGPUs = 1;  // Patch Killian
-	CARLsim sim("hello world", GPU_MODE, USER, numGPUs, randSeed);
-#endif
-
-	// configure the network
-	// set up a COBA two-layer network with gaussian connectivity
-	Grid3D gridIn(13,9,1); // pre is on a 13x9 grid
-	Grid3D gridOut(3,3,1); // post is on a 3x3 grid
-
-#ifdef __NO_CUDA__
-	int gin=sim.createSpikeGeneratorGroup("input", gridIn, EXCITATORY_NEURON, 0, CPU_CORES);
-	int gout=sim.createGroup("output", gridOut, EXCITATORY_NEURON, 0, CPU_CORES);
-#else
+	CARLsim sim("hello world", GPU_MODE, USER, 1, randSeed);
 	int gin = sim.createSpikeGeneratorGroup("input", gridIn, EXCITATORY_NEURON, 0, GPU_CORES);
-	//int gout = sim.createGroup("output", gridOut, EXCITATORY_NEURON, 1, GPU_CORES);
-	int gout = sim.createGroup("output", gridOut, EXCITATORY_NEURON, 0, GPU_CORES);  // Patch Killian
-#endif
-
+	int gout = sim.createGroup("output", gridOut, EXCITATORY_NEURON, 0, GPU_CORES);
 
 	sim.setNeuronParameters(gout, 0.02f, 0.2f, -65.0f, 8.0f);
 	sim.connect(gin, gout, "gaussian", RangeWeight(0.05), 1.0f, RangeDelay(1), RadiusRF(3,3,1));
