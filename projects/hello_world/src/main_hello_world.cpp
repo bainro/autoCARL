@@ -78,7 +78,7 @@ int main() {
 	sim.setupNetwork();
 	//nMonSP->startRecording(); // etc. for other compartments
 	// Steadily inject 4070mA of current into SP (soma) layer
-	sim.setExternalCurrent(grpSP, 4070);
+	sim.setExternalCurrent(grpSP, 4070.);
 	sim.runNetwork(0, 100);
 	
 	return 0;
