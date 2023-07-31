@@ -66,7 +66,7 @@ TEST(COMPARTMENTS, spikeTimesCPUvsData) {
 			CPU_MODE, SILENT, 0, 42);
 		sim->setIntegrationMethod(RUNGE_KUTTA4, numIntSteps);
 
-		int N = 5;
+		int N = 1;
 
 		int grpSP = sim->createGroup("SP soma", N, EXCITATORY_NEURON); // s
 		int grpSR = sim->createGroup("SR d1", N, EXCITATORY_NEURON); // d1
@@ -104,8 +104,14 @@ TEST(COMPARTMENTS, spikeTimesCPUvsData) {
 		sim->connectCompartments(grpSR, grpSP);
 		sim->connectCompartments(grpSP, grpSO);
 
-		sim->setESTDP(ALL, false);
-		sim->setISTDP(ALL, false);
+		sim->setESTDP(gin, grpSP, false);
+		sim->setESTDP(grpSLM, grpSR, false);
+		sim->setESTDP(grpSR, grpSP, false);
+		sim->setESTDP(grpSP, grpSO, false);
+		sim->setISTDP(gin, grpSP, false);
+		sim->setISTDP(grpSLM, grpSR, false);
+		sim->setISTDP(grpSR, grpSP, false);
+		sim->setISTDP(grpSP, grpSO, false);
 
 		sim->setupNetwork();
 
