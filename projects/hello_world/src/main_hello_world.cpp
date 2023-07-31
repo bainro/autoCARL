@@ -99,10 +99,9 @@ int main() {
 	nMonSO->startRecording(); 
 	nMonSR->startRecording(); 
 	nMonSLM->startRecording(); 
-	sim.runNetwork(0, 100); // 100ms
 	// Steadily inject 4070mA of current into SP (soma) layer
 	sim.setExternalCurrent(grpSP, 4070.);
-	sim.runNetwork(0, 900); // 900ms
+	sim.runNetwork(0, 100); // 100ms
 	nMonSP->stopRecording();
 	nMonSO->stopRecording();
 	nMonSR->stopRecording();
