@@ -59,7 +59,7 @@ TEST(COMPARTMENTS, spikeTimesCPUvsData) {
 	{ 149, 187, 239, 323, 504, 674, 849 } };
 	
 	for (int numIntSteps = 10; numIntSteps <= 50; numIntSteps += 10) {
-		cout << numIntSteps << endl;
+		std::cout << numIntSteps << std::endl;
 		CARLsim* sim = new CARLsim("COMPARTMENTS.spikeTimesCPUvsData",
 			CPU_MODE, SILENT, 0, 42);
 		sim->setIntegrationMethod(RUNGE_KUTTA4, numIntSteps);
