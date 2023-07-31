@@ -59,12 +59,9 @@ TEST(COMPARTMENTS, spikeTimesCPUvsData) {
 	{ 149, 187, 239, 323, 504, 674, 849 } };
 	
 	for (int numIntSteps = 10; numIntSteps <= 50; numIntSteps += 10) {
-		std::cout << numIntSteps << std::endl;
 		CARLsim* sim = new CARLsim("COMPARTMENTS.spikeTimesCPUvsData",
 			CPU_MODE, SILENT, 0, 42);
 		sim->setIntegrationMethod(RUNGE_KUTTA4, numIntSteps);
-
-		std::cout << -1 << std::endl;
 		
 		int N = 1;
 
@@ -72,8 +69,6 @@ TEST(COMPARTMENTS, spikeTimesCPUvsData) {
 		int grpSR = sim->createGroup("SR d1", N, EXCITATORY_NEURON); // d1
 		int grpSLM = sim->createGroup("SLM d2", N, EXCITATORY_NEURON); // d2
 		int grpSO = sim->createGroup("SO d3", N, EXCITATORY_NEURON); // d3
-
-		std::cout << 0 << std::endl;
 		
 		sim->setNeuronParameters(grpSP, 550.0f, 2.3330991f, -59.101414f, -50.428886f, 0.0021014998f, -0.41361538f,
 			24.98698f, -53.223213f, 109.0f);//9 parameter setNeuronParametersCall (RS NEURON) (soma)
@@ -88,15 +83,11 @@ TEST(COMPARTMENTS, spikeTimesCPUvsData) {
 		sim->setCompartmentParameters(grpSLM, 50.474f, 0.0f);//SLM 50 and 0
 		sim->setCompartmentParameters(grpSO, 0.0f, 49.14f);//SO 0 and 49
 		sim->setCompartmentParameters(grpSP, 116.861f, 4.60f);// SP (somatic) 116 and 4
-
-		std::cout << 0.5 << std::endl;
 		
 		int gin = sim->createSpikeGeneratorGroup("input", N, EXCITATORY_NEURON);
 		sim->connect(gin, grpSP, "one-to-one", RangeWeight(0.0f), 1.0f, RangeDelay(1), RadiusRF(-1));
 
 		sim->setConductances(false);//This forces use of CUBA model.
-
-		std::cout << 0.65 << std::endl;
 		
 		// Establish compartmental connections in order to form the following configuration:
 		//	d3    SO
@@ -109,24 +100,9 @@ TEST(COMPARTMENTS, spikeTimesCPUvsData) {
 		sim->connectCompartments(grpSLM, grpSR);
 		sim->connectCompartments(grpSR, grpSP);
 		sim->connectCompartments(grpSP, grpSO);
-
-		std::cout << 0.75 << std::endl;
 		
 		sim->setESTDP(gin, grpSP, false);
-		std::cout << 0.76 << std::endl;
-		//sim->setESTDP(grpSR, grpSLM, false);
-		std::cout << 0.77 << std::endl;
-		//sim->setESTDP(grpSR, grpSP, false);
-		std::cout << 0.78 << std::endl;
-		//sim->setESTDP(grpSP, grpSO, false);
-		std::cout << 0.79 << std::endl;
 		sim->setISTDP(gin, grpSP, false);
-		std::cout << 0.80 << std::endl;
-		//sim->setISTDP(grpSLM, grpSR, false);
-		//sim->setISTDP(grpSR, grpSP, false);
-		//sim->setISTDP(grpSP, grpSO, false);
-
-		std::cout << 0.85 << std::endl;
 		
 		sim->setupNetwork();
 
@@ -134,15 +110,11 @@ TEST(COMPARTMENTS, spikeTimesCPUvsData) {
 		SpikeMonitor* spikeSR = sim->setSpikeMonitor(grpSR, "DEFAULT"); // put spike times into file
 		SpikeMonitor* spikeSLM = sim->setSpikeMonitor(grpSLM, "DEFAULT"); // put spike times into file
 		SpikeMonitor* spikeSO = sim->setSpikeMonitor(grpSO, "DEFAULT"); // put spike times into file
-
-		std::cout << 0.95 << std::endl;
 		
 		PoissonRate in(N);
-
 		in.setRates(0.0f);
-		sim->setSpikeRate(gin, &in);//Inactive input group
-
-		std::cout << 1 << std::endl;
+		// Inactivate & use setExternalCurrent instead
+		sim->setSpikeRate(gin, &in); 
 		
 		spikeSP->startRecording();
 		spikeSR->startRecording();
@@ -161,6 +133,9 @@ TEST(COMPARTMENTS, spikeTimesCPUvsData) {
 		spikeSR->stopRecording();
 		spikeSLM->stopRecording();
 		spikeSO->stopRecording();
+
+		// @TODO REMOVE! RKB experimentation
+		EXPECT_EQ(spikeSP->getPopNumSpikes(), 10000);
 		
 		// SP (somatic): expect 8 spikes at specific times
 		EXPECT_EQ(spikeSP->getPopNumSpikes(), 7 * N);
