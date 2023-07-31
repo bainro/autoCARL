@@ -68,6 +68,10 @@ int main() {
 	sim.setCompartmentParameters(grpSLM, 36.098f, 0.0f);
 	sim.setCompartmentParameters(grpSO, 0.0f, 57.749f);
 	sim.setCompartmentParameters(grpSP, 21.251f, 6.5038f);
+
+	int gin = sim.createSpikeGeneratorGroup("input", N, EXCITATORY_NEURON);
+	sim.connect(gin, grpSP, "one-to-one", RangeWeight(0.0f), 1.0f, RangeDelay(1), RadiusRF(-1));
+	
 	// Connect the 4 groups (layers) compartmentally
 	sim.connectCompartments(grpSLM, grpSR);
 	sim.connectCompartments(grpSR, grpSP);
@@ -75,7 +79,18 @@ int main() {
 	sim.setConductances(true);
 	// Set-up spike monitors so that we can observe the neurons' spike times
 	//NeuronMonitor* nMonSP = sim.setNeuronMonitor(grpSP, "DEFAULT"); // etc. for other compartments
+
+	// turn off any weight updates / learning
+	sim->setESTDP(gin, grpSP, false);
+	sim->setISTDP(gin, grpSP, false);
+	
 	sim.setupNetwork();
+
+	PoissonRate in(N);
+	in.setRates(0.0f);
+	// Inactivate & use setExternalCurrent instead
+	sim->setSpikeRate(gin, &in);
+	
 	//nMonSP->startRecording(); // etc. for other compartments
 	// Steadily inject 4070mA of current into SP (soma) layer
 	sim.setExternalCurrent(grpSP, 4070.);
