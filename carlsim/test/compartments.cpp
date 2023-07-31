@@ -59,7 +59,7 @@ TEST(COMPARTMENTS, spikeTimesCPUvsData) {
 	{ 149, 187, 239, 323, 504, 674, 849 } };
 
 	// @TODO remove! RKB experimentation
-	EXPECT_NEAR(200.,10.,.1)
+	EXPECT_NEAR(200.,10.,.1);
 	
 	for (int numIntSteps = 10; numIntSteps <= 50; numIntSteps += 10) {
 		CARLsim* sim = new CARLsim("COMPARTMENTS.spikeTimesCPUvsData",
