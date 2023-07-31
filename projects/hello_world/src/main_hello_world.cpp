@@ -90,11 +90,14 @@ int main() {
 	in.setRates(0.0f);
 	// Inactivate & use setExternalCurrent instead
 	sim.setSpikeRate(gin, &in);
-	
-	//nMonSP->startRecording(); // etc. for other compartments
+
+	// same for the other dendr compartments
+	nMonSP->startRecording(); 
+	sim.runNetwork(0, 100); // 100ms
 	// Steadily inject 4070mA of current into SP (soma) layer
 	sim.setExternalCurrent(grpSP, 4070.);
-	sim.runNetwork(0, 100);
+	sim.runNetwork(0, 900); // 900ms
+	nMonSP->stopRecording();
 	
 	return 0;
 }
