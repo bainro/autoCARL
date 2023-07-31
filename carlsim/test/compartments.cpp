@@ -123,6 +123,7 @@ TEST(COMPARTMENTS, spikeTimesCPUvsData) {
 		in.setRates(0.0f);
 		sim->setSpikeRate(gin, &in);//Inactive input group
 
+		std::cout << 1 << std::endl;
 		spikeSP->startRecording();
 		spikeSR->startRecording();
 		spikeSLM->startRecording();
@@ -140,6 +141,7 @@ TEST(COMPARTMENTS, spikeTimesCPUvsData) {
 		spikeSR->stopRecording();
 		spikeSLM->stopRecording();
 		spikeSO->stopRecording();
+		std::cout << 2 << std::endl;
 		
 		// SP (somatic): expect 8 spikes at specific times
 		EXPECT_EQ(spikeSP->getPopNumSpikes(), 7 * N);
