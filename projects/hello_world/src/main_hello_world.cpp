@@ -81,15 +81,15 @@ int main() {
 	//NeuronMonitor* nMonSP = sim.setNeuronMonitor(grpSP, "DEFAULT"); // etc. for other compartments
 
 	// turn off any weight updates / learning
-	sim->setESTDP(gin, grpSP, false);
-	sim->setISTDP(gin, grpSP, false);
+	sim.setESTDP(gin, grpSP, false);
+	sim.setISTDP(gin, grpSP, false);
 	
 	sim.setupNetwork();
 
 	PoissonRate in(N);
 	in.setRates(0.0f);
 	// Inactivate & use setExternalCurrent instead
-	sim->setSpikeRate(gin, &in);
+	sim.setSpikeRate(gin, &in);
 	
 	//nMonSP->startRecording(); // etc. for other compartments
 	// Steadily inject 4070mA of current into SP (soma) layer
