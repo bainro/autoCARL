@@ -133,9 +133,6 @@ TEST(COMPARTMENTS, spikeTimesCPUvsData) {
 		spikeSR->stopRecording();
 		spikeSLM->stopRecording();
 		spikeSO->stopRecording();
-
-		// @TODO REMOVE! RKB experimentation
-		EXPECT_EQ(spikeSP->getPopNumSpikes(), 10000);
 		
 		// SP (somatic): expect 8 spikes at specific times
 		EXPECT_EQ(spikeSP->getPopNumSpikes(), 7 * N);
