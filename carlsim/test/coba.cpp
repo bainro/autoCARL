@@ -87,7 +87,7 @@ TEST(COBA, synRiseTime) {
 		sim = new CARLsim("COBA.synRiseTime", mode ? GPU_MODE : CPU_MODE, SILENT, 1, 42);
 		//sim = new CARLsim("COBA.synRiseTime", mode ? GPU_MODE : CPU_MODE, DEVELOPER, 1, 42);
 		Grid3D neur(1);
-        Grid3D neur2(1);
+        	Grid3D neur2(1);
 
 		int g1=sim->createGroup("excit", neur2, EXCITATORY_NEURON, 0);
 		sim->setNeuronParameters(g1, 0.02f, 0.2f, -65.0f, 8.0f);
@@ -168,6 +168,9 @@ TEST(COBA, synRiseTime) {
 		//EXPECT_NEAR(tmaxGABAb, tmaxGABAb, time_abs_error); // t_max should be near the analytical solution     // \todo  LN is this a bug 
 		EXPECT_NEAR(tmaxGABAb, tmaxGABAb_, time_abs_error); // t_max should be near the analytical solution			 // \todo  LN is this the fix
 		EXPECT_NEAR(maxGABAb,0.5,0.5*wt_abs_error); // max should be equal to the weight times -1
+
+		// @TODO remove! RKB experimenting
+		EXPECT_NEAR(maxGABAb,10.,0.1);
 
 		delete spk1;
 		delete spk2;
