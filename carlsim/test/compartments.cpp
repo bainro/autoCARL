@@ -4,7 +4,6 @@
 #include <carlsim.h>
 
 /*
-*
 * CARLsim6: LN, JX, KC, KW
 */
 
@@ -15,7 +14,6 @@
 /// ****************************************************************************
 /// compartmental model
 /// ****************************************************************************
-
 
 TEST(COMPARTMENTS, setCompartmentParameters) {
 	CARLsim sim("COMPARTMENTS.setCompartmentParameters", CPU_MODE, SILENT,
@@ -192,7 +190,6 @@ TEST(COMPARTMENTS, spikeTimesCPUvsData) {
 * The cause of these calculation errors has not been determined.
 */
 #ifndef __NO_CUDA__
-/*
 TEST(COMPARTMENTS, spikeTimesCPUvsGPU) {
 	::testing::FLAGS_gtest_death_test_style = "threadsafe";
 
@@ -334,5 +331,4 @@ TEST(COMPARTMENTS, spikeTimesCPUvsGPU) {
 		}
 	}
 }
-*/
 #endif
