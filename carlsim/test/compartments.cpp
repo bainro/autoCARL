@@ -57,11 +57,9 @@ TEST(COMPARTMENTS, spikeTimesCPUvsData) {
 	{ 149, 187, 239, 324, 502, 675, 846 },
 	{ 149, 187, 239, 323, 502, 672, 848 },
 	{ 149, 187, 239, 323, 504, 674, 849 } };
-
-	// @TODO remove! RKB experimentation
-	EXPECT_NEAR(200.,10.,.1);
 	
 	for (int numIntSteps = 10; numIntSteps <= 50; numIntSteps += 10) {
+		cout << numIntSteps << endl;
 		CARLsim* sim = new CARLsim("COMPARTMENTS.spikeTimesCPUvsData",
 			CPU_MODE, SILENT, 0, 42);
 		sim->setIntegrationMethod(RUNGE_KUTTA4, numIntSteps);
