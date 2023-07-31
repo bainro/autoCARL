@@ -169,9 +169,6 @@ TEST(COBA, synRiseTime) {
 		EXPECT_NEAR(tmaxGABAb, tmaxGABAb_, time_abs_error); // t_max should be near the analytical solution			 // \todo  LN is this the fix
 		EXPECT_NEAR(maxGABAb,0.5,0.5*wt_abs_error); // max should be equal to the weight times -1
 
-		// @TODO remove! RKB experimenting
-		EXPECT_NEAR(maxGABAb,10.,0.1);
-
 		delete spk1;
 		delete spk2;
 		delete sim;
