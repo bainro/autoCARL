@@ -28,15 +28,14 @@ TEST(COMPARTMENTS, setCompartmentParameters) {
 	int grpSO = sim.createGroup("SO d3", N, EXCITATORY_NEURON); // d3
 
 	sim.setNeuronParameters(grpSP, 550.0f, 2.3330991f, -59.101414f, -50.428886f, 0.0021014998f, -0.41361538f,
-		24.98698f, -53.223213f, 109.0f);//9 parameter setNeuronParametersCall (RS NEURON) (soma)
+		24.98698f, -53.223213f, 109.0f); // 9 parameter setNeuronParametersCall (RS NEURON) (soma)
 	sim.setNeuronParameters(grpSR, 367.0f, 1.1705916f, -59.101414f, -44.298294f, 0.2477681f, 3.3198094f,
-		20.274296f, -46.076824f, 24.0f);//9 parameter setNeuronParametersCall (RS NEURON) (dendr)
+		20.274296f, -46.076824f, 24.0f); // 9 parameter setNeuronParametersCall (RS NEURON) (dendr)
 	sim.setNeuronParameters(grpSLM, 425.0f, 2.2577047f, -59.101414f, -25.137894f, 0.32122386f, 0.14995363f,
-		13.203414f, -38.54892f, 69.0f);//9 parameter setNeuronParametersCall (RS NEURON) (dendr)
+		13.203414f, -38.54892f, 69.0f); // 9 parameter setNeuronParametersCall (RS NEURON) (dendr)
 	sim.setNeuronParameters(grpSO, 225.0f, 1.109572f, -59.101414f, -36.55802f, 0.29814243f, -4.385603f,
-		21.473854f, -40.343994f, 21.0f);//9 parameter setNeuronParametersCall (RS NEURON) (dendr)
+		21.473854f, -40.343994f, 21.0f); // 9 parameter setNeuronParametersCall (RS NEURON) (dendr)
 
-										// smoke test
 	sim.setCompartmentParameters(ALL, 28.396f, 5.526f);
 }
 
@@ -141,6 +140,9 @@ TEST(COMPARTMENTS, spikeTimesCPUvsData) {
 		spikeSLM->stopRecording();
 		spikeSO->stopRecording();
 
+		// rob messing around @TODO remove
+		EXPECT_EQ(spikeSP->getPopNumSpikes(), 233);
+		
 		// SP (somatic): expect 8 spikes at specific times
 		EXPECT_EQ(spikeSP->getPopNumSpikes(), 7 * N);
 		if (spikeSP->getPopNumSpikes() == 7 * N) {
