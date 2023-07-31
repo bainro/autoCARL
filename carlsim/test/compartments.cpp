@@ -92,14 +92,14 @@ TEST(COMPARTMENTS, spikeTimesCPUvsData) {
 
 		sim->setConductances(false);//This forces use of CUBA model.
 
-									// Establish compartmental connections in order to form the following configuration:
-									//	d3    SO
-									//	|     |
-									//	s     SP
-									//	|     |
-									//	d1    SR
-									//	|     |
-									//	d2    SLM
+		// Establish compartmental connections in order to form the following configuration:
+		//	d3    SO
+		//	|     |
+		//	s     SP
+		//	|     |
+		//	d1    SR
+		//	|     |
+		//	d2    SLM
 		sim->connectCompartments(grpSLM, grpSR);
 		sim->connectCompartments(grpSR, grpSP);
 		sim->connectCompartments(grpSP, grpSO);
