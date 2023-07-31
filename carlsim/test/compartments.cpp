@@ -96,6 +96,8 @@ TEST(COMPARTMENTS, spikeTimesCPUvsData) {
 
 		sim->setConductances(false);//This forces use of CUBA model.
 
+		std::cout << 0.65 << std::endl;
+		
 		// Establish compartmental connections in order to form the following configuration:
 		//	d3    SO
 		//	|     |
@@ -108,6 +110,8 @@ TEST(COMPARTMENTS, spikeTimesCPUvsData) {
 		sim->connectCompartments(grpSR, grpSP);
 		sim->connectCompartments(grpSP, grpSO);
 
+		std::cout << 0.75 << std::endl;
+		
 		sim->setESTDP(gin, grpSP, false);
 		sim->setESTDP(grpSLM, grpSR, false);
 		sim->setESTDP(grpSR, grpSP, false);
@@ -117,6 +121,8 @@ TEST(COMPARTMENTS, spikeTimesCPUvsData) {
 		sim->setISTDP(grpSR, grpSP, false);
 		sim->setISTDP(grpSP, grpSO, false);
 
+		std::cout << 0.85 << std::endl;
+		
 		sim->setupNetwork();
 
 		SpikeMonitor* spikeSP = sim->setSpikeMonitor(grpSP, "DEFAULT"); // put spike times into file
@@ -124,6 +130,8 @@ TEST(COMPARTMENTS, spikeTimesCPUvsData) {
 		SpikeMonitor* spikeSLM = sim->setSpikeMonitor(grpSLM, "DEFAULT"); // put spike times into file
 		SpikeMonitor* spikeSO = sim->setSpikeMonitor(grpSO, "DEFAULT"); // put spike times into file
 
+		std::cout << 0.95 << std::endl;
+		
 		PoissonRate in(N);
 
 		in.setRates(0.0f);
