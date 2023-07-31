@@ -64,6 +64,8 @@ TEST(COMPARTMENTS, spikeTimesCPUvsData) {
 			CPU_MODE, SILENT, 0, 42);
 		sim->setIntegrationMethod(RUNGE_KUTTA4, numIntSteps);
 
+		std::cout << -1 << std::endl;
+		
 		int N = 1;
 
 		int grpSP = sim->createGroup("SP soma", N, EXCITATORY_NEURON); // s
@@ -71,6 +73,8 @@ TEST(COMPARTMENTS, spikeTimesCPUvsData) {
 		int grpSLM = sim->createGroup("SLM d2", N, EXCITATORY_NEURON); // d2
 		int grpSO = sim->createGroup("SO d3", N, EXCITATORY_NEURON); // d3
 
+		std::cout << 0 << std::endl;
+		
 		sim->setNeuronParameters(grpSP, 550.0f, 2.3330991f, -59.101414f, -50.428886f, 0.0021014998f, -0.41361538f,
 			24.98698f, -53.223213f, 109.0f);//9 parameter setNeuronParametersCall (RS NEURON) (soma)
 		sim->setNeuronParameters(grpSR, 367.0f, 1.1705916f, -59.101414f, -44.298294f, 0.2477681f, 3.3198094f,
@@ -85,6 +89,8 @@ TEST(COMPARTMENTS, spikeTimesCPUvsData) {
 		sim->setCompartmentParameters(grpSO, 0.0f, 49.14f);//SO 0 and 49
 		sim->setCompartmentParameters(grpSP, 116.861f, 4.60f);// SP (somatic) 116 and 4
 
+		std::cout << 0.5 << std::endl;
+		
 		int gin = sim->createSpikeGeneratorGroup("input", N, EXCITATORY_NEURON);
 		sim->connect(gin, grpSP, "one-to-one", RangeWeight(0.0f), 1.0f, RangeDelay(1), RadiusRF(-1));
 
@@ -124,6 +130,7 @@ TEST(COMPARTMENTS, spikeTimesCPUvsData) {
 		sim->setSpikeRate(gin, &in);//Inactive input group
 
 		std::cout << 1 << std::endl;
+		
 		spikeSP->startRecording();
 		spikeSR->startRecording();
 		spikeSLM->startRecording();
@@ -141,7 +148,6 @@ TEST(COMPARTMENTS, spikeTimesCPUvsData) {
 		spikeSR->stopRecording();
 		spikeSLM->stopRecording();
 		spikeSO->stopRecording();
-		std::cout << 2 << std::endl;
 		
 		// SP (somatic): expect 8 spikes at specific times
 		EXPECT_EQ(spikeSP->getPopNumSpikes(), 7 * N);
