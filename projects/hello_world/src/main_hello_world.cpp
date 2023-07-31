@@ -78,7 +78,10 @@ int main() {
 	sim.connectCompartments(grpSP, grpSO);
 	sim.setConductances(true);
 	// Set-up spike monitors so that we can observe the neurons' spike times
-	NeuronMonitor* nMonSP = sim.setNeuronMonitor(grpSP, "DEFAULT"); // etc. for other compartments
+	NeuronMonitor* nMonSP = sim.setNeuronMonitor(grpSP, "DEFAULT");
+	NeuronMonitor* nMonSO = sim.setNeuronMonitor(grpSO, "DEFAULT");
+	NeuronMonitor* nMonSR = sim.setNeuronMonitor(grpSR, "DEFAULT");
+	NeuronMonitor* nMonSLM = sim.setNeuronMonitor(grpSLM, "DEFAULT");
 
 	// turn off any weight updates / learning
 	sim.setESTDP(gin, grpSP, false);
@@ -93,11 +96,17 @@ int main() {
 
 	// same for the other dendr compartments
 	nMonSP->startRecording(); 
+	nMonSO->startRecording(); 
+	nMonSR->startRecording(); 
+	nMonSLM->startRecording(); 
 	sim.runNetwork(0, 100); // 100ms
 	// Steadily inject 4070mA of current into SP (soma) layer
 	sim.setExternalCurrent(grpSP, 4070.);
 	sim.runNetwork(0, 900); // 900ms
 	nMonSP->stopRecording();
+	nMonSO->stopRecording();
+	nMonSR->stopRecording();
+	nMonSLM->stopRecording();
 	
 	return 0;
 }
