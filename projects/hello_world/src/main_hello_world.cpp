@@ -78,7 +78,7 @@ int main() {
 	sim.connectCompartments(grpSP, grpSO);
 	sim.setConductances(true);
 	// Set-up spike monitors so that we can observe the neurons' spike times
-	//NeuronMonitor* nMonSP = sim.setNeuronMonitor(grpSP, "DEFAULT"); // etc. for other compartments
+	NeuronMonitor* nMonSP = sim.setNeuronMonitor(grpSP, "DEFAULT"); // etc. for other compartments
 
 	// turn off any weight updates / learning
 	sim.setESTDP(gin, grpSP, false);
