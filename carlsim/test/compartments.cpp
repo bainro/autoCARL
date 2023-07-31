@@ -113,10 +113,15 @@ TEST(COMPARTMENTS, spikeTimesCPUvsData) {
 		std::cout << 0.75 << std::endl;
 		
 		sim->setESTDP(gin, grpSP, false);
+		std::cout << 0.76 << std::endl;
 		sim->setESTDP(grpSLM, grpSR, false);
+		std::cout << 0.77 << std::endl;
 		sim->setESTDP(grpSR, grpSP, false);
+		std::cout << 0.78 << std::endl;
 		sim->setESTDP(grpSP, grpSO, false);
+		std::cout << 0.79 << std::endl;
 		sim->setISTDP(gin, grpSP, false);
+		std::cout << 0.80 << std::endl;
 		sim->setISTDP(grpSLM, grpSR, false);
 		sim->setISTDP(grpSR, grpSP, false);
 		sim->setISTDP(grpSP, grpSO, false);
