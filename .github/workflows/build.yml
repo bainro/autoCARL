@@ -34,9 +34,9 @@ jobs:
             lcov --remove ./code_coverage.lcov -o ./code_coverage.lcov \
                  '/usr/*' '/tmp/*' '${{github.workspace}}/build/*'
             
-    - name: Coveralls
-      uses: coverallsapp/github-action@master
-      with: 
-            github-token: ${{ secrets.GITHUB_TOKEN }}
-            path-to-lcov: ${{github.workspace}}/code_coverage.lcov
-            debug: False # True
+    #- name: Coveralls
+    #  uses: coverallsapp/github-action@master
+    #  with: 
+    #        github-token: ${{ secrets.GITHUB_TOKEN }}
+    #        path-to-lcov: ${{github.workspace}}/code_coverage.lcov
+    #        debug: False # True
