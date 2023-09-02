@@ -3,7 +3,7 @@ mkdir build
 cd ./build && rm -fr ./*
 cmake -DCMAKE_INSTALL_PREFIX=/tmp/autoCARL \
       -DCMAKE_BUILD_TYPE=Release .. \
-      -DCARLSIM_NO_CUDA=ON \
+      -DCARLSIM_NO_CUDA=OFF \
       -DCARLSIM_TEST=YES \
       -DCARLSIM_PYCARL=ON \
       -DCARLSIM_SHARED=ON \
