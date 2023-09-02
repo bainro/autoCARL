@@ -37,7 +37,7 @@ endif()
     option(CARLSIM_BENCHMARKS "Build CARLSIM benchmark tests" ON)
     option(CARLSIM_SAMPLES "Build CARLSIM samples" ON)          # not for minimal version
     option(CARLSIM_TUTORIALS "Build CARLSIM tutorials" OFF)      # not for minimal version and production     
-    option(CARLSIM_PYCARL "Build CARLSIM PyCARL" OFF)            # not for CR but SNN
+    option(CARLSIM_PYCARL "Build CARLSIM PyCARL" ON)            # not for CR but SNN
     option(CARLSIM_TOOLS "Build CARLSIM Tools" ON)              # check for dependecies
     option(CARLSIM_TEST "Build CARLSIM Tests" OFF)               # mandadory for development
          
