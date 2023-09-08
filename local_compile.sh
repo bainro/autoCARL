@@ -11,4 +11,4 @@ cmake -DCMAKE_INSTALL_PREFIX=/tmp/autoCARL \
       -DCARLSIM_STATIC=ON \
       --trace \
       --debug-output >> /tmp/bainro.log 2>&1 || cd ..
-make -j8 install || cd ..
+#make -j8 install || cd ..
