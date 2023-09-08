@@ -1,4 +1,5 @@
 #!/bin/bash
+rm build
 mkdir build
 cd ./build && rm -fr ./*
 cmake -DCMAKE_INSTALL_PREFIX=/tmp/autoCARL \
