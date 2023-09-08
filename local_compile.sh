@@ -7,6 +7,7 @@ cmake -DCMAKE_INSTALL_PREFIX=/tmp/autoCARL \
       -DCARLSIM_NO_CUDA=OFF \
       -DCARLSIM_TEST=OFF \
       -DCARLSIM_PYCARL=OFF \
+      -DCARLSIM_BENCHMARKS=OFF \
       -DCARLSIM_SHARED=OFF \
       -DCARLSIM_STATIC=ON \
       --trace \
