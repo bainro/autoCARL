@@ -63,6 +63,8 @@ if(NOT CARLSIM_SHARED AND NOT CARLSIM_STATIC)
     message(FATAL_ERROR "Cannot build without either shared or static flag.")
 endif()
 
+message(CUDA_rt_LIBRARY="${CUDA_rt_LIBRARY}")
+
 # Dependencies
 
     if(NOT CARLSIM_NO_CUDA)
