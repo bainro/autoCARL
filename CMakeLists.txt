@@ -72,9 +72,9 @@ endif()
 # Dependencies
 
     if(NOT CARLSIM_NO_CUDA)
-		# @TODO find permanent home in this file
-		# SET(CUDA_USE_STATIC_CUDA_RUNTIME OFF)
-		# @TODO find permanent home in this file
+		if(CARLSIM_STATIC)
+		    SET(CUDA_USE_STATIC_CUDA_RUNTIME ON)
+		endif()
 		if(CARLSIM_TEST)
 			set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -g -O0 -fprofile-arcs -ftest-coverage")
 			set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} ${CMAKE_NVCC_FLAGS}")
