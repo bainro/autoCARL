@@ -32,8 +32,6 @@
 	            OPTIONS
 	                -Xcompiler
 	                -fPIC
-		 	-Xcompiler
-	                -static
 		        ${CARLSIM_CUDA_GENCODE}
 	        )
 		endif()
