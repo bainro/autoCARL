@@ -43,3 +43,5 @@ install(TARGETS hello_world
         )
 
 #install(FILES run_hello_world DESTINATION $<$<CONFIG:Debug>:debug/>samples)          
+
+message(CUDA_rt_LIBRARY="${CUDA_rt_LIBRARY}")
