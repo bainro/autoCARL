@@ -1,4 +1,4 @@
-project(carlsim)
+project(carlsim LANGUAGES CUDA CXX)
 
 cmake_minimum_required(VERSION 3.21.0)
 
@@ -8,12 +8,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 #LN20201126  https://cmake.org/cmake/help/latest/guide/tutorial/index.html#id20
 set(CMAKE_DEBUG_POSTFIX d)
-
-# @TODO test if necessary
-# @TODO find permanent home in this file
-# if(CARLSIM_STATIC)
-# 	set(CMAKE_POSITION_INDEPENDENT_CODE True)
-# endif()
 
 # LN2021 enforce parallel build as default
 if(MSVC)
