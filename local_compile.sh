@@ -10,7 +10,6 @@ cmake -DCMAKE_INSTALL_PREFIX=/tmp/autoCARL \
       -DCARLSIM_BENCHMARKS=OFF \
       -DCARLSIM_SHARED=OFF \
       -DCARLSIM_STATIC=ON \
-      -- VERBOSE=1 \
       --trace \
       --debug-output &> /tmp/bainro.log || cd ..
-make -j8 install &>> /tmp/bainro.log || cd ..
+make -j8 install VERBOSE=1 &>> /tmp/bainro.log || cd ..
