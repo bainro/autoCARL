@@ -187,7 +187,7 @@ if(CARLSIM_NO_PTHREADS)
     if(NOT CARLSIM_NO_CUDA)
         target_link_libraries(carlsim-kernel-cuda
             # ${CUDA_curand_LIBRARY}
-	    CUDA::curand_static
+            CUDA::curand_static
         )
         target_link_libraries(carlsim-kernel
             PUBLIC
