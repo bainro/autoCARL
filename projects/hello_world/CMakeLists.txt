@@ -1,4 +1,4 @@
-project(hello_world)
+project(hello_world LANGUAGES CUDA CXX)
 
 # Targets  
 add_executable(hello_world
@@ -14,7 +14,6 @@ endif()
 # Linking    
 if(CARLSIM_STATIC)
     target_link_libraries(hello_world PRIVATE
-        -static
         carlsim
         carlsim-stopwatch
     )
