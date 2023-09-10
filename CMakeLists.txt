@@ -72,6 +72,7 @@ endif()
 # Dependencies
 
     if(NOT CARLSIM_NO_CUDA)
+		find_package(CUDAToolkit REQUIRED)
 		if(CARLSIM_STATIC)
 		    SET(CUDA_USE_STATIC_CUDA_RUNTIME ON)
 		endif()
