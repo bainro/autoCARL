@@ -9,10 +9,6 @@
 		find_package(Threads REQUIRED)
 	endif()
 
-	#if(NOT CARLSIM_STATIC)
-	#	message(FATAL_ERROR "Invalid context, CMake will exit.")
-	#endif()
-
 # Targets
 
 
@@ -46,9 +42,13 @@
 
 # Properties
 
-    # Since we build shared library enable position independent code
-    set_property(TARGET carlsim-kernel PROPERTY
-        POSITION_INDEPENDENT_CODE TRUE)
+# RKB testing. @TODO set appropriately 
+set_target_properties(carlsim-kernel PROPERTIES CUDA_ARCHITECTURES "75")
+
+if(CARLSIM_SHARED)
+    set_property(TARGET carlsim-kernel PROPERTY POSITION_INDEPENDENT_CODE TRUE)
+endif()
+    
 
 # Definitions
 
