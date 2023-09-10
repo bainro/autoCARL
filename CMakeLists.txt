@@ -63,7 +63,7 @@ if(NOT CARLSIM_SHARED AND NOT CARLSIM_STATIC)
     message(FATAL_ERROR "Cannot build without either shared or static flag.")
 endif()
 
-message(CUDA_rt_LIBRARY="${CUDA_rt_LIBRARY}")
+message([1] CUDA_rt_LIBRARY="${CUDA_rt_LIBRARY}")
 
 # Dependencies
 
@@ -80,6 +80,7 @@ message(CUDA_rt_LIBRARY="${CUDA_rt_LIBRARY}")
 			set(CMAKE_NVCC_FLAGS "${CMAKE_CUDA_FLAGS}")
 		endif()
 		find_package(CUDA 11 REQUIRED)
+  		message([2] CUDA_rt_LIBRARY="${CUDA_rt_LIBRARY}")
     endif()
 
 	if(UNIX AND NOT CARLSIM_NO_PTHREADS)
