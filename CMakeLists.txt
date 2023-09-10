@@ -363,7 +363,8 @@ if(NOT CARLSIM_NO_CUDA)
 	target_link_libraries(carlsim
 		PUBLIC
 		   carlsim-cuda
-		   ${CUDA_curand_LIBRARY}
+		   # ${CUDA_curand_LIBRARY}
+     		   CUDA::curand_static
 	)
 endif()
 
