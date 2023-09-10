@@ -1,7 +1,6 @@
 # Dependencies
 
     if(NOT CARLSIM_NO_CUDA)
-    	# SET(CUDA_USE_STATIC_CUDA_RUNTIME OFF)
         find_package(CUDA 11 REQUIRED)
     endif()
 
@@ -33,7 +32,7 @@
 	            OPTIONS
 	                -Xcompiler
 	                -fPIC
-					${CARLSIM_CUDA_GENCODE}
+		        ${CARLSIM_CUDA_GENCODE}
 	        )
 		endif()
     endif()
@@ -187,7 +186,8 @@ if(CARLSIM_NO_PTHREADS)
 
     if(NOT CARLSIM_NO_CUDA)
         target_link_libraries(carlsim-kernel-cuda
-            ${CUDA_curand_LIBRARY}
+            # ${CUDA_curand_LIBRARY}
+	    CUDA::curand_static
         )
         target_link_libraries(carlsim-kernel
             PUBLIC
