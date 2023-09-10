@@ -67,9 +67,11 @@ endif()
 
     if(NOT CARLSIM_NO_CUDA)
 		find_package(CUDAToolkit REQUIRED)
-		if(CARLSIM_STATIC)
-		    SET(CUDA_USE_STATIC_CUDA_RUNTIME ON)
-		endif()
+                
+		# if(CARLSIM_STATIC)
+  		###  THIS SHOULD BE THE DEFAULT FOR CMAKE WITH CUDA
+		#    SET(CUDA_USE_STATIC_CUDA_RUNTIME ON)
+		# endif()
 		if(CARLSIM_TEST)
 			set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -g -O0 -fprofile-arcs -ftest-coverage")
 			set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} ${CMAKE_NVCC_FLAGS}")
