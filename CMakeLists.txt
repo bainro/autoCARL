@@ -200,6 +200,8 @@ if(NOT CARLSIM_NO_CUDA)
 		OPTIONS 
 			-Xcompiler
 			-fPIC
+   			-Xcompiler
+			-static
 			${CARLSIM_CUDA_GENCODE}
 		)
 	endif()
