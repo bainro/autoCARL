@@ -23,7 +23,7 @@ target_include_directories(hello_world PRIVATE
 )
 
 get_cmake_property(lord_help_me CMAKE_CUDA_FLAGS)
-message("[1] lord_help_me: ${lord_help_me}")   
+message(lord_help_me="${lord_help_me}")   
 #if ( CMAKE_CUDA_FLAGS )
 #	list(REMOVE_ITEM CMAKE_CUDA_FLAGS "-cudart static")
 #endif()
