@@ -68,7 +68,7 @@ message([1] CUDA_rt_LIBRARY="${CUDA_rt_LIBRARY}")
 # Dependencies
 
     if(NOT CARLSIM_NO_CUDA)
-		#find_package(CUDAToolkit REQUIRED)
+		find_package(CUDAToolkit REQUIRED)
                 
 		# if(CARLSIM_STATIC)
   		###  THIS SHOULD BE THE DEFAULT FOR CMAKE WITH CUDA
@@ -362,8 +362,8 @@ if(NOT CARLSIM_NO_CUDA)
 	target_link_libraries(carlsim
 		PUBLIC
 		   carlsim-cuda
-		   ${CUDA_curand_LIBRARY}
-     		   # CUDA::curand_static
+		   # ${CUDA_curand_LIBRARY}
+     		   CUDA::curand_static
 	)
 endif()
 
