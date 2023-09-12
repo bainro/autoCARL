@@ -21,6 +21,12 @@ target_link_libraries(hello_world PRIVATE
 target_include_directories(hello_world PRIVATE
     ../../tools/stopwatch
 )
+
+get_cmake_property(lord_help_me CMAKE_CUDA_FLAGS)
+message("[1] lord_help_me: ${lord_help_me}")   
+#if ( CMAKE_CUDA_FLAGS )
+#	list(REMOVE_ITEM CMAKE_CUDA_FLAGS "-cudart static")
+#endif()
    
 if(CARLSIM_TEST)
     #target_compile_options(hello_world PUBLIC -g -O0 -fprofile-arcs -ftest-coverage)
@@ -36,8 +42,3 @@ install(TARGETS hello_world
         )
 
 #install(FILES run_hello_world DESTINATION $<$<CONFIG:Debug>:debug/>samples)          
-
-get_target_property(hello_world_LINK_OPTIONS hello_world LINK_OPTIONS)
-message("[1] hello_world_LINK_OPTIONS: ${hello_world_LINK_OPTIONS}")  
-get_target_property(hello_world_LINKER_FLAGS hello_world CMAKE_EXE_LINKER_FLAGS)
-message("[1] hello_world_LINKER_FLAGS: ${hello_world_LINKER_FLAGS}")   
