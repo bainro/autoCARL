@@ -22,8 +22,8 @@ target_include_directories(hello_world PRIVATE
     ../../tools/stopwatch
 )
 
-get_cmake_property(lord_help_me CMAKE_CUDA_FLAGS)
-message(lord_help_me="${lord_help_me}")   
+# get_cmake_property(lord_help_me CMAKE_CUDA_FLAGS) # not found ...
+message(CMAKE_CUDA_FLAGS="${CMAKE_CUDA_FLAGS}")   
 #if ( CMAKE_CUDA_FLAGS )
 #	list(REMOVE_ITEM CMAKE_CUDA_FLAGS "-cudart static")
 #endif()
