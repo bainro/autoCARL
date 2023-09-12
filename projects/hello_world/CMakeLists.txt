@@ -15,12 +15,12 @@ endif()
 # Linking     
 target_link_libraries(hello_world PRIVATE
     carlsim
-    carlsim-stopwatch
+    #carlsim-stopwatch
 ) 
 
-target_include_directories(hello_world PRIVATE
-    ../../tools/stopwatch
-)
+#target_include_directories(hello_world PRIVATE
+#    ../../tools/stopwatch
+#)
    
 if(CARLSIM_TEST)
     #target_compile_options(hello_world PUBLIC -g -O0 -fprofile-arcs -ftest-coverage)
