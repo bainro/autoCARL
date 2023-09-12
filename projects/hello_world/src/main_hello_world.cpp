@@ -52,11 +52,11 @@
 #include <carlsim.h>
 
 // include stopwatch for timing
-#include <stopwatch.h>
+// #include <stopwatch.h>
 
 int main() {
 	// keep track of execution time
-	Stopwatch watch;
+	//Stopwatch watch;
 	
 
 	// ---------------- CONFIG STATE -------------------
@@ -94,7 +94,7 @@ int main() {
 
 	// ---------------- SETUP STATE -------------------
 	// build the network
-	watch.lap("setupNetwork");
+	//watch.lap("setupNetwork");
 	sim.setupNetwork();
 
 	// set some monitors
@@ -109,7 +109,7 @@ int main() {
 
 
 	// ---------------- RUN STATE -------------------
-	watch.lap("runNetwork");
+	//watch.lap("runNetwork");
 
 	// run for a total of 10 seconds
 	// at the end of each runNetwork call, SpikeMonitor stats will be printed
@@ -118,7 +118,7 @@ int main() {
 	}
 
 	// print stopwatch summary
-	watch.stop();
+	//watch.stop();
 	
 	return 0;
 }
