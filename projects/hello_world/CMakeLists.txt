@@ -13,11 +13,13 @@ endif()
 
 
 # Linking    
+get_target_property(hello_world_LINK_OPTIONS hello_world LINK_OPTIONS)
 message("[0] hello_world_LINK_OPTIONS: ${hello_world_LINK_OPTIONS}")    
 target_link_libraries(hello_world PRIVATE
     carlsim
     carlsim-stopwatch
 )
+get_target_property(hello_world_LINK_OPTIONS hello_world LINK_OPTIONS)
 message("[1] hello_world_LINK_OPTIONS: ${hello_world_LINK_OPTIONS}")    
 
 target_include_directories(hello_world PRIVATE
