@@ -63,8 +63,6 @@ if(NOT CARLSIM_SHARED AND NOT CARLSIM_STATIC)
     message(FATAL_ERROR "Cannot build without either shared or static flag.")
 endif()
 
-message([1] CUDA_rt_LIBRARY="${CUDA_rt_LIBRARY}")
-
 # Dependencies
 
     if(NOT CARLSIM_NO_CUDA)
@@ -87,16 +85,6 @@ message([1] CUDA_rt_LIBRARY="${CUDA_rt_LIBRARY}")
   		set(THREADS_PREFER_PTHREAD_FLAG ON)
 		find_package(Threads REQUIRED)
 	endif()
-
-# @TODO remove! RKB testing new features
-message(CMAKE_CUDA_HOST_IMPLICIT_LINK_LIBRARIES="${CMAKE_CUDA_HOST_IMPLICIT_LINK_LIBRARIES}")   
-message(CMAKE_CUDA_IMPLICIT_LINK_LIBRARIES="${CMAKE_CUDA_IMPLICIT_LINK_LIBRARIES}")   
-if ( CMAKE_CUDA_HOST_IMPLICIT_LINK_LIBRARIES )
-        list( REMOVE_ITEM CMAKE_CUDA_HOST_IMPLICIT_LINK_LIBRARIES "cudadevrt" )
-endif()
-if ( CMAKE_CUDA_IMPLICIT_LINK_LIBRARIES )
-        list( REMOVE_ITEM CMAKE_CUDA_IMPLICIT_LINK_LIBRARIES "cudadevrt" )
-endif()
 
 # Targets
 if(CARLSIM_STATIC)
