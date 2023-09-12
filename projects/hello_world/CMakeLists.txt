@@ -11,13 +11,13 @@ if(CARLSIM_NO_CUDA)
         -D__NO_CUDA__ )
 endif()
 
-message("[0] hello_world_LINK_OPTIONS: ${hello_world_LINK_OPTIONS}")    
 
 # Linking    
+message("[0] hello_world_LINK_OPTIONS: ${hello_world_LINK_OPTIONS}")    
 target_link_libraries(hello_world PRIVATE
     carlsim
     carlsim-stopwatch
-
+)
 message("[1] hello_world_LINK_OPTIONS: ${hello_world_LINK_OPTIONS}")    
 
 target_include_directories(hello_world PRIVATE
