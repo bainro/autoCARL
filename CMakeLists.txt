@@ -88,8 +88,17 @@ message([1] CUDA_rt_LIBRARY="${CUDA_rt_LIBRARY}")
 		find_package(Threads REQUIRED)
 	endif()
 
-# Targets
+# @TODO remove! RKB testing new features
+message(CMAKE_CUDA_HOST_IMPLICIT_LINK_LIBRARIES="${CMAKE_CUDA_HOST_IMPLICIT_LINK_LIBRARIES}")   
+message(CMAKE_CUDA_IMPLICIT_LINK_LIBRARIES="${CMAKE_CUDA_IMPLICIT_LINK_LIBRARIES}")   
+if ( CMAKE_CUDA_HOST_IMPLICIT_LINK_LIBRARIES )
+        list( REMOVE_ITEM CMAKE_CUDA_HOST_IMPLICIT_LINK_LIBRARIES "cudadevrt" )
+endif()
+if ( CMAKE_CUDA_IMPLICIT_LINK_LIBRARIES )
+        list( REMOVE_ITEM CMAKE_CUDA_IMPLICIT_LINK_LIBRARIES "cudadevrt" )
+endif()
 
+# Targets
 if(CARLSIM_STATIC)
     add_library(carlsim STATIC) 
 else()
