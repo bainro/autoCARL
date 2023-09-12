@@ -21,16 +21,6 @@ target_link_libraries(hello_world PRIVATE
 target_include_directories(hello_world PRIVATE
     ../../tools/stopwatch
 )
-
-message(CMAKE_CUDA_HOST_IMPLICIT_LINK_LIBRARIES="${CMAKE_CUDA_HOST_IMPLICIT_LINK_LIBRARIES}")   
-message(CMAKE_CUDA_IMPLICIT_LINK_LIBRARIES="${CMAKE_CUDA_IMPLICIT_LINK_LIBRARIES}")   
-if ( CMAKE_CUDA_HOST_IMPLICIT_LINK_LIBRARIES )
-        list( REMOVE_ITEM CMAKE_CUDA_HOST_IMPLICIT_LINK_LIBRARIES "cudadevrt" )
-endif()
-if ( CMAKE_CUDA_IMPLICIT_LINK_LIBRARIES )
-        list( REMOVE_ITEM CMAKE_CUDA_IMPLICIT_LINK_LIBRARIES "cudadevrt" )
-endif()
-
    
 if(CARLSIM_TEST)
     #target_compile_options(hello_world PUBLIC -g -O0 -fprofile-arcs -ftest-coverage)
