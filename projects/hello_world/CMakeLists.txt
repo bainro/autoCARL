@@ -22,11 +22,15 @@ target_include_directories(hello_world PRIVATE
     ../../tools/stopwatch
 )
 
-# get_cmake_property(lord_help_me CMAKE_CUDA_FLAGS) # not found ...
-message(CMAKE_CUDA_FLAGS="${CMAKE_CUDA_FLAGS}")   
-#if ( CMAKE_CUDA_FLAGS )
-#	list(REMOVE_ITEM CMAKE_CUDA_FLAGS "-cudart static")
-#endif()
+message(CMAKE_CUDA_HOST_IMPLICIT_LINK_LIBRARIES="${CMAKE_CUDA_HOST_IMPLICIT_LINK_LIBRARIES}")   
+message(CMAKE_CUDA_IMPLICIT_LINK_LIBRARIES="${CMAKE_CUDA_IMPLICIT_LINK_LIBRARIES}")   
+if ( CMAKE_CUDA_HOST_IMPLICIT_LINK_LIBRARIES )
+        list( REMOVE_ITEM CMAKE_CUDA_HOST_IMPLICIT_LINK_LIBRARIES "cudadevrt" )
+endif()
+if ( CMAKE_CUDA_IMPLICIT_LINK_LIBRARIES )
+        list( REMOVE_ITEM CMAKE_CUDA_IMPLICIT_LINK_LIBRARIES "cudadevrt" )
+endif()
+
    
 if(CARLSIM_TEST)
     #target_compile_options(hello_world PUBLIC -g -O0 -fprofile-arcs -ftest-coverage)
