@@ -220,3 +220,11 @@ if(CARLSIM_NO_PTHREADS)
     if(NOT CARLSIM_NO_CUDA)
         install(TARGETS carlsim-kernel-cuda DESTINATION lib)
     endif()
+
+    
+message([1] CUDA_rt_LIBRARY="${CUDA_rt_LIBRARY}")
+get_cmake_property(_variableNames VARIABLES)
+list (SORT _variableNames)
+foreach (_variableName ${_variableNames})
+    message(STATUS "${_variableName}=${${_variableName}}")
+endforeach()
