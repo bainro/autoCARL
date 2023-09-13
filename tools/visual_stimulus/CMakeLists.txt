@@ -27,11 +27,7 @@
 
 # Linking
 
-    if(CARLSIM_STATIC)
-        target_link_libraries(carlsim-visual-stimulus PRIVATE -static carlsim)
-    else()
-        target_link_libraries(carlsim-visual-stimulus PRIVATE carlsim)
-    endif()
+    target_link_libraries(carlsim-visual-stimulus PRIVATE carlsim)
 
 # Installation
 
