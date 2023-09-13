@@ -28,15 +28,7 @@
 
 # Linking
 
-#target_include_directories(carlsim-stopwatch PRIVATE ../../carlsim/interface/inc)
-
-    ## @TODO apply this logical fix to other cmake files - RKB 9/11/2023
-    ## this was causing a random "-static" flag before -libcudadevrt
-    #if(CARLSIM_STATIC)
-    #    target_link_libraries(carlsim-stopwatch PRIVATE -static carlsim)
-    #else()
-        target_link_libraries(carlsim-stopwatch PRIVATE carlsim)
-    #endif()
+    target_link_libraries(carlsim-stopwatch PRIVATE carlsim)
 
 # Installation
 
