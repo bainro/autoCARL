@@ -23,7 +23,6 @@ target_include_directories(hello_world PRIVATE
 )
    
 if(CARLSIM_TEST)
-    #target_compile_options(hello_world PUBLIC -g -O0 -fprofile-arcs -ftest-coverage)
     target_link_libraries(hello_world PRIVATE gcov)
 endif()   
         
@@ -33,6 +32,4 @@ install(TARGETS hello_world
     RUNTIME 
         DESTINATION $<$<CONFIG:Debug>:debug/>samples 
         COMPONENT hello_world
-        )
-
-#install(FILES run_hello_world DESTINATION $<$<CONFIG:Debug>:debug/>samples)          
+        )       
