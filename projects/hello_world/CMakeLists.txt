@@ -1,4 +1,4 @@
-project(hello_world LANGUAGES CUDA CXX)
+project(hello_world)
 
 # Targets  
 add_executable(hello_world
