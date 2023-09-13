@@ -28,11 +28,7 @@
         POSITION_INDEPENDENT_CODE TRUE)
 
 # Linking
-    if(CARLSIM_STATIC)
-        target_link_libraries(carlsim-simple-weight-tuner PRIVATE -static carlsim)
-    else()
-        target_link_libraries(carlsim-simple-weight-tuner PRIVATE carlsim)
-    endif()
+    target_link_libraries(carlsim-simple-weight-tuner PRIVATE carlsim)
 
 # Installation
 
