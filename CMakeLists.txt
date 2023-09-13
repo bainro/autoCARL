@@ -66,19 +66,13 @@ endif()
 # Dependencies
 
     if(NOT CARLSIM_NO_CUDA)
-		find_package(CUDAToolkit REQUIRED)
-                
-		# if(CARLSIM_STATIC)
-  		###  THIS SHOULD BE THE DEFAULT FOR CMAKE WITH CUDA
-		#    SET(CUDA_USE_STATIC_CUDA_RUNTIME ON)
-		# endif()
+		#find_package(CUDAToolkit REQUIRED)
 		if(CARLSIM_TEST)
 			set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -g -O0 -fprofile-arcs -ftest-coverage")
 			set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} ${CMAKE_NVCC_FLAGS}")
 			set(CMAKE_NVCC_FLAGS "${CMAKE_CUDA_FLAGS}")
 		endif()
 		find_package(CUDA 11 REQUIRED)
-  		message([2] CUDA_rt_LIBRARY="${CUDA_rt_LIBRARY}")
     endif()
 
 	if(UNIX AND NOT CARLSIM_NO_PTHREADS)
@@ -359,8 +353,8 @@ if(NOT CARLSIM_NO_CUDA)
 	target_link_libraries(carlsim
 		PUBLIC
 		   carlsim-cuda
-		   # ${CUDA_curand_LIBRARY}
-     		   CUDA::curand_static
+		   ${CUDA_curand_LIBRARY}
+     		   #CUDA::curand_static
 	)
 endif()
 
