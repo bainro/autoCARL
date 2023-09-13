@@ -11,7 +11,6 @@
 
 # Targets
 
-
     if(NOT CARLSIM_NO_CUDA)
 		if(MSVC)
 			# 2>cl : Command line warning D9002: ignoring unknown option '-fPIC'
@@ -42,8 +41,10 @@
 
 # Properties
 
-# RKB testing. @TODO set appropriately 
-# set_target_properties(carlsim-kernel-cuda PROPERTIES CUDA_ARCHITECTURES "75")
+if(NOT CARLSIM_NO_CUDA)
+	# RKB testing. @TODO set appropriately!!!
+	set_target_properties(carlsim-kernel-cuda PROPERTIES CUDA_ARCHITECTURES "75")
+endif()
 
 if(CARLSIM_SHARED)
     set_property(TARGET carlsim-kernel PROPERTY POSITION_INDEPENDENT_CODE TRUE)
@@ -194,13 +195,6 @@ if(CARLSIM_NO_PTHREADS)
                 carlsim-kernel-cuda
         )
     endif()
-
-    target_link_libraries(carlsim-kernel
-            PRIVATE
-#                carlsim-monitor
-#                carlsim-interface
-    )
-
 
 # Installation
 
