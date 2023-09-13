@@ -9,10 +9,11 @@ cmake -DCMAKE_INSTALL_PREFIX=/tmp/autoCARL \
       -DCARLSIM_PYCARL=OFF \
       -DCARLSIM_BENCHMARKS=ON \
       -DCARLSIM_SHARED=OFF \
-      -DCARLSIM_STATIC=ON \
-      --trace \
-      --debug-output || cd .. 
-make -j8 install VERBOSE=1 || cd ..
+      -DCARLSIM_STATIC=ON || cd .. 
+      # --trace \
+      # --debug-output 
+# make -j8 install VERBOSE=1 || cd ..
+make -j8 install || cd ..
 
 ### PRINT ALL CMAKE VAR'S
 #get_cmake_property(_variableNames VARIABLES)
