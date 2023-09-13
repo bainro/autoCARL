@@ -207,8 +207,8 @@ endif()
 
 set_property(TARGET carlsim PROPERTY VERSION "6.0.0")
 if(UNIX)
-	# Since we build shared library enable position independent code
-#		set_property(TARGET carlsim PROPERTY POSITION_INDEPENDENT_CODE TRUE)   
+	# not needed all the time @TODO conditionally omit for minor speedup
+	set_property(TARGET carlsim PROPERTY POSITION_INDEPENDENT_CODE TRUE)   
 endif()
 
 # Definitions
