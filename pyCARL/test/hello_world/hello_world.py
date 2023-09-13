@@ -1,7 +1,7 @@
 # pycarl version of carlsim's C++ hello_world
 import carlsim
 
-sim = carlsim.CARLsim("hello_world")
+sim = carlsim.CARLsim("hello_world", carlsim.GPU_MODE)
 gridIn = carlsim.Grid3D(13,9,1)
 gridOut = carlsim.Grid3D(3,3,1)
 gin = sim.createSpikeGeneratorGroup("input", gridIn, carlsim.EXCITATORY_NEURON);
