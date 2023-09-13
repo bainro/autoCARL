@@ -87,7 +87,6 @@ else()
     add_library(carlsim SHARED) 	
 endif()
 
-# @TODO find permanent home in this file
 if(CARLSIM_TEST)
         target_compile_options(carlsim PRIVATE -g -O0 -fprofile-arcs -ftest-coverage)
 endif()
