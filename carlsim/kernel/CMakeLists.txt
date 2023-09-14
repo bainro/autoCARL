@@ -163,7 +163,7 @@ if(CARLSIM_NO_PTHREADS)
                 inc
                 ${CUDA_INCLUDE_DIRS}
                 ${CUDA_TOOLKIT_ROOT_DIR}/samples/common/inc
-		/usr/local/cuda-12.1/cuda-samples/Common # RKB TESTING @TODO UN-HARDCODE THIS!
+		/usr/local/cuda-11.1/samples/common/inc # RKB TESTING @TODO UN-HARDCODE THIS!
           )
 		if(MSVC)
 	        target_include_directories(carlsim-kernel-cuda
