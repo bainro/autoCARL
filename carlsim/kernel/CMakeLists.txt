@@ -200,6 +200,7 @@ if(CARLSIM_NO_PTHREADS)
 
     install(
         FILES
+	    inc/helper_cuda.h
             inc/cuda_version_control.h
             inc/error_code.h
             inc/snn_datastructures.h
