@@ -163,6 +163,7 @@ if(CARLSIM_NO_PTHREADS)
                 inc
                 ${CUDA_INCLUDE_DIRS}
                 ${CUDA_TOOLKIT_ROOT_DIR}/samples/common/inc
+		/usr/local/cuda-12.1/cuda-samples/Common # RKB TESTING @TODO UN-HARDCODE THIS!
 		/usr/local/cuda-11.1/samples/common/inc # RKB TESTING @TODO UN-HARDCODE THIS!
           )
 		if(MSVC)
@@ -200,7 +201,6 @@ if(CARLSIM_NO_PTHREADS)
 
     install(
         FILES
-	    inc/helper_cuda.h
             inc/cuda_version_control.h
             inc/error_code.h
             inc/snn_datastructures.h
