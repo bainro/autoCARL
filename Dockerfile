@@ -9,7 +9,7 @@ RUN ln -s /tmp/host_cuda/samples /usr/local/cuda/samples
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Prepare and empty machine for building.
-RUN apt-get update && apt-get install -y git wget python3 python3-dev
+RUN apt-get update && apt-get install -y git wget python3 python3-dev swig
 
 ARG CMAKE_VERSION=3.21.0
 RUN wget https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cmake-${CMAKE_VERSION}-Linux-x86_64.sh \
