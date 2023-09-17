@@ -11,7 +11,7 @@ setup(
   download_url = 'https://github.com/bainro/autoCARL/pyCARL/archive/v_10.tar.gz',    ### !!!
   keywords = ['SNN', 'computational', 'neuroscience'],
   install_requires=[], # we don't require any 3rd party python packages :)
-  package_data={'c++ shared object': ['carlsim/_pycarl.so']},
+  package_data={'': ['carlsim/_pycarl.so']},
   classifiers=[
     'Development Status :: 5 - Production/Stable',
     'Intended Audience :: Education',
