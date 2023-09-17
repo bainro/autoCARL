@@ -22,3 +22,5 @@ ENV PATH="/usr/bin/cmake/bin:${PATH}"
 
 RUN git clone https://github.com/bainro/autoCARL.git
 RUN cd autoCARL && git checkout feat/PyCARL2 && ./local_compile.sh
+# install python3 module for docker image
+RUN cp pyCARL/carlsim.py /usr/lib/python3.8 && cp pyCARL/_pycarl.so /usr/lib/python3.8
