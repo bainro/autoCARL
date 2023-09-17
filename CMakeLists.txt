@@ -1,4 +1,4 @@
-project(carlsim LANGUAGES CUDA CXX)
+project(carlsim)
 
 cmake_minimum_required(VERSION 3.21.0)
 
@@ -66,7 +66,7 @@ endif()
 # Dependencies
 
     if(NOT CARLSIM_NO_CUDA)
-		#find_package(CUDAToolkit REQUIRED)
+		find_package(CUDAToolkit REQUIRED)
 		if(CARLSIM_TEST)
 			set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -g -O0 -fprofile-arcs -ftest-coverage")
 			set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} ${CMAKE_NVCC_FLAGS}")
@@ -352,8 +352,8 @@ if(NOT CARLSIM_NO_CUDA)
 	target_link_libraries(carlsim
 		PUBLIC
 		   carlsim-cuda
-		   ${CUDA_curand_static_LIBRARY}
-     		   #CUDA::curand_static
+		   #${CUDA_curand_static_LIBRARY}
+     		   CUDA::curand_static
 	)
 endif()
 
