@@ -187,6 +187,7 @@ if(CARLSIM_NO_PTHREADS)
 
     if(NOT CARLSIM_NO_CUDA)
         target_link_libraries(carlsim-kernel-cuda
+	    # findCUDA won't link curand static
             #${CUDA_curand_LIBRARY}
 	    CUDA::curand_static
         )
