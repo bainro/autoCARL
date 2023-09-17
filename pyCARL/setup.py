@@ -12,7 +12,7 @@ setup(
   keywords = ['SNN', 'computational', 'neuroscience'],
   install_requires=[], # we don't require any 3rd party python packages :)
   include_package_data=True,
-  package_data={'': ['carlsim/_pycarl.so', '_pycarl.so']},
+  package_data={'': ['_pycarl.so']},
   classifiers=[
     'Development Status :: 5 - Production/Stable',
     'Intended Audience :: Education',
