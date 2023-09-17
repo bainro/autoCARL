@@ -15,7 +15,7 @@ setup(
     'Development Status :: 5 - Production/Stable',
     'Intended Audience :: Education',
     'Topic :: Software Development :: Build Tools',
-    'License :: MIT License',
+    'License :: MIT',
     'Programming Language :: Python :: 3',
     'Programming Language :: Python :: 3.4',
     'Programming Language :: Python :: 3.5',
