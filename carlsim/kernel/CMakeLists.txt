@@ -160,8 +160,6 @@ if(CARLSIM_NO_PTHREADS)
     if(NOT CARLSIM_NO_CUDA)
         target_include_directories(carlsim-kernel-cuda
             PUBLIC
-                /usr/local/cuda-12.1/cuda-samples/Common # RKB TESTING @TODO UN-HARDCODE THIS!
-                /usr/local/cuda-11.1/samples/common/inc # RKB TESTING @TODO UN-HARDCODE THIS!
                 inc
                 ${CUDA_INCLUDE_DIRS}
                 ${CUDA_TOOLKIT_ROOT_DIR}/samples/common/inc
@@ -189,7 +187,7 @@ if(CARLSIM_NO_PTHREADS)
 
     if(NOT CARLSIM_NO_CUDA)
         target_link_libraries(carlsim-kernel-cuda
-            ${CUDA_curand_LIBRARY}
+            ${CUDA_curand_static_LIBRARY}
         )
         target_link_libraries(carlsim-kernel
             PUBLIC
