@@ -1,6 +1,6 @@
 # pyCARL 2
 
-C++ and python go together like peanut butter and jelly. That's why we use SWIG to make carlsim's fast C++/CUDA code available in python3. We're currently working on making more of the C++ codebase available in pyCARL (e.g. LIF neurons, compartments, etc).
+C++ and python go together like peanut butter and jelly. That's why we use SWIG to make carlsim's fast C++/CUDA code available in python3. We're currently working on making more of the C++ codebase available in pyCARL (e.g. LIF neurons, compartments, etc). Note that only Ubuntu is currently supported for GPU mode.
  
 ### Installation: 
  
