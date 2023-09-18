@@ -8,7 +8,7 @@ C++ and python go together like peanut butter and jelly. That's why we used SWIG
 
 ### Getting Started:
 
-View a pycarl <i>hello world</i> program with a colab notebook [here](https://github.com/bainro/autoCARL/blob/main/pyCARL/hello_world.ipynb).
+Run a <i>hello world</i> program using a [colab notebook](https://github.com/bainro/autoCARL/blob/main/pyCARL/hello_world.ipynb).
 
 ### pyCARL 1
  
