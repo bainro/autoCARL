@@ -4,8 +4,9 @@ on:
 name: release binaries
 jobs:
   build:
+    # more appropriate permissions here? tinyurl.com/5725swh8
     permissions: write-all
-    runs-on: ubu20GPU # self-hosted 
+    runs-on: ubu20GPU # self-hosted # ubuntu_18
     steps:
     - uses: actions/checkout@v3
     - name: Build
@@ -14,15 +15,16 @@ jobs:
             cd ${{github.workspace}}/build
             cmake -DCMAKE_INSTALL_PREFIX=/tmp/carlsim6 \
                   -DCMAKE_BUILD_TYPE=Release .. \
-                  -DCARLSIM_TEST=ON
+                  -DCARLSIM_TEST=OFF
             make -j$(nproc) install
+            zip -r ${{github.workspace}}/binaries.zip /tmp/carlsim6
 
     - name: Upload binaries to release
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: ${{github.workspace}}/build/projects/hello_world/hello_world
-        asset_name: hello_world_static
+        file: ${{github.workspace}}/binaries.zip
+        asset_name: ubu20cuda11.zip
         tag: ${{ github.ref }}
         overwrite: true
-        body: "This is my release text"
+        body: "" # "release text..."
