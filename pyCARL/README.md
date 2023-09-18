@@ -2,7 +2,7 @@
 
 C++ and python go together like peanut butter and jelly. That's why we used SWIG to ...
  
-Install pyCARL: 
+### Installation: 
  
 ```pip install carlsim``` 
  
