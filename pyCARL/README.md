@@ -4,7 +4,7 @@ C++ and python go together like peanut butter and jelly. That's why we use SWIG 
  
 ### Installation: 
  
-```pip install carlsim``` 
+```pip install -i https://test.pypi.org/simple/ carlsim``` 
 
 ### Getting Started:
 
