@@ -1,6 +1,6 @@
 # pyCARL 2
 
-C++ and python go together like peanut butter and jelly. That's why we used SWIG to bind carlsim's fast C++/CUDA code and make it available in python3.
+C++ and python go together like peanut butter and jelly. That'ss why we use SWIG to make carlsim's fast C++/CUDA code available in python3.
  
 ### Installation: 
  
