@@ -8,7 +8,6 @@ setup(
   author = 'Robert Bain',
   author_email = 'rbain18@gmail.com',
   url = 'https://github.com/bainro/autoCARL',
-  download_url = 'https://github.com/bainro/autoCARL/pyCARL/archive/v_10.tar.gz',    ### !!!
   keywords = ['SNN', 'computational', 'neuroscience'],
   install_requires=[], # we don't require any 3rd party python packages :)
   include_package_data=True,
