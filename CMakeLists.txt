@@ -1,4 +1,4 @@
-project(carlsim LANGUAGES CUDA CXX)
+project(carlsim)
 
 cmake_minimum_required(VERSION 3.21.0)
 
