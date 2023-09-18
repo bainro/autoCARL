@@ -12,7 +12,7 @@ set_property(SOURCE source/carlsim.i PROPERTY CPLUSPLUS ON)
 swig_add_library(pycarl 
         TYPE SHARED
         LANGUAGE python 
-        SOURCES source/carlsim.i )
+        SOURCES carlsim/carlsim.i )
 
  target_include_directories(pycarl PUBLIC ${Python3_INCLUDE_DIRS})
 
