@@ -7,7 +7,7 @@ endif()
 find_package(SWIG 4.0 COMPONENTS python) 
 include(UseSWIG)
 
-set_property(SOURCE source/carlsim.i PROPERTY CPLUSPLUS ON)
+set_property(SOURCE carlsim/carlsim.i PROPERTY CPLUSPLUS ON)
 
 swig_add_library(pycarl 
         TYPE SHARED
