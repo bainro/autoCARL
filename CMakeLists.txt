@@ -9,12 +9,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 #LN20201126  https://cmake.org/cmake/help/latest/guide/tutorial/index.html#id20
 set(CMAKE_DEBUG_POSTFIX d)
 
-# @TODO test if necessary
-# @TODO find permanent home in this file
-# if(CARLSIM_STATIC)
-# 	set(CMAKE_POSITION_INDEPENDENT_CODE True)
-# endif()
-
 # LN2021 enforce parallel build as default
 if(MSVC)
   get_property(_USER_CMAKE_CXX_FLAGS CACHE CMAKE_CXX_FLAGS PROPERTY VALUE)
@@ -72,9 +66,7 @@ endif()
 # Dependencies
 
     if(NOT CARLSIM_NO_CUDA)
-		# @TODO find permanent home in this file
-		# SET(CUDA_USE_STATIC_CUDA_RUNTIME OFF)
-		# @TODO find permanent home in this file
+		find_package(CUDAToolkit REQUIRED)
 		if(CARLSIM_TEST)
 			set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -g -O0 -fprofile-arcs -ftest-coverage")
 			set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} ${CMAKE_NVCC_FLAGS}")
@@ -89,14 +81,12 @@ endif()
 	endif()
 
 # Targets
-
 if(CARLSIM_STATIC)
     add_library(carlsim STATIC) 
 else()
     add_library(carlsim SHARED) 	
 endif()
 
-# @TODO find permanent home in this file
 if(CARLSIM_TEST)
         target_compile_options(carlsim PRIVATE -g -O0 -fprofile-arcs -ftest-coverage)
 endif()
@@ -216,8 +206,8 @@ endif()
 
 set_property(TARGET carlsim PROPERTY VERSION "6.0.0")
 if(UNIX)
-	# Since we build shared library enable position independent code
-#		set_property(TARGET carlsim PROPERTY POSITION_INDEPENDENT_CODE TRUE)   
+	# not needed all the time @TODO conditionally omit for minor speedup
+	set_property(TARGET carlsim PROPERTY POSITION_INDEPENDENT_CODE TRUE)   
 endif()
 
 # Definitions
@@ -362,7 +352,9 @@ if(NOT CARLSIM_NO_CUDA)
 	target_link_libraries(carlsim
 		PUBLIC
 		   carlsim-cuda
-		   ${CUDA_curand_LIBRARY}
+                   # couldn't get findCUDA to link curand static
+		   #${CUDA_curand_LIBRARY} 
+     		   CUDA::curand_static
 	)
 endif()
 

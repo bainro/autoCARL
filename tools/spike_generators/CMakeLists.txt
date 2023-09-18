@@ -38,11 +38,7 @@
 
 # Linking
 
-    if(CARLSIM_STATIC)
-        target_link_libraries(carlsim-spike-generators PUBLIC -static carlsim)
-    else()
-        target_link_libraries(carlsim-spike-generators PUBLIC carlsim)
-    endif()
+    target_link_libraries(carlsim-spike-generators PUBLIC carlsim)
 
 # Installation
 

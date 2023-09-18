@@ -2,11 +2,11 @@ name: cmake build
 
 on:
   push: # pull_request:
-    branches: [ "main" ] 
+    branches: [ "feat/PyCARL2" ] 
 
 jobs:
   build:
-    runs-on: ubu20GPU # ubuntu-latest
+    runs-on: ubu20cuda11 # ubuntu-latest 
 
     steps:
     - uses: actions/checkout@v3
@@ -30,9 +30,9 @@ jobs:
             lcov --remove ./code_coverage.lcov -o ./code_coverage.lcov \
                  '/usr/*' '/tmp/*' '${{github.workspace}}/build/*'
             
-    - name: Coveralls
-      uses: coverallsapp/github-action@master
-      with: 
-            github-token: ${{ secrets.GITHUB_TOKEN }}
-            path-to-lcov: ${{github.workspace}}/code_coverage.lcov
-            debug: False # True
+    #- name: Coveralls
+    #  uses: coverallsapp/github-action@master
+    #  with: 
+    #        github-token: ${{ secrets.GITHUB_TOKEN }}
+    #        path-to-lcov: ${{github.workspace}}/code_coverage.lcov
+    #        debug: False # True

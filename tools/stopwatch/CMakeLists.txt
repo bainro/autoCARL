@@ -28,13 +28,7 @@
 
 # Linking
 
-#target_include_directories(carlsim-stopwatch PRIVATE ../../carlsim/interface/inc)
-
-    if(CARLSIM_STATIC)
-        target_link_libraries(carlsim-stopwatch PRIVATE -static carlsim)
-    else()
-        target_link_libraries(carlsim-stopwatch PRIVATE carlsim)
-    endif()
+    target_link_libraries(carlsim-stopwatch PRIVATE carlsim)
 
 # Installation
 

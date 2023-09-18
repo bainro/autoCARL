@@ -1,7 +1,6 @@
 # Dependencies
 
     if(NOT CARLSIM_NO_CUDA)
-    	# SET(CUDA_USE_STATIC_CUDA_RUNTIME OFF)
         find_package(CUDA 11 REQUIRED)
     endif()
 
@@ -10,12 +9,7 @@
 		find_package(Threads REQUIRED)
 	endif()
 
-	#if(NOT CARLSIM_STATIC)
-	#	message(FATAL_ERROR "Invalid context, CMake will exit.")
-	#endif()
-
 # Targets
-
 
     if(NOT CARLSIM_NO_CUDA)
 		if(MSVC)
@@ -33,7 +27,7 @@
 	            OPTIONS
 	                -Xcompiler
 	                -fPIC
-					${CARLSIM_CUDA_GENCODE}
+		        ${CARLSIM_CUDA_GENCODE}
 	        )
 		endif()
     endif()
@@ -47,9 +41,15 @@
 
 # Properties
 
-    # Since we build shared library enable position independent code
-    set_property(TARGET carlsim-kernel PROPERTY
-        POSITION_INDEPENDENT_CODE TRUE)
+if(NOT CARLSIM_NO_CUDA)
+	# RKB testing. @TODO set appropriately!!!
+	set_target_properties(carlsim-kernel-cuda PROPERTIES CUDA_ARCHITECTURES "75")
+endif()
+
+if(CARLSIM_SHARED)
+    set_property(TARGET carlsim-kernel PROPERTY POSITION_INDEPENDENT_CODE TRUE)
+endif()
+    
 
 # Definitions
 
@@ -187,20 +187,15 @@ if(CARLSIM_NO_PTHREADS)
 
     if(NOT CARLSIM_NO_CUDA)
         target_link_libraries(carlsim-kernel-cuda
-            ${CUDA_curand_LIBRARY}
+	    # findCUDA won't link curand static
+            #${CUDA_curand_LIBRARY}
+	    CUDA::curand_static
         )
         target_link_libraries(carlsim-kernel
             PUBLIC
                 carlsim-kernel-cuda
         )
     endif()
-
-    target_link_libraries(carlsim-kernel
-            PRIVATE
-#                carlsim-monitor
-#                carlsim-interface
-    )
-
 
 # Installation
 

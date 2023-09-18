@@ -14,14 +14,14 @@ swig_add_library(pycarl
         LANGUAGE python 
         SOURCES source/carlsim.i )
 
- target_include_directories(pycarl PRIVATE ${Python3_INCLUDE_DIRS})
+ target_include_directories(pycarl PUBLIC ${Python3_INCLUDE_DIRS})
 
-swig_link_libraries(pycarl PRIVATE 
-	python3
+swig_link_libraries(pycarl PUBLIC 
+    python3
     carlsim
     carlsim-visual-stimulus
     carlsim-spike-generators
 )
 
-target_link_directories(pycarl PRIVATE ${Python3_LIBRARY_DIRS})
+target_link_directories(pycarl PUBLIC ${Python3_LIBRARY_DIRS})
 
