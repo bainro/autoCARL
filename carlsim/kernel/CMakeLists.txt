@@ -43,7 +43,7 @@
 
 if(NOT CARLSIM_NO_CUDA)
 	# RKB testing. @TODO set appropriately!!!
-	set_target_properties(carlsim-kernel-cuda PROPERTIES CUDA_ARCHITECTURES "75")
+	set_target_properties(carlsim-kernel-cuda PROPERTIES CUDA_ARCHITECTURES "52")
 endif()
 
 if(CARLSIM_SHARED)
