@@ -29,7 +29,7 @@ ENV PATH="/usr/bin/cmake/bin:${PATH}"
 RUN wget https://github.com/NVIDIA/cuda-samples/archive/refs/tags/v11.8.zip 
 RUN unzip v11.8.zip -d /cuda_samples
 RUN mkdir -p /usr/local/cuda/samples/common/
-RUN ln -s /cuda_samples/cuda_samples-11.8/Common /usr/local/cuda/samples/common/inc
+RUN ln -s /cuda_samples/cuda-samples-11.8/Common /usr/local/cuda/samples/common/inc
 
 RUN git clone https://github.com/bainro/autoCARL.git /output/carlsim
 RUN mkdir /output/carlsim/build 
