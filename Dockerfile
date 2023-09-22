@@ -31,8 +31,8 @@ RUN wget https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cm
       && rm /tmp/cmake-install.sh
 ENV PATH="/usr/bin/cmake/bin:${PATH}"
 
-RUN rm -fr /tmp/carlsim
-RUN git clone https://github.com/bainro/autoCARL.git /tmp/carlsim
+RUN git clone https://github.com/bainro/autoCARL.git carlsim
+RUN mv carlsim /tmp/carlsim
 RUN cd /tmp/carlsim && mkdir build && cd build
 RUN cmake -DCMAKE_INSTALL_PREFIX=/tmp/_carlsim \
                   -DCMAKE_BUILD_TYPE=Release .. \
