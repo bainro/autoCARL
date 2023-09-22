@@ -13,13 +13,12 @@ jobs:
       run:  | 
         # modified gh runner's ./run-helper.sh.template for no 'sudo'
         docker build --tag 'carlsim' .
-        docker run --gpus all --rm -v /tmp/_gh_actions_carl:/output carlsim
-        cd /tmp/_gh_actions_carl/carlsim/pyCARL
         
     - name: Publish distribution to PyPI
       env:
         pypi_token: ${{ secrets.PYPI_API_TOKEN }}
       run: |
+        cd /tmp/_gh_actions_carl/carlsim/pyCARL
         python3 -m pip install wheel
         echo "[testpypi]\n  username = __token__ \n  password = $pypi_token" > ~/.pypirc
         twine upload dist/*
