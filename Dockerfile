@@ -17,13 +17,13 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y git wget python3.10 python3.10-dev swig twine zip unzip
 
 # create symlink for cmake to find old cuda samples' helper_cuda.h, etc
-RUN wget https://github.com/NVIDIA/cuda-samples/archive/refs/tags/v11.8.zip 
-RUN unzip v11.8.zip -d /cuda_samples
+#RUN wget https://github.com/NVIDIA/cuda-samples/archive/refs/tags/v11.8.zip 
+#RUN unzip v11.8.zip -d /cuda_samples
 RUN mkdir -p /usr/local/cuda/samples/common/inc
-RUN ln -s /cuda_samples/cuda-samples-11.8/Common /usr/local/cuda/samples/common/inc
-ENV LD_LIBRARY_PATH=/usr/local/cuda/samples/common/inc:$LD_LIBRARY_PATH
-ENV LD_LIBRARY_PATH=./:$LD_LIBRARY_PATH
-RUN echo $LD_LIBRARY_PATH
+RUN ln -s /output/cuda_samples/Common /usr/local/cuda/samples/common/inc
+#ENV LD_LIBRARY_PATH=/usr/local/cuda/samples/common/inc:$LD_LIBRARY_PATH
+#ENV LD_LIBRARY_PATH=./:$LD_LIBRARY_PATH
+#RUN echo $LD_LIBRARY_PATH
 
 ARG CMAKE_VERSION=3.21.0
 RUN wget https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cmake-${CMAKE_VERSION}-Linux-x86_64.sh \
@@ -36,7 +36,6 @@ ENV PATH="/usr/bin/cmake/bin:${PATH}"
 
 RUN git clone https://github.com/bainro/autoCARL.git /output/carlsim
 RUN mkdir /output/carlsim/build 
-RUN ls /usr/local/cuda/samples/common/inc
 RUN cd /output/carlsim/build && \
     cmake -DCMAKE_INSTALL_PREFIX=/tmp/_carlsim \
       -DCMAKE_BUILD_TYPE=Release .. \
@@ -50,7 +49,6 @@ RUN cd /output/carlsim/build && \
       # -DCARLSIM_GH_ACTIONS=ON 
 RUN cd /output/carlsim/build && \
     cp /cuda_samples/cuda-samples-11.8/Common/*.h . && \
-    ls -lah *.h && \
     make -j$(nproc) install
 RUN zip -r /tmp/binaries.zip /tmp/_carlsim
 # install python3 module for docker image when in interactive bash mode
