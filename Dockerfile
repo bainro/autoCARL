@@ -21,6 +21,7 @@ RUN wget https://github.com/NVIDIA/cuda-samples/archive/refs/tags/v11.8.zip
 RUN unzip v11.8.zip -d /cuda_samples
 RUN mkdir -p /usr/local/cuda/samples/common/inc
 RUN ln -s /cuda_samples/cuda-samples-11.8/Common /usr/local/cuda/samples/common/inc
+ENV LD_LIBRARY_PATH=/usr/local/cuda/samples/common/inc:$LD_LIBRARY_PATH
 
 ARG CMAKE_VERSION=3.21.0
 RUN wget https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cmake-${CMAKE_VERSION}-Linux-x86_64.sh \
