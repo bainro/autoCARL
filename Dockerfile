@@ -33,9 +33,8 @@ ENV PATH="/usr/bin/cmake/bin:${PATH}"
 
 RUN git clone https://github.com/bainro/autoCARL.git /carlsim
 RUN mv /carlsim /tmp/carlsim
-RUN cd /tmp/carlsim 
-RUN mkdir build 
-RUN cd build
+RUN mkdir /tmp/carlsim/_build 
+RUN cd /tmp/carlsim/_build
 RUN echo $PWD && ls -lah && ls -lah ..
 RUN ls /tmp
 RUN cmake -DCMAKE_INSTALL_PREFIX=/tmp/_carlsim \
