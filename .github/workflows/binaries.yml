@@ -3,28 +3,20 @@ on:
     types: [created]
 name: release binaries
 jobs:
-  build:
+  build_ubu18cuda11:
     # more appropriate permissions here? tinyurl.com/5725swh8
     permissions: write-all
-    runs-on: ubu20GPU # self-hosted # ubuntu_18
+    runs-on: ubu18cuda11 
     steps:
     - uses: actions/checkout@v3
     - name: Build
       run:  | 
-            mkdir ${{github.workspace}}/build
-            cd ${{github.workspace}}/build
-            cmake -DCMAKE_INSTALL_PREFIX=/tmp/carlsim6 \
-                  -DCMAKE_BUILD_TYPE=Release .. \
-                  -DCARLSIM_TEST=OFF
-            make -j$(nproc) install
-            zip -r ${{github.workspace}}/binaries.zip /tmp/carlsim6
-
+             sudo docker build --tag 'carlsim' .
+             sudo docker run --gpus all --rm -v /tmp/_gh_actions_carl:/tmp carlsim
     - name: Upload binaries to release
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: ${{github.workspace}}/binaries.zip
-        asset_name: ubu20cuda11.zip
+        file: /tmp/_gh_actions_carl/binaries.zip
+        asset_name: ubu18-22_cuda11.zip
         tag: ${{ github.ref }}
-        overwrite: true
-        body: "" # "release text..."
