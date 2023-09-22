@@ -43,9 +43,8 @@ RUN cd /output/carlsim/build && cmake -DCMAKE_INSTALL_PREFIX=/tmp/_carlsim \
                                     -DCARLSIM_STATIC=ON
                                     # @TODO USE THIS FLAG INSTEAD!
                                     # -DCARLSIM_GH_ACTIONS=ON 
-RUN make -j$(nproc) install
+RUN cd /output/carlsim/build && make -j$(nproc) install
 RUN zip -r /tmp/binaries.zip /tmp/_carlsim
 # install python3 module for docker image when in interactive bash mode
 # RUN cp pyCARL/carlsim.py /usr/lib/python3.8 && cp pyCARL/_pycarl.so /usr/lib/python3.8
-RUN cd ../pyCARL
-RUN python3 setup.py sdist
+RUN cd /output/carlsim/pyCARL && python3 setup.py sdist
