@@ -19,7 +19,7 @@ RUN ln -s /cuda_samples/Common /usr/local/cuda/samples/common/inc
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Prepare and empty machine for building.
-RUN apt-get update && apt-get install -y git wget python3.8 python3.8-dev swig twine wget
+RUN apt-get update && apt-get install -y git wget python3.8 python3.8-dev swig twine
 
 ARG CMAKE_VERSION=3.21.0
 RUN wget https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cmake-${CMAKE_VERSION}-Linux-x86_64.sh \
