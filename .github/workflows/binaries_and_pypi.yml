@@ -12,7 +12,7 @@ jobs:
     - name: Build
       run:  | 
         # modified gh runner's ./run-helper.sh.template for no 'sudo'
-        docker build --tag 'carlsim' .
+        docker build --no-cache --tag 'carlsim' .
         
     - name: Publish distribution to PyPI
       env:
