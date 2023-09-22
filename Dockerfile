@@ -31,10 +31,10 @@ RUN wget https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cm
       && rm /tmp/cmake-install.sh
 ENV PATH="/usr/bin/cmake/bin:${PATH}"
 
-RUN git clone https://github.com/bainro/autoCARL.git /carlsim
-RUN mv /carlsim /tmp/carlsim
-RUN mkdir /tmp/carlsim/_build 
-RUN cd /tmp/carlsim/_build
+RUN git clone https://github.com/bainro/autoCARL.git /output/carlsim
+RUN cd output/carlsim
+RUN mkdir build 
+RUN cd build
 RUN echo $PWD && ls -lah && ls -lah ..
 RUN ls /tmp
 RUN cmake -DCMAKE_INSTALL_PREFIX=/tmp/_carlsim \
