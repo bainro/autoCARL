@@ -1,12 +1,14 @@
+# Build image from this file: docker build - < Dockerfile
 # install docker on ubuntu 22.04: https://github.com/docker/docker-install
-# docker pull nvidia/cuda:11.8.0-devel-ubuntu22.04
-FROM nvidia/cuda:11.8.0-devel-ubuntu22.04
-#FROM nvidia/cuda:11.8.0-devel-ubuntu20.04
-#FROM nvidia/cuda:11.8.0-devel-ubuntu18.04
 
 # can install cuda on ubuntu22.04 by following instructions here:
 # https://gist.github.com/MihailCosmin/affa6b1b71b43787e9228c25fe15aeba
 # skip 'Install cuDNN' and everything after. test with 'nvcc -V'
+
+# docker pull nvidia/cuda:11.8.0-devel-ubuntu22.04
+FROM nvidia/cuda:11.8.0-devel-ubuntu22.04
+#FROM nvidia/cuda:11.8.0-devel-ubuntu20.04
+#FROM nvidia/cuda:11.8.0-devel-ubuntu18.04
 
 # create symlink for cmake to find old cuda samples' helper_cuda.h, etc
 RUN wget https://github.com/NVIDIA/cuda-samples/archive/refs/tags/v11.8.zip 
