@@ -43,7 +43,7 @@
 
 if(NOT CARLSIM_NO_CUDA)
 	# @TODO hard-coded for static to target the oldest supported arch (eg maxwell)
- 	# @TODO make this over-rideable by the user!
+ 	# @TODO make this over-rideable by the user! Maybe CARLSIM_CUDA_GENCODE?
 	set_target_properties(carlsim-kernel-cuda PROPERTIES CUDA_ARCHITECTURES "53")
 endif()
 
