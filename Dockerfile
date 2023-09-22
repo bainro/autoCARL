@@ -20,6 +20,7 @@ RUN apt-get install -y zip unzip
 # create symlink for cmake to find old cuda samples' helper_cuda.h, etc
 RUN wget https://github.com/NVIDIA/cuda-samples/archive/refs/tags/v11.8.zip 
 RUN unzip v11.8.zip -d /cuda_samples
+RUN mkdir -r /usr/local/cuda/samples/common/inc
 RUN ln -s /cuda_samples/Common /usr/local/cuda/samples/common/inc
 
 ARG CMAKE_VERSION=3.21.0
