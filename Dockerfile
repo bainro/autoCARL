@@ -32,21 +32,17 @@ RUN wget https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cm
 ENV PATH="/usr/bin/cmake/bin:${PATH}"
 
 RUN git clone https://github.com/bainro/autoCARL.git /output/carlsim
-RUN cd output/carlsim
-RUN mkdir build 
-RUN cd build
-RUN echo $PWD && ls -lah && ls -lah ..
-RUN ls /tmp
-RUN cmake -DCMAKE_INSTALL_PREFIX=/tmp/_carlsim \
-                  -DCMAKE_BUILD_TYPE=Release .. \
-                  -DCARLSIM_NO_CUDA=OFF \
-                  -DCARLSIM_TEST=OFF \
-                  -DCARLSIM_PYCARL=ON \
-                  -DCARLSIM_BENCHMARKS=ON \
-                  -DCARLSIM_SHARED=OFF \
-                  -DCARLSIM_STATIC=ON
-                  # @TODO USE THIS FLAG INSTEAD!
-                  # -DCARLSIM_GH_ACTIONS=ON 
+RUN mkdir /output/carlsim/build 
+RUN cd /output/carlsim/build && cmake -DCMAKE_INSTALL_PREFIX=/tmp/_carlsim \
+                                    -DCMAKE_BUILD_TYPE=Release .. \
+                                    -DCARLSIM_NO_CUDA=OFF \
+                                    -DCARLSIM_TEST=OFF \
+                                    -DCARLSIM_PYCARL=ON \
+                                    -DCARLSIM_BENCHMARKS=ON \
+                                    -DCARLSIM_SHARED=OFF \
+                                    -DCARLSIM_STATIC=ON
+                                    # @TODO USE THIS FLAG INSTEAD!
+                                    # -DCARLSIM_GH_ACTIONS=ON 
 RUN make -j$(nproc) install
 RUN zip -r /tmp/binaries.zip /tmp/_carlsim
 # install python3 module for docker image when in interactive bash mode
