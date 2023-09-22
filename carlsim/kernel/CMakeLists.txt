@@ -42,8 +42,9 @@
 # Properties
 
 if(NOT CARLSIM_NO_CUDA)
-	# RKB testing. @TODO set appropriately!!!
-	set_target_properties(carlsim-kernel-cuda PROPERTIES CUDA_ARCHITECTURES "52")
+	# @TODO hard-coded for static to target the oldest supported arch (eg maxwell)
+ 	# @TODO make this over-rideable by the user!
+	set_target_properties(carlsim-kernel-cuda PROPERTIES CUDA_ARCHITECTURES "53")
 endif()
 
 if(CARLSIM_SHARED)
