@@ -1,4 +1,7 @@
-FROM nvidia/cuda:11.8.0-devel-ubuntu18.04
+# docker pull nvidia/cuda:11.8.0-devel-ubuntu22.04
+FROM nvidia/cuda:11.8.0-devel-ubuntu22.04
+#FROM nvidia/cuda:11.8.0-devel-ubuntu20.04
+#FROM nvidia/cuda:11.8.0-devel-ubuntu18.04
 
 # create symlink for cmake to find host cuda's helper_cuda.h, etc
 # expected to mount host volume using -v flag when launching container. Eg:
