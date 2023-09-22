@@ -20,7 +20,7 @@ jobs:
       env:
         pypi_token: ${{ secrets.PYPI_API_TOKEN }}
       run: |
-        cd /tmp/_gh_actions_carl/pyCARL
+        cd /tmp/_gh_actions/pyCARL
         python3 -m pip install wheel
         echo "[testpypi]\n  username = __token__ \n  password = $pypi_token" > ~/.pypirc
         twine upload dist/*
@@ -29,6 +29,6 @@ jobs:
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: /tmp/_gh_actions_carl/binaries.zip
+        file: /tmp/_gh_actions/binaries.zip
         asset_name: ubu18-22_cuda11.zip
         tag: ${{ github.ref }}
