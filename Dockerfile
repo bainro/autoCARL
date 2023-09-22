@@ -4,7 +4,7 @@ FROM nvidia/cuda:11.8.0-devel-ubuntu22.04
 #FROM nvidia/cuda:11.8.0-devel-ubuntu18.04
 
 # can install cuda on ubuntu22.04 by following instructions here:
-# https://gist.github.com/denguir/b21aa66ae7fb1089655dd9de8351a202
+# https://gist.github.com/MihailCosmin/affa6b1b71b43787e9228c25fe15aeba
 # skip 'Install cuDNN' and everything after. test with 'nvcc -V'
 
 # create symlink for cmake to find host cuda's helper_cuda.h, etc
