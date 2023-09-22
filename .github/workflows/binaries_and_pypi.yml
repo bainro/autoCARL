@@ -13,8 +13,8 @@ jobs:
     - uses: actions/checkout@v3
     - name: Build
       run:  | 
-        sudo docker build --tag 'carlsim' .
-        sudo docker run --gpus all --rm -v /tmp/_gh_actions_carl:/tmp carlsim
+        docker build --tag 'carlsim' .
+        docker run --gpus all --rm -v /tmp/_gh_actions_carl:/tmp carlsim
         cd /tmp/_gh_actions_carl/carlsim/pyCARL
         
     - name: Publish distribution to PyPI
