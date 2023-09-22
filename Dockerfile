@@ -36,14 +36,14 @@ RUN mv carlsim /tmp/carlsim
 RUN cd /tmp/carlsim && mkdir build && cd build
 RUN cmake -DCMAKE_INSTALL_PREFIX=/tmp/_carlsim \
                   -DCMAKE_BUILD_TYPE=Release .. \
-                  # @TODO USE THIS FLAG & OMIT THOSE BELOW
-                  # -DCARLSIM_GH_ACTIONS=ON 
                   -DCARLSIM_NO_CUDA=OFF \
                   -DCARLSIM_TEST=OFF \
                   -DCARLSIM_PYCARL=ON \
                   -DCARLSIM_BENCHMARKS=ON \
                   -DCARLSIM_SHARED=OFF \
                   -DCARLSIM_STATIC=ON
+                  # @TODO USE THIS FLAG INSTEAD!
+                  # -DCARLSIM_GH_ACTIONS=ON 
 RUN make -j$(nproc) install
 RUN zip -r /tmp/binaries.zip /tmp/_carlsim
 # install python3 module for docker image when in interactive bash mode
