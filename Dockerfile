@@ -33,23 +33,21 @@ RUN ln -s /cuda_samples/cuda-samples-11.8/Common /usr/local/cuda/samples/common/
 
 RUN git clone https://github.com/bainro/autoCARL.git /output/carlsim
 RUN mkdir /output/carlsim/build 
-#RUN cd /output/carlsim/build && \
-#    cmake -DCMAKE_INSTALL_PREFIX=/tmp/_carlsim \
-#      -DCMAKE_BUILD_TYPE=Release .. \
-#      -DCARLSIM_NO_CUDA=OFF \
-#      -DCARLSIM_TEST=OFF \
-#      -DCARLSIM_PYCARL=ON \
-#      -DCARLSIM_BENCHMARKS=ON \
-#      -DCARLSIM_SHARED=OFF \
-#      -DCARLSIM_STATIC=ON
-#      # @TODO USE THIS FLAG INSTEAD!
-#      # -DCARLSIM_GH_ACTIONS=ON 
-#RUN cd /output/carlsim/build && \
-#    cp /cuda_samples/cuda-samples-11.8/Common/*.h . && \
-#    make -j$(nproc) install
-#RUN zip -r /tmp/binaries.zip /tmp/_carlsim
+RUN cd /output/carlsim/build && \
+    cmake -DCMAKE_INSTALL_PREFIX=/tmp/_carlsim \
+      -DCMAKE_BUILD_TYPE=Release .. \
+      -DCARLSIM_NO_CUDA=OFF \
+      -DCARLSIM_TEST=OFF \
+      -DCARLSIM_PYCARL=ON \
+      -DCARLSIM_BENCHMARKS=ON \
+      -DCARLSIM_SHARED=OFF \
+      -DCARLSIM_STATIC=ON
+      # @TODO USE THIS FLAG INSTEAD!
+      # -DCARLSIM_GH_ACTIONS=ON 
+RUN make -j$(nproc) install
+RUN zip -r /tmp/binaries.zip /tmp/_carlsim
 # install python3 module for docker image when in interactive bash mode
-#RUN cp /output/carlsim/build/pyCARL/carlsim.py /usr/lib/python3.10
-#RUN cp /output/carlsim/build/pyCARL/_pycarl.so /usr/lib/python3.10
-#RUN echo "import carlsim" | python3 # test
-#RUN cd /output/carlsim/pyCARL && python3 setup.py sdist
+RUN cp /output/carlsim/build/pyCARL/carlsim.py /usr/lib/python3.10
+RUN cp /output/carlsim/build/pyCARL/_pycarl.so /usr/lib/python3.10
+RUN echo "import carlsim" | python3 # test
+RUN cd /output/carlsim/pyCARL && python3 setup.py sdist
