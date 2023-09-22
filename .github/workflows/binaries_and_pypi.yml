@@ -6,7 +6,7 @@ jobs:
   build_ubu22cuda11:
     # more appropriate permissions here? tinyurl.com/5725swh8
     permissions: write-all
-    runs-on: build_ubu22cuda11
+    runs-on: ubu22cuda11
     steps:
     - name: Install setuptools
       run: python3 -m pip install wheel
