@@ -8,6 +8,7 @@ jobs:
     permissions: write-all
     runs-on: ubu22cuda11
     steps:
+    - uses: actions/checkout@v3
     - name: Build
       run:  | 
         # modified gh runner's ./run-helper.sh.template for no 'sudo'
