@@ -7,8 +7,6 @@
 
 # docker pull nvidia/cuda:11.8.0-devel-ubuntu22.04
 FROM nvidia/cuda:11.8.0-devel-ubuntu22.04
-#FROM nvidia/cuda:11.8.0-devel-ubuntu20.04
-#FROM nvidia/cuda:11.8.0-devel-ubuntu18.04
 
 # Prevent stop building ubuntu at time zone selection.  
 ENV DEBIAN_FRONTEND=noninteractive
