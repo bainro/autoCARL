@@ -33,6 +33,7 @@ ENV PATH="/usr/bin/cmake/bin:${PATH}"
 
 RUN git clone https://github.com/bainro/autoCARL.git /output/carlsim
 RUN mkdir /output/carlsim/build 
+RUN ls /usr/local/cuda/samples/common/inc
 RUN cd /output/carlsim/build && cmake -DCMAKE_INSTALL_PREFIX=/tmp/_carlsim \
                                     -DCMAKE_BUILD_TYPE=Release .. \
                                     -DCARLSIM_NO_CUDA=OFF \
