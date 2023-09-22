@@ -12,7 +12,7 @@ FROM nvidia/cuda:11.8.0-devel-ubuntu22.04
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Prepare and empty machine for building.
-RUN apt-get update && apt-get install -y git wget python3.10 python3.10-dev swig twine zip unzip
+RUN apt-get update && apt-get install -y git wget python3.10 python3.10-dev python3.10-distutils swig twine zip unzip
 
 ARG CMAKE_VERSION=3.21.0
 RUN wget https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cmake-${CMAKE_VERSION}-Linux-x86_64.sh \
