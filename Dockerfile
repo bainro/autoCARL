@@ -34,16 +34,18 @@ ENV PATH="/usr/bin/cmake/bin:${PATH}"
 RUN git clone https://github.com/bainro/autoCARL.git /output/carlsim
 RUN mkdir /output/carlsim/build 
 RUN ls /usr/local/cuda/samples/common/inc
-RUN cd /output/carlsim/build && cmake -DCMAKE_INSTALL_PREFIX=/tmp/_carlsim \
-                                    -DCMAKE_BUILD_TYPE=Release .. \
-                                    -DCARLSIM_NO_CUDA=OFF \
-                                    -DCARLSIM_TEST=OFF \
-                                    -DCARLSIM_PYCARL=ON \
-                                    -DCARLSIM_BENCHMARKS=ON \
-                                    -DCARLSIM_SHARED=OFF \
-                                    -DCARLSIM_STATIC=ON
-                                    # @TODO USE THIS FLAG INSTEAD!
-                                    # -DCARLSIM_GH_ACTIONS=ON 
+RUN cp /cuda_samples/cuda-samples-11.8/Common/*.h . && \
+    cd /output/carlsim/build && \
+    cmake -DCMAKE_INSTALL_PREFIX=/tmp/_carlsim \
+      -DCMAKE_BUILD_TYPE=Release .. \
+      -DCARLSIM_NO_CUDA=OFF \
+      -DCARLSIM_TEST=OFF \
+      -DCARLSIM_PYCARL=ON \
+      -DCARLSIM_BENCHMARKS=ON \
+      -DCARLSIM_SHARED=OFF \
+      -DCARLSIM_STATIC=ON
+      # @TODO USE THIS FLAG INSTEAD!
+# -DCARLSIM_GH_ACTIONS=ON 
 RUN cd /output/carlsim/build && make -j$(nproc) install
 RUN zip -r /tmp/binaries.zip /tmp/_carlsim
 # install python3 module for docker image when in interactive bash mode
