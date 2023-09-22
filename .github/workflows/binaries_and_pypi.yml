@@ -13,7 +13,7 @@ jobs:
       run:  | 
              sudo docker build --tag 'carlsim' .
              sudo docker run --gpus all --rm -v /tmp/_gh_actions_carl:/tmp carlsim
-             cd /tmp/_gh_actions_carl
+             cd /tmp/_gh_actions_carl/carlsim/pyCARL
         
     - name: Publish distribution to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1.8
