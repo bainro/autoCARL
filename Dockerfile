@@ -31,6 +31,10 @@ RUN wget https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cm
 ENV PATH="/usr/bin/cmake/bin:${PATH}"
 
 RUN git clone https://github.com/bainro/autoCARL.git
-RUN cd autoCARL && ./local_compile.sh
+RUN cd autoCARL && mkdir build && cd build
+RUN cmake -DCMAKE_INSTALL_PREFIX=/tmp/carlsim6 \
+                  -DCMAKE_BUILD_TYPE=Release .. \
+                  -DCARLSIM_GH_ACTIONS=ON
+
 # install python3 module for docker image
 RUN cp pyCARL/carlsim.py /usr/lib/python3.8 && cp pyCARL/_pycarl.so /usr/lib/python3.8
