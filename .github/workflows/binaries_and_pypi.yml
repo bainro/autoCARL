@@ -13,17 +13,18 @@ jobs:
       run:  | 
              sudo docker build --tag 'carlsim' .
              sudo docker run --gpus all --rm -v /tmp/_gh_actions_carl:/tmp carlsim
-    
-    - name: Upload binaries to release
+             cd /tmp/_gh_actions_carl
+        
+    - name: Publish distribution to PyPI
+      uses: pypa/gh-action-pypi-publish@release/v1.8
+      with:
+        password: ${{ secrets.PYPI_API_TOKEN }}
+        repository-url: https://test.pypi.org/legacy/ # @TODO remove testing server!!
+
+    - name: Upload binaries to gh release page
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         file: /tmp/_gh_actions_carl/binaries.zip
         asset_name: ubu18-22_cuda11.zip
         tag: ${{ github.ref }}
-        
-    - name: Publish distribution 📦 to PyPI
-      uses: pypa/gh-action-pypi-publish@release/v1.8
-      with:
-        password: ${{ secrets.PYPI_API_TOKEN }}
-        repository-url: https://test.pypi.org/legacy/ # @TODO remove testing server!!
