@@ -28,11 +28,8 @@ ENV PATH="/usr/bin/cmake/bin:${PATH}"
 # create symlink for cmake to find old cuda samples' helper_cuda.h, etc
 RUN wget https://github.com/NVIDIA/cuda-samples/archive/refs/tags/v11.8.zip 
 RUN unzip v11.8.zip -d /cuda_samples
-RUN mkdir -p /usr/local/cuda/samples/common/inc
-#RUN ln -s /cuda_samples/Common /usr/local/cuda/samples/common/inc
-#ENV LD_LIBRARY_PATH=/usr/local/cuda/samples/common/inc:$LD_LIBRARY_PATH
-#ENV LD_LIBRARY_PATH=./:$LD_LIBRARY_PATH
-#RUN echo $LD_LIBRARY_PATH
+RUN mkdir -p /usr/local/cuda/samples/common/
+RUN ln -s /cuda_samples/cuda_samples-11.8/Common /usr/local/cuda/samples/common/inc
 
 RUN git clone https://github.com/bainro/autoCARL.git /output/carlsim
 RUN mkdir /output/carlsim/build 
