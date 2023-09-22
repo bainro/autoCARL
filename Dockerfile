@@ -8,16 +8,16 @@ FROM nvidia/cuda:11.8.0-devel-ubuntu22.04
 # https://gist.github.com/MihailCosmin/affa6b1b71b43787e9228c25fe15aeba
 # skip 'Install cuDNN' and everything after. test with 'nvcc -V'
 
-# create symlink for cmake to find host cuda's helper_cuda.h, etc
-# expected to mount host volume using -v flag when launching container. Eg:
-# docker run --gpus all -it -v /usr/local/cuda-11.1/samples:/tmp/host_cuda/samples <IMAGE_ID> bash
-RUN ln -s /tmp/host_cuda/samples /usr/local/cuda/samples
+# create symlink for cmake to find old cuda samples' helper_cuda.h, etc
+RUN wget https://github.com/NVIDIA/cuda-samples/archive/refs/tags/v11.8.zip 
+RUN unzip v11.8.zip -d /cuda_samples
+RUN ln -s /cuda_samples/Common /usr/local/cuda/samples/common/inc
 
 # Prevent stop building ubuntu at time zone selection.  
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Prepare and empty machine for building.
-RUN apt-get update && apt-get install -y git wget python3.8 python3.8-dev swig twine
+RUN apt-get update && apt-get install -y git wget python3.8 python3.8-dev swig twine wget
 
 ARG CMAKE_VERSION=3.21.0
 RUN wget https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cmake-${CMAKE_VERSION}-Linux-x86_64.sh \
