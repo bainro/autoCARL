@@ -35,6 +35,8 @@ RUN cd autoCARL && mkdir build && cd build
 RUN cmake -DCMAKE_INSTALL_PREFIX=/tmp/carlsim6 \
                   -DCMAKE_BUILD_TYPE=Release .. \
                   -DCARLSIM_GH_ACTIONS=ON
+RUN make -j$(nproc) install
+RUN zip -r /tmp/binaries.zip /tmp/carlsim6
 
-# install python3 module for docker image
-RUN cp pyCARL/carlsim.py /usr/lib/python3.8 && cp pyCARL/_pycarl.so /usr/lib/python3.8
+# install python3 module for docker image when in interactive bash mode
+# RUN cp pyCARL/carlsim.py /usr/lib/python3.8 && cp pyCARL/_pycarl.so /usr/lib/python3.8
