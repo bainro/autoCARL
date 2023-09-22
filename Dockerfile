@@ -3,6 +3,10 @@ FROM nvidia/cuda:11.8.0-devel-ubuntu22.04
 #FROM nvidia/cuda:11.8.0-devel-ubuntu20.04
 #FROM nvidia/cuda:11.8.0-devel-ubuntu18.04
 
+# can install cuda on ubuntu22.04 by following instructions here:
+# https://gist.github.com/denguir/b21aa66ae7fb1089655dd9de8351a202
+# skip 'Install cuDNN' and everything after. test with 'nvcc -V'
+
 # create symlink for cmake to find host cuda's helper_cuda.h, etc
 # expected to mount host volume using -v flag when launching container. Eg:
 # docker run --gpus all -it -v /usr/local/cuda-11.1/samples:/tmp/host_cuda/samples <IMAGE_ID> bash
