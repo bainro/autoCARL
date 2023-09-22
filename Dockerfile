@@ -1,4 +1,4 @@
-# install docker on ubuntu 22.04 from here: https://github.com/docker/docker-install
+# install docker on ubuntu 22.04: https://github.com/docker/docker-install
 # docker pull nvidia/cuda:11.8.0-devel-ubuntu22.04
 FROM nvidia/cuda:11.8.0-devel-ubuntu22.04
 #FROM nvidia/cuda:11.8.0-devel-ubuntu20.04
