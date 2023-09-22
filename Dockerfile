@@ -30,13 +30,13 @@ RUN wget https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cm
       && rm /tmp/cmake-install.sh
 ENV PATH="/usr/bin/cmake/bin:${PATH}"
 
-RUN git clone https://github.com/bainro/autoCARL.git
-RUN cd autoCARL && mkdir build && cd build
-RUN cmake -DCMAKE_INSTALL_PREFIX=/tmp/carlsim6 \
+RUN git clone https://github.com/bainro/autoCARL.git /tmp/carlsim
+RUN cd /tmp/carlsim && mkdir build && cd build
+RUN cmake -DCMAKE_INSTALL_PREFIX=/tmp/_carlsim \
                   -DCMAKE_BUILD_TYPE=Release .. \
                   -DCARLSIM_GH_ACTIONS=ON
 RUN make -j$(nproc) install
-RUN zip -r /tmp/binaries.zip /tmp/carlsim6
+RUN zip -r /tmp/binaries.zip /tmp/_carlsim
 
 # install python3 module for docker image when in interactive bash mode
 # RUN cp pyCARL/carlsim.py /usr/lib/python3.8 && cp pyCARL/_pycarl.so /usr/lib/python3.8
