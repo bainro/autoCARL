@@ -17,7 +17,7 @@ swig_add_library(pycarl
  target_include_directories(pycarl PUBLIC ${Python3_INCLUDE_DIRS})
 
 swig_link_libraries(pycarl PUBLIC 
-    python3
+    python3.8 # can modify as needed, not a strict requirement
     carlsim
     carlsim-visual-stimulus
     carlsim-spike-generators
