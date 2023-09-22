@@ -8,6 +8,8 @@ jobs:
     permissions: write-all
     runs-on: ubu22cuda11 
     steps:
+    - name: Install setuptools
+      run: python3 -m pip install wheel
     - uses: actions/checkout@v3
     - name: Build
       run:  | 
