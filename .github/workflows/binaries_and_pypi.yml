@@ -13,6 +13,8 @@ jobs:
       run:  | 
         # modified gh runner's ./run-helper.sh.template for no 'sudo'
         docker build --no-cache --tag 'carlsim' .
+        docker run --rm --gpus all -v /tmp/_gh_actions/:/tmp/uploads/ \
+          carlsim:latest /bin/bash -c 'mv /tmp/binaries.zip /tmp/uploads'
         
     - name: Publish distribution to PyPI
       env:
