@@ -25,3 +25,5 @@ swig_link_libraries(pycarl PUBLIC
 
 target_link_directories(pycarl PUBLIC ${Python3_LIBRARY_DIRS})
 
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/build/pyCARL/_pycarl.so DESTINATION include)
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/build/pyCARL/carlsim.py DESTINATION include)
