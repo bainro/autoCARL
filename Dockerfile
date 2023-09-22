@@ -16,15 +16,6 @@ ENV DEBIAN_FRONTEND=noninteractive
 # Prepare and empty machine for building.
 RUN apt-get update && apt-get install -y git wget python3.10 python3.10-dev swig twine zip unzip
 
-# create symlink for cmake to find old cuda samples' helper_cuda.h, etc
-#RUN wget https://github.com/NVIDIA/cuda-samples/archive/refs/tags/v11.8.zip 
-#RUN unzip v11.8.zip -d /cuda_samples
-RUN mkdir -p /usr/local/cuda/samples/common/inc
-RUN ln -s /output/cuda_samples/Common /usr/local/cuda/samples/common/inc
-#ENV LD_LIBRARY_PATH=/usr/local/cuda/samples/common/inc:$LD_LIBRARY_PATH
-#ENV LD_LIBRARY_PATH=./:$LD_LIBRARY_PATH
-#RUN echo $LD_LIBRARY_PATH
-
 ARG CMAKE_VERSION=3.21.0
 RUN wget https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cmake-${CMAKE_VERSION}-Linux-x86_64.sh \
       -q -O /tmp/cmake-install.sh \
@@ -34,25 +25,34 @@ RUN wget https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cm
       && rm /tmp/cmake-install.sh
 ENV PATH="/usr/bin/cmake/bin:${PATH}"
 
+# create symlink for cmake to find old cuda samples' helper_cuda.h, etc
+RUN wget https://github.com/NVIDIA/cuda-samples/archive/refs/tags/v11.8.zip 
+RUN unzip v11.8.zip -d /cuda_samples
+RUN mkdir -p /usr/local/cuda/samples/common/inc
+#RUN ln -s /cuda_samples/Common /usr/local/cuda/samples/common/inc
+#ENV LD_LIBRARY_PATH=/usr/local/cuda/samples/common/inc:$LD_LIBRARY_PATH
+#ENV LD_LIBRARY_PATH=./:$LD_LIBRARY_PATH
+#RUN echo $LD_LIBRARY_PATH
+
 RUN git clone https://github.com/bainro/autoCARL.git /output/carlsim
 RUN mkdir /output/carlsim/build 
-RUN cd /output/carlsim/build && \
-    cmake -DCMAKE_INSTALL_PREFIX=/tmp/_carlsim \
-      -DCMAKE_BUILD_TYPE=Release .. \
-      -DCARLSIM_NO_CUDA=OFF \
-      -DCARLSIM_TEST=OFF \
-      -DCARLSIM_PYCARL=ON \
-      -DCARLSIM_BENCHMARKS=ON \
-      -DCARLSIM_SHARED=OFF \
-      -DCARLSIM_STATIC=ON
-      # @TODO USE THIS FLAG INSTEAD!
-      # -DCARLSIM_GH_ACTIONS=ON 
-RUN cd /output/carlsim/build && \
-    cp /cuda_samples/cuda-samples-11.8/Common/*.h . && \
-    make -j$(nproc) install
-RUN zip -r /tmp/binaries.zip /tmp/_carlsim
+#RUN cd /output/carlsim/build && \
+#    cmake -DCMAKE_INSTALL_PREFIX=/tmp/_carlsim \
+#      -DCMAKE_BUILD_TYPE=Release .. \
+#      -DCARLSIM_NO_CUDA=OFF \
+#      -DCARLSIM_TEST=OFF \
+#      -DCARLSIM_PYCARL=ON \
+#      -DCARLSIM_BENCHMARKS=ON \
+#      -DCARLSIM_SHARED=OFF \
+#      -DCARLSIM_STATIC=ON
+#      # @TODO USE THIS FLAG INSTEAD!
+#      # -DCARLSIM_GH_ACTIONS=ON 
+#RUN cd /output/carlsim/build && \
+#    cp /cuda_samples/cuda-samples-11.8/Common/*.h . && \
+#    make -j$(nproc) install
+#RUN zip -r /tmp/binaries.zip /tmp/_carlsim
 # install python3 module for docker image when in interactive bash mode
-RUN cp /output/carlsim/build/pyCARL/carlsim.py /usr/lib/python3.10
-RUN cp /output/carlsim/build/pyCARL/_pycarl.so /usr/lib/python3.10
-RUN echo "import carlsim" | python3 # test
-RUN cd /output/carlsim/pyCARL && python3 setup.py sdist
+#RUN cp /output/carlsim/build/pyCARL/carlsim.py /usr/lib/python3.10
+#RUN cp /output/carlsim/build/pyCARL/_pycarl.so /usr/lib/python3.10
+#RUN echo "import carlsim" | python3 # test
+#RUN cd /output/carlsim/pyCARL && python3 setup.py sdist
