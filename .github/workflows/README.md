@@ -5,10 +5,11 @@ The binaries_and_pypi.yml workflow assumes that the self-hosted runner has the f
 - cuda toolkit 11.x
 - docker
 - nvidia-docker-toolkit
-- twine
 
 The build.yml workflow runs tests and uploads code coverage reports to coveralls.io. It has the following dependencies:
 - nvidia-drivers
 - cuda toolkit 11.x
 - lcov
 - cmake
+
+The Dockerfile contains useful commands and comments for setting up these dependencies.
