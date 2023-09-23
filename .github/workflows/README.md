@@ -11,3 +11,4 @@ The build.yml workflow runs tests and uploads code coverage reports to coveralls
 - nvidia-drivers
 - cuda toolkit 11.x
 - lcov
+- cmake
