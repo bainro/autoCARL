@@ -28,7 +28,7 @@ jobs:
         echo "[testpypi]" > ~/.pypirc
         echo "  username = __token__" >> ~/.pypirc
         echo "  password = $pypi_token" >> ~/.pypirc
-        twine upload -r testpypi /tmp/_gh_actions/pyCARL/dist/*
+        python3 -m twine upload -r testpypi /tmp/_gh_actions/pyCARL/dist/*
 
     - name: Upload binaries to gh release page
       uses: svenstaro/upload-release-action@v2
