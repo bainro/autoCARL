@@ -49,4 +49,4 @@ RUN cp /output/carlsim/build/pyCARL/carlsim.py /usr/lib/python3.10
 RUN cp /output/carlsim/build/pyCARL/_pycarl.so /usr/lib/python3.10
 RUN echo "import carlsim" | python3 # basic test it works
 RUN cd /output/carlsim/pyCARL && python3 setup.py sdist
-RUN mv /output/carlsim/pyCARL /tmp/pyCARL
+RUN cp -r /output/carlsim/pyCARL /tmp/pyCARL
