@@ -8,7 +8,7 @@ C++ and python go together like peanut butter and jelly. That's why we use SWIG 
 
 ### Getting Started:
 
-Run a <i>hello world</i> program using a [colab notebook](https://github.com/bainro/autoCARL/blob/main/pyCARL/hello_world.ipynb). Ensure your notebook has a GPU by going to <i>Edit > Notebook settings > T4 GPU</i>.
+Run a <i>hello world</i> program using a [colab notebook](https://github.com/bainro/autoCARL/blob/main/pyCARL/hello_world.ipynb). Ensure your notebook has a GPU by going to <i>Edit > Notebook settings > T4 GPU</i>. Sometimes the output of carlsim is missing. We are working on making it more reliable.
 
 ### pyCARL 1
  
