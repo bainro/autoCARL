@@ -2,7 +2,7 @@ from distutils.core import setup
 setup(
   name = 'carlsim',
   packages = ['carlsim'],
-  version = '1.1.4',
+  version = '1.2',
   license='MIT',
   description = 'GPU-accelerated Spiking Neural Network Simulator!',
   author = 'Robert Bain',
