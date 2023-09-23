@@ -1,11 +1,11 @@
 # Build image from this file: docker build - < Dockerfile
-# install docker on ubuntu 22.04: https://github.com/docker/docker-install
+# install docker on ubuntu : https://github.com/docker/docker-install
 
-# can install cuda on ubuntu22.04 by following instructions here:
+# can install cuda on ubuntu by following instructions here:
 # https://gist.github.com/MihailCosmin/affa6b1b71b43787e9228c25fe15aeba
 # skip 'Install cuDNN' and everything after. test with 'nvcc -V'
 
-# docker pull nvidia/cuda:11.8.0-devel-ubuntu22.04
+# docker pull nvidia/cuda:11.8.0-devel-ubuntu18.04
 FROM nvidia/cuda:11.8.0-devel-ubuntu18.04
 
 # Prevent stop building ubuntu at time zone selection.  
