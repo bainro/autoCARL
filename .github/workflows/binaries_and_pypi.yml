@@ -22,7 +22,7 @@ jobs:
         python-version: '3.x'
     - name: Publish distribution to PyPI
       env:
-        pypi_token: ${{ secrets.PYPI_API_TOKEN }}
+        pypi_token: ${{ secrets.PYPI_API_TOKEN_UBU18CUDA11 }}
       run: |
         python3 -m pip install wheel
         echo "[testpypi]" > ~/.pypirc
