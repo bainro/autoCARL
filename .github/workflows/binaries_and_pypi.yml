@@ -26,8 +26,14 @@ jobs:
       run: |
         cd /tmp/_gh_actions/pyCARL
         python3 -m pip install wheel
-        echo "[testpypi]\n  username = __token__ \n  password = $pypi_token" > ~/.pypirc
-        twine upload dist/*
+        #echo "[testpypi]\n  username = __token__ \n  password = $pypi_token" > ~/.pypirc
+        #twine upload dist/*
+
+    - name: Publish package
+      uses: pypa/gh-action-pypi-publish@27b31702a0e7fc50959f5ad993c78deac1bdfc29
+      with:
+        user: __token__carlsim
+        password: ${{ secrets.PYPI_API_TOKEN }}    
 
     - name: Upload binaries to gh release page
       uses: svenstaro/upload-release-action@v2
