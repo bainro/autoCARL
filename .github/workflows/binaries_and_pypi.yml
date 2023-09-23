@@ -24,7 +24,7 @@ jobs:
       env:
         pypi_token: ${{ secrets.PYPI_API_TOKEN_UBU18CUDA11 }}
       run: |
-        python3 -m pip install wheel
+        python3 -m pip install wheel twine
         echo "[testpypi]" > ~/.pypirc
         echo "  username = __token__" >> ~/.pypirc
         echo "  password = $pypi_token" >> ~/.pypirc
