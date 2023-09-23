@@ -16,20 +16,6 @@ jobs:
         docker run --rm --gpus all -v /tmp/_gh_actions/:/tmp/uploads/ carlsim:latest \
           /bin/bash -c 'cp -r /tmp/binaries.zip /tmp/uploads && cp -r /tmp/pyCARL /tmp/uploads'
 
-    - name: Set up Python 3
-      uses: actions/setup-python@v3
-      with:
-        python-version: '3.x'
-    - name: Publish distribution to PyPI
-      env:
-        pypi_token: ${{ secrets.PYPI_API_TOKEN_UBU18CUDA11 }}
-      run: |
-        python3 -m pip install wheel twine
-        echo "[testpypi]" > ~/.pypirc
-        echo "  username = __token__" >> ~/.pypirc
-        echo "  password = $pypi_token" >> ~/.pypirc
-        python3 -m twine upload -r testpypi /tmp/_gh_actions/pyCARL/dist/*
-
     - name: Upload binaries to gh release page
       uses: svenstaro/upload-release-action@v2
       with:
@@ -37,3 +23,20 @@ jobs:
         file: /tmp/_gh_actions/binaries.zip
         asset_name: ubu18-22_cuda11.zip
         tag: ${{ github.ref }}
+
+    - name: Set up Python 3
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.x'
+    - name: Publish distribution to PyPI
+      env:
+        pypi_token: ${{ secrets.PYPI_API_TOKEN_UBU18CUDA11 }} # _UBU18CUDA11 }}
+      run: |
+        python3 -m pip install wheel twine
+        echo "[testpypi]" > ~/.pypirc
+        echo "  username = __token__" >> ~/.pypirc
+        echo "  password = $pypi_token" >> ~/.pypirc
+        python3 -m twine upload -r testpypi /tmp/_gh_actions/pyCARL/dist/*
+        rm -fr /tmp/_gh_actions/* # cleanup
+
+    
