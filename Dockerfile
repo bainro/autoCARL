@@ -45,8 +45,8 @@ RUN cd /output/carlsim/build && \
 RUN cd /output/carlsim/build && make -j$(nproc) install
 RUN zip -r /tmp/binaries.zip /tmp/_carlsim
 # install python3 module for docker image when in interactive bash mode
-RUN cp /output/carlsim/build/pyCARL/carlsim.py /usr/lib/python3.10
-RUN cp /output/carlsim/build/pyCARL/_pycarl.so /usr/lib/python3.10
+RUN cp /output/carlsim/build/pyCARL/carlsim.py /usr/lib/python3
+RUN cp /output/carlsim/build/pyCARL/_pycarl.so /usr/lib/python3
 RUN echo "import carlsim" | python3 # basic test it works
 RUN cd /output/carlsim/pyCARL && python3 setup.py sdist
 RUN cp -r /output/carlsim/pyCARL /tmp/pyCARL
