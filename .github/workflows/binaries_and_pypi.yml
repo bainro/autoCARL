@@ -16,10 +16,10 @@ jobs:
         docker run --rm --gpus all -v /tmp/_gh_actions/:/tmp/uploads/ carlsim:latest \
           /bin/bash -c 'cp -r /tmp/binaries.zip /tmp/uploads && cp -r /tmp/pyCARL /tmp/uploads'
 
-    - name: Set up Python 3.10
+    - name: Set up Python 3
       uses: actions/setup-python@v3
       with:
-        python-version: '3.10'
+        python-version: '3.x'
     - name: Publish distribution to PyPI
       env:
         pypi_token: ${{ secrets.PYPI_API_TOKEN }}
