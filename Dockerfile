@@ -47,6 +47,8 @@ RUN zip -r /tmp/binaries.zip /tmp/_carlsim
 # install python3 module for docker image when in interactive bash mode
 RUN cp /output/carlsim/build/pyCARL/carlsim.py /usr/lib/python3
 RUN cp /output/carlsim/build/pyCARL/_pycarl.so /usr/lib/python3
-RUN echo "import carlsim" | python3 # basic test it works
+RUN echo "import carlsim; carlsim.GPU_MODE" | python3 # basic test
+RUN cp /output/carlsim/build/pyCARL/carlsim.py /output/carlsim/pyCARL/carlsim
+RUN cp /output/carlsim/build/pyCARL/_pycarl.so /output/carlsim/pyCARL/carlsim
 RUN cd /output/carlsim/pyCARL && python3 setup.py sdist
 RUN cp -r /output/carlsim/pyCARL /tmp/pyCARL
