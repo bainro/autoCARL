@@ -3,7 +3,7 @@ on:
     types: [created]
 name: release binaries
 jobs:
-  build_ubu22cuda11:
+  build_ubu18cuda11:
     # more appropriate permissions here? tinyurl.com/5725swh8
     permissions: write-all
     runs-on: ubu18cuda11
