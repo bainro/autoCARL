@@ -12,6 +12,7 @@ jobs:
     - name: Build
       run:  | 
         # modified gh runner's ./run-helper.sh.template for no 'sudo'
+        docker image rm carlsim:latest || true
         docker build --no-cache --tag 'carlsim' .
         docker run --rm --gpus all -v /tmp/_gh_actions/:/tmp/uploads/ carlsim:latest \
           /bin/bash -c 'cp -r /tmp/binaries.zip /tmp/uploads && cp -r /tmp/pyCARL /tmp/uploads'
