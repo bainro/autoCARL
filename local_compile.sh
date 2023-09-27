@@ -4,16 +4,24 @@ mkdir build
 cd ./build && rm -fr ./*
 cmake -DCMAKE_INSTALL_PREFIX=/tmp/autoCARL \
       -DCMAKE_BUILD_TYPE=Release .. \ # Debug .. \
-      -DCARLSIM_NO_CUDA=OFF \
-      -DCARLSIM_TEST=ON \
-      -DCARLSIM_PYCARL=OFF \
-      -DCARLSIM_BENCHMARKS=ON \
-      -DCARLSIM_SHARED=ON \
-      -DCARLSIM_STATIC=OFF || cd .. 
+      #-DCARLSIM_NO_CUDA=OFF \
+      -DCARLSIM_TEST=ON # \
+      #-DCARLSIM_PYCARL=OFF \
+      #-DCARLSIM_BENCHMARKS=ON \
+      #-DCARLSIM_SHARED=ON \
+      #-DCARLSIM_STATIC=OFF || cd .. 
       # --trace \
       # --debug-output 
 # make -j8 install VERBOSE=1 || cd ..
 make -j8 install || cd ..
+
+# GCOV TESTING SUITE
+./build/carlsim/test/carlsim-tests
+./build/carlsim/test6/carlsim-tests6
+lcov --directory ./ --capture --output-file ./code_coverage.lcov \
+     -rc lcov_branch_coverage=1
+lcov --remove ./code_coverage.lcov -o ./code_coverage.lcov \
+     '/usr/*' '/tmp/*' '/home/rbain/github/autoCARL/build/*'
 
 ### PRINT ALL CMAKE VAR'S. 
 # Useful for when CMAKE makes you want to die :) (ie debugging)
