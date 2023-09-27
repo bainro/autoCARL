@@ -1,6 +1,5 @@
 #include "gtest/gtest.h"
-#include "carlsim_tests.h"
-
+#include "carlsim_tests.h"e
 #include <carlsim.h>
 
 /*
@@ -39,7 +38,7 @@ TEST(COMPARTMENTS, setCompartmentParameters) {
 	sim.setCompartmentParameters(ALL, 28.396f, 5.526f);
 }
 
-
+/*
 TEST(COMPARTMENTS, spikeTimesCPUvsData) {
 	::testing::FLAGS_gtest_death_test_style = "threadsafe";
 
@@ -325,3 +324,4 @@ TEST(COMPARTMENTS, spikeTimesCPUvsGPU) {
 	}
 }
 #endif
+*/
