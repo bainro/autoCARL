@@ -16,6 +16,7 @@ cmake -DCMAKE_INSTALL_PREFIX=/tmp/autoCARL \
 make -j8 install || cd ..
 
 # GCOV TESTING SUITE
+echo '\n\n' $PWD '\n\n'
 ./build/carlsim/test/carlsim-tests
 ./build/carlsim/test6/carlsim-tests6
 lcov --directory ./ --capture --output-file ./code_coverage.lcov \
