@@ -5,8 +5,8 @@ cd ./build && rm -fr ./*
 cmake -DCMAKE_INSTALL_PREFIX=/tmp/autoCARL \
       -DCMAKE_BUILD_TYPE=Release .. \ # Debug .. \
       -DCARLSIM_NO_CUDA=OFF \
-      -DCARLSIM_TEST=OFF \
-      -DCARLSIM_PYCARL=ON \
+      -DCARLSIM_TEST=ON \
+      -DCARLSIM_PYCARL=OFF \
       -DCARLSIM_BENCHMARKS=OFF \
       -DCARLSIM_SHARED=OFF \
       -DCARLSIM_STATIC=ON || cd .. 
@@ -15,7 +15,8 @@ cmake -DCMAKE_INSTALL_PREFIX=/tmp/autoCARL \
 # make -j8 install VERBOSE=1 || cd ..
 make -j8 install || cd ..
 
-### PRINT ALL CMAKE VAR'S
+### PRINT ALL CMAKE VAR'S. 
+# Useful for when CMAKE makes you want to die :) (ie debugging)
 #get_cmake_property(_variableNames VARIABLES)
 #list (SORT _variableNames)
 #foreach (_variableName ${_variableNames})
