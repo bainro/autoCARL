@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "carlsim_tests.h"e
+#include "carlsim_tests.h"
 #include <carlsim.h>
 
 /*
