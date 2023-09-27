@@ -24,6 +24,7 @@ FetchContent_MakeAvailable(googletest)
         cuba.cpp
         group_mon.cpp
         interface.cpp
+        lif.cpp
         main.cpp
         poiss_rate.cpp
         spike_gen.cpp
