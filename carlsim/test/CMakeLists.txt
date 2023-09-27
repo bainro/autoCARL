@@ -16,7 +16,6 @@ FetchContent_MakeAvailable(googletest)
 
     add_executable(carlsim-tests
         carlsim_tests_common.cpp
-        #compartments.cpp
         coba.cpp
         connect.cpp
         conn_mon.cpp
@@ -31,6 +30,7 @@ FetchContent_MakeAvailable(googletest)
         spike_mon.cpp
         stdp.cpp
         stp.cpp
+        compartments.cpp
     )
 
     #ISSUE: gtest flags gtest death test style lnk1120 unresolved externals     
