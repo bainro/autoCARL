@@ -10,8 +10,6 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-# find_package(GTest REQUIRED)
-
 # Targets
 
     add_executable(carlsim-tests
@@ -29,8 +27,8 @@ FetchContent_MakeAvailable(googletest)
         spike_gen.cpp
         spike_mon.cpp
         stdp.cpp
-        stp.cpp
         compartments.cpp
+        stp.cpp
     )
 
     #ISSUE: gtest flags gtest death test style lnk1120 unresolved externals     
