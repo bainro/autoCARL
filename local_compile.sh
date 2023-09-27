@@ -7,9 +7,9 @@ cmake -DCMAKE_INSTALL_PREFIX=/tmp/autoCARL \
       -DCARLSIM_NO_CUDA=OFF \
       -DCARLSIM_TEST=ON \
       -DCARLSIM_PYCARL=OFF \
-      -DCARLSIM_BENCHMARKS=OFF \
-      -DCARLSIM_SHARED=OFF \
-      -DCARLSIM_STATIC=ON || cd .. 
+      -DCARLSIM_BENCHMARKS=ON \
+      -DCARLSIM_SHARED=ON \
+      -DCARLSIM_STATIC=OFF || cd .. 
       # --trace \
       # --debug-output 
 # make -j8 install VERBOSE=1 || cd ..
