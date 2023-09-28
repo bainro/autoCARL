@@ -345,7 +345,7 @@ TEST(COBA, firingRateCPUvsGPU) {
 
 	float wt = 0.15268f;
 	float inputRate = 25.0f;
-	int runTimeMs = 526;
+	int runTimeMs = 1526; // @TODO ROB TURNING UP RUNTIME
 //	fprintf(stderr,"runTime=%d, delay=%d, wt=%f, input=%f\n",runTimeMs,delay,wt,inputRate);
 
 for (int mode = 0; mode < TESTED_MODES; mode++) {
