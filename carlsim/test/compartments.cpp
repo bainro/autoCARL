@@ -192,7 +192,6 @@ TEST(COMPARTMENTS, spikeTimesCPUvsGPU) {
 				//printf("This is GPU mode: %i.\n", isGPUmode);
 				CARLsim* sim = new CARLsim("COMPARTMENTS.spikeTimesCPUvsGPU",
 					isGPUmode ? GPU_MODE : CPU_MODE, SILENT, 0, 42);
-				std::cout << "1" << std::endl;
 				sim->setIntegrationMethod(RUNGE_KUTTA4, numIntSteps);
 
 				int N = 5;
@@ -201,7 +200,6 @@ TEST(COMPARTMENTS, spikeTimesCPUvsGPU) {
 				int grpSR = sim->createGroup("excit", N, EXCITATORY_NEURON);
 				int grpSLM = sim->createGroup("excit", N, EXCITATORY_NEURON);
 				int grpSO = sim->createGroup("excit", N, EXCITATORY_NEURON);
-				std::cout << "2" << std::endl;
 				sim->setNeuronParameters(grpSP, 550.0f, 2.3330991f, -59.101414f, -50.428886f, 0.0021014998f,
 					-0.41361538f, 24.98698f, -53.223213f, 109.0f);//9 parameter setNeuronParametersCall (RS NEURON) (soma)
 				sim->setNeuronParameters(grpSR, 367.0f, 1.1705916f, -59.101414f, -44.298294f, 0.2477681f,
@@ -210,28 +208,26 @@ TEST(COMPARTMENTS, spikeTimesCPUvsGPU) {
 					0.14995363f, 13.203414f, -38.54892f, 69.0f);//9 parameter setNeuronParametersCall (RS NEURON) (dendr)
 				sim->setNeuronParameters(grpSO, 225.0f, 1.109572f, -59.101414f, -36.55802f, 0.29814243f,
 					-4.385603f, 21.473854f, -40.343994f, 21.0f);//9 parameter setNeuronParametersCall (RS NEURON) (dendr)
-				std::cout << "3" << std::endl;
 				sim->setCompartmentParameters(grpSR, 28.396f, 5.526f);//SR 28 and 5
 				sim->setCompartmentParameters(grpSLM, 50.474f, 0.0f);//SLM 50 and 0
 				sim->setCompartmentParameters(grpSO, 0.0f, 49.14f);//SO 0 and 49
 				sim->setCompartmentParameters(grpSP, 116.861f, 4.60f);// SP (somatic) 116 and 4
-				std::cout << "4" << std::endl;
 				int gin = sim->createSpikeGeneratorGroup("input", N, EXCITATORY_NEURON);
 				sim->connect(gin, grpSP, "one-to-one", RangeWeight(0.0f), 1.0f, RangeDelay(1), RadiusRF(-1));
-				std::cout << "5" << std::endl;
+				
 				sim->setConductances(hasCOBA);
-				std::cout << "6" << std::endl;
+				
 				sim->connectCompartments(grpSLM, grpSR);
 				sim->connectCompartments(grpSR, grpSP);
 				sim->connectCompartments(grpSP, grpSO);
-				std::cout << "7" << std::endl;
+
 				sim->setSTDP(gin, grpSP, false);
 				//sim->setSTDP(grpSLM, grpSR, false);
 				//sim->setSTDP(grpSR, grpSP, false);
 				//sim->setSTDP(grpSP, grpSO, false);
-				std::cout << "8" << std::endl;
+
 				sim->setupNetwork();
-				std::cout << "9" << std::endl;
+
 				SpikeMonitor* spkMonSP = sim->setSpikeMonitor(grpSP, "DEFAULT"); // put spike times into file
 				SpikeMonitor* spkMonSR = sim->setSpikeMonitor(grpSR, "DEFAULT"); // put spike times into file
 				SpikeMonitor* spkMonSLM = sim->setSpikeMonitor(grpSLM, "DEFAULT"); // put spike times into file
@@ -240,13 +236,13 @@ TEST(COMPARTMENTS, spikeTimesCPUvsGPU) {
 				PoissonRate in(N);
 				in.setRates(0.0f);
 				sim->setSpikeRate(gin, &in);//Inactive input group
-				std::cout << "10" << std::endl;
+				
 				spkMonSP->startRecording();
 				spkMonSR->startRecording();
 				spkMonSLM->startRecording();
 				spkMonSO->startRecording();
 				sim->setExternalCurrent(grpSP, 600);
-				std::cout << "11" << std::endl;
+
 				sim->runNetwork(1, 0);
 				spkMonSP->stopRecording();
 				spkMonSR->stopRecording();
