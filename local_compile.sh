@@ -18,9 +18,11 @@ make -j8 install || cd ..
 # GCOV TESTING SUITE
 # assumes we're in build/
 if ! ./carlsim/test/carlsim-tests; then
+   echo "tests failed :("
    exit 125
 fi
 if ! ./carlsim/test6/carlsim-tests6; then
+   echo "tests failed :("
    exit 125
 fi
 #lcov --directory ./ --capture --output-file ./code_coverage.lcov \
