@@ -17,10 +17,10 @@ make -j8 install || cd ..
 
 # GCOV TESTING SUITE
 # assumes we're in build/
-if ./carlsim/test/carlsim-tests; then
+if ! ./carlsim/test/carlsim-tests; then
    exit 125
 fi
-if ./carlsim/test6/carlsim-tests6; then
+if ! ./carlsim/test6/carlsim-tests6; then
    exit 125
 fi
 #lcov --directory ./ --capture --output-file ./code_coverage.lcov \
