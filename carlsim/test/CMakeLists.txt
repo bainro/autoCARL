@@ -14,7 +14,7 @@ FetchContent_MakeAvailable(googletest)
 
     add_executable(carlsim-tests
         carlsim_tests_common.cpp
-        #coba.cpp
+        coba.cpp
         #connect.cpp
         #conn_mon.cpp
         core.cpp
