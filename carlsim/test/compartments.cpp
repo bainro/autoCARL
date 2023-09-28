@@ -271,7 +271,7 @@ TEST(COMPARTMENTS, spikeTimesCPUvsGPU) {
 								}
 								else {
 									// at 50 steps and up, we are allowed to get no more than 1 ms deviation
-									EXPECT_NEAR(gpu_spkTimesSP[i][j], cpu_spkTimesSP[i][j], 10);
+									EXPECT_NEAR(gpu_spkTimesSP[i][j], cpu_spkTimesSP[i][j], 1);
 								}
 							}
 						}
