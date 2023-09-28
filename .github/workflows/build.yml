@@ -23,10 +23,12 @@ jobs:
     - name: Run tests
       run:  | 
             cd ${{github.workspace}}
-            if ./build/carlsim/test/carlsim-tests; then
+            if ! ./build/carlsim/test/carlsim-tests; then
+               echo "tests failed :("
                exit 125
             fi
-            if ./build/carlsim/test6/carlsim-tests6; then
+            if ! ./build/carlsim/test6/carlsim-tests6; then
+               echo "tests failed :("
                exit 125
             fi
             lcov --directory ./ --capture --output-file ./code_coverage.lcov \
