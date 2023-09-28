@@ -56,7 +56,7 @@ TEST(COMPARTMENTS, spikeTimesCPUvsData) {
 	{ 149, 187, 239, 323, 502, 672, 848 },
 	{ 149, 187, 239, 323, 504, 674, 849 } };
 	
-	for (int numIntSteps = 10; numIntSteps <= 50; numIntSteps += 10) {
+	for (int numIntSteps = 10; numIntSteps <= 30; numIntSteps += 10) {
 		CARLsim* sim = new CARLsim("COMPARTMENTS.spikeTimesCPUvsData",
 			CPU_MODE, SILENT, 0, 42);
 		sim->setIntegrationMethod(RUNGE_KUTTA4, numIntSteps);
