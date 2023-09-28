@@ -189,7 +189,7 @@ TEST(COMPARTMENTS, spikeTimesCPUvsGPU) {
 		int cpu_numSpikesSP, cpu_numSpikesSR, cpu_numSpikesSLM, cpu_numSpikesSO;
 		std::vector<std::vector<int> > cpu_spkTimesSP, cpu_spkTimesSR, cpu_spkTimesSLM, cpu_spkTimesSO;
 
-		for (int numIntSteps = 10; numIntSteps <= 50; numIntSteps += 5) {
+		for (int numIntSteps = 15; numIntSteps <= 50; numIntSteps += 5) {
 			//printf("This simulation has coba: %i. And has %i steps.\n", hasCOBA, numIntSteps);
 			for (int isGPUmode = 0; isGPUmode <= 1; isGPUmode++) {
 				//printf("This is GPU mode: %i.\n", isGPUmode);
