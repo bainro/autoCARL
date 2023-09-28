@@ -177,6 +177,9 @@ TEST(COMPARTMENTS, spikeTimesCPUvsData) {
 * experiences deviation. Precise floating point model is used in both release and debug modes. (Compiler) Optimization settings do
 * not seem to affect the issue. The GPU release mode seems to suffer from occassional calculation errors that slowly snowball out of control.
 * The cause of these calculation errors has not been determined.
+* CUBA VS COBA doesn't seem to matter as they fail||pass in a consistent manner wrt numIntSteps.
+* could it be setSTDP differences, since we can't call them on static compartment connections? ie we commented those out to get rid of 
+* a silent error. This was found from grepping the repo for setSTDP. It was in a txt file from CARLsim 2 or 3 I think...
 */
 #ifndef __NO_CUDA__
 TEST(COMPARTMENTS, spikeTimesCPUvsGPU) {
