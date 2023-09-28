@@ -203,6 +203,7 @@ TEST(COMPARTMENTS, spikeTimesCPUvsGPU) {
 				int grpSR = sim->createGroup("excit", N, EXCITATORY_NEURON);
 				int grpSLM = sim->createGroup("excit", N, EXCITATORY_NEURON);
 				int grpSO = sim->createGroup("excit", N, EXCITATORY_NEURON);
+				/*
 				sim->setNeuronParameters(grpSP, 550.0f, 2.3330991f, -59.101414f, -50.428886f, 0.0021014998f,
 					-0.41361538f, 24.98698f, -53.223213f, 109.0f);//9 parameter setNeuronParametersCall (RS NEURON) (soma)
 				sim->setNeuronParameters(grpSR, 367.0f, 1.1705916f, -59.101414f, -44.298294f, 0.2477681f,
@@ -211,6 +212,18 @@ TEST(COMPARTMENTS, spikeTimesCPUvsGPU) {
 					0.14995363f, 13.203414f, -38.54892f, 69.0f);//9 parameter setNeuronParametersCall (RS NEURON) (dendr)
 				sim->setNeuronParameters(grpSO, 225.0f, 1.109572f, -59.101414f, -36.55802f, 0.29814243f,
 					-4.385603f, 21.473854f, -40.343994f, 21.0f);//9 parameter setNeuronParametersCall (RS NEURON) (dendr)
+				*/
+
+				// just reducing the float precision to see if it makes any difference (i'm desperate...)
+				sim->setNeuronParameters(grpSP, 550.0f, 2.33f, -59.10f, -50.42f, 0.0021f,
+					-0.41f, 24.98f, -53.22f, 109.0f);//9 parameter setNeuronParametersCall (RS NEURON) (soma)
+				sim->setNeuronParameters(grpSR, 367.0f, 1.17f, -59.10f, -44.29f, 0.24f,
+					3.31f, 20.27f, -46.07f, 24.0f);//9 parameter setNeuronParametersCall (RS NEURON) (dendr)
+				sim->setNeuronParameters(grpSLM, 425.0f, 2.25f, -59.10f, -25.13f, 0.32f,
+					0.14f, 13.20f, -38.548f, 69.0f);//9 parameter setNeuronParametersCall (RS NEURON) (dendr)
+				sim->setNeuronParameters(grpSO, 225.0f, 1.10f, -59.10f, -36.55f, 0.29f,
+					-4.38f, 21.47f, -40.34f, 21.0f);//9 parameter setNeuronParametersCall (RS NEURON) (dendr)
+				
 				sim->setCompartmentParameters(grpSR, 28.396f, 5.526f);//SR 28 and 5
 				sim->setCompartmentParameters(grpSLM, 50.474f, 0.0f);//SLM 50 and 0
 				sim->setCompartmentParameters(grpSO, 0.0f, 49.14f);//SO 0 and 49
