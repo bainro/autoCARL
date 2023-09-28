@@ -25,11 +25,11 @@ if ! ./carlsim/test6/carlsim-tests6; then
    echo "tests failed :("
    exit 125
 fi
-#lcov --directory ./ --capture --output-file ./code_coverage.lcov \
-#     -rc lcov_branch_coverage=1 && \
-#lcov --remove ./code_coverage.lcov -o ./code_coverage.lcov \
-#     '/usr/*' '/tmp/*' '/home/rbain/github/autoCARL/build/*' && \
-#cat ../code_coverage.lcov
+lcov --directory ./ --capture --output-file ./code_coverage.lcov \
+     -rc lcov_branch_coverage=1 && \
+lcov --remove ./code_coverage.lcov -o ./code_coverage.lcov \
+     '/usr/*' '/tmp/*' '/home/rbain/github/autoCARL/build/*' && \
+cat ../code_coverage.lcov
 
 ### PRINT ALL CMAKE VAR'S. 
 # Useful for when CMAKE makes you want to die :) (ie debugging)
