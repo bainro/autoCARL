@@ -178,7 +178,6 @@ TEST(COMPARTMENTS, spikeTimesCPUvsData) {
 * not seem to affect the issue. The GPU release mode seems to suffer from occassional calculation errors that slowly snowball out of control.
 * The cause of these calculation errors has not been determined.
 */
-/*
 #ifndef __NO_CUDA__
 TEST(COMPARTMENTS, spikeTimesCPUvsGPU) {
 	::testing::FLAGS_gtest_death_test_style = "threadsafe";
@@ -322,4 +321,3 @@ TEST(COMPARTMENTS, spikeTimesCPUvsGPU) {
 	}
 }
 #endif
-*/
