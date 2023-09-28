@@ -179,7 +179,7 @@ TEST(COMPARTMENTS, spikeTimesCPUvsData) {
 * The cause of these calculation errors has not been determined.
 * CUBA VS COBA doesn't seem to matter as they fail||pass in a consistent manner wrt numIntSteps.
 * could it be setSTDP differences, since we can't call them on static compartment connections? ie we commented those out to get rid of 
-* a silent error. This was found from grepping the repo for setSTDP. It was in a txt file from CARLsim 2 or 3 I think...
+* a silent error. This was found from grepping the repo for setSTDP. It was in a txt file from CARLsim 3.0...
 */
 #ifndef __NO_CUDA__
 TEST(COMPARTMENTS, spikeTimesCPUvsGPU) {
