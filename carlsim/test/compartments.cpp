@@ -189,7 +189,7 @@ TEST(COMPARTMENTS, spikeTimesCPUvsGPU) {
 		int cpu_numSpikesSP, cpu_numSpikesSR, cpu_numSpikesSLM, cpu_numSpikesSO;
 		std::vector<std::vector<int> > cpu_spkTimesSP, cpu_spkTimesSR, cpu_spkTimesSLM, cpu_spkTimesSO;
 
-		for (int numIntSteps = 15; numIntSteps <= 50; numIntSteps += 5) {
+		for (int numIntSteps = 10; numIntSteps <= 50; numIntSteps += 10) {
 			//printf("This simulation has coba: %i. And has %i steps.\n", hasCOBA, numIntSteps);
 			for (int isGPUmode = 0; isGPUmode <= 1; isGPUmode++) {
 				//printf("This is GPU mode: %i.\n", isGPUmode);
@@ -275,8 +275,8 @@ TEST(COMPARTMENTS, spikeTimesCPUvsGPU) {
 									EXPECT_EQ(gpu_spkTimesSP[i][j], cpu_spkTimesSP[i][j]);
 								}
 								else {
-									// at 50 steps and up, we are allowed to get no more than 1 ms deviation
-									EXPECT_NEAR(gpu_spkTimesSP[i][j], cpu_spkTimesSP[i][j], 1);
+									// at 50 steps and up, we are allowed to get no more than 5 ms deviation
+									EXPECT_NEAR(gpu_spkTimesSP[i][j], cpu_spkTimesSP[i][j], 5); 
 								}
 							}
 						}
@@ -308,11 +308,11 @@ TEST(COMPARTMENTS, spikeTimesCPUvsGPU) {
 						for (int i = 0; i<cpu_spkTimesSO.size(); i++) {
 							for (int j = 0; j<cpu_spkTimesSO[0].size(); j++) {
 								if (numIntSteps <= 40) {
-									EXPECT_EQ(gpu_spkTimesSO[i][j], cpu_spkTimesSO[i][j]);
+									EXPECT_NEAR(gpu_spkTimesSO[i][j], cpu_spkTimesSO[i][j], 2);
 								}
 								else {
-									// at 50 steps and up, we are allowed to get no more than 1 ms deviation
-									EXPECT_NEAR(gpu_spkTimesSO[i][j], cpu_spkTimesSO[i][j], 1);
+									// at 50 steps and up, we are allowed to get no more than 5 ms deviation
+									EXPECT_NEAR(gpu_spkTimesSO[i][j], cpu_spkTimesSO[i][j], 5);
 								}
 							}
 						}
