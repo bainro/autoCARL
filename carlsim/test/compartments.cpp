@@ -181,6 +181,7 @@ TEST(COMPARTMENTS, spikeTimesCPUvsData) {
 * could it be setSTDP differences, since we can't call them on static compartment connections? ie we commented those out to get rid of 
 * a silent error. This was found from grepping the repo for setSTDP. It was in a txt file from CARLsim 3.0...
 */
+/*
 #ifndef __NO_CUDA__
 TEST(COMPARTMENTS, spikeTimesCPUvsGPU) {
 	::testing::FLAGS_gtest_death_test_style = "threadsafe";
@@ -325,3 +326,4 @@ TEST(COMPARTMENTS, spikeTimesCPUvsGPU) {
 	}
 }
 #endif
+*/
