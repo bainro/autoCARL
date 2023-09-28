@@ -15,17 +15,17 @@ FetchContent_MakeAvailable(googletest)
     add_executable(carlsim-tests
         carlsim_tests_common.cpp
         coba.cpp
-        #connect.cpp
-        #conn_mon.cpp
+        connect.cpp
+        conn_mon.cpp
         core.cpp
-        #cuba.cpp
-        #group_mon.cpp
-        #interface.cpp
-        #lif.cpp
+        cuba.cpp
+        group_mon.cpp
+        interface.cpp
+        lif.cpp
         main.cpp
-        #poiss_rate.cpp
-        #spike_gen.cpp
-        #spike_mon.cpp
+        poiss_rate.cpp
+        spike_gen.cpp
+        spike_mon.cpp
         stdp.cpp
         compartments.cpp
         stp.cpp
