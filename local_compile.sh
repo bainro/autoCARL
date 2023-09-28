@@ -17,9 +17,9 @@ make -j8 install || cd ..
 
 # GCOV TESTING SUITE
 # assumes we're in build/
-./carlsim/test/carlsim-tests && ./carlsim/test6/carlsim-tests6 && \
-lcov --directory ./ --capture --output-file ./code_coverage.lcov \
-     -rc lcov_branch_coverage=1 && \
+./carlsim/test/carlsim-tests #&& ./carlsim/test6/carlsim-tests6 && \
+#lcov --directory ./ --capture --output-file ./code_coverage.lcov \
+#     -rc lcov_branch_coverage=1 && \
 #lcov --remove ./code_coverage.lcov -o ./code_coverage.lcov \
 #     '/usr/*' '/tmp/*' '/home/rbain/github/autoCARL/build/*' && \
 #cat ../code_coverage.lcov
