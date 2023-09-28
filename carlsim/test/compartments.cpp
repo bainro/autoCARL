@@ -226,9 +226,9 @@ TEST(COMPARTMENTS, spikeTimesCPUvsGPU) {
 				sim->connectCompartments(grpSP, grpSO);
 				std::cout << "7" << std::endl;
 				sim->setSTDP(gin, grpSP, false);
-				sim->setSTDP(grpSLM, grpSR, false);
-				sim->setSTDP(grpSR, grpSP, false);
-				sim->setSTDP(grpSP, grpSO, false);
+				//sim->setSTDP(grpSLM, grpSR, false);
+				//sim->setSTDP(grpSR, grpSP, false);
+				//sim->setSTDP(grpSP, grpSO, false);
 				std::cout << "8" << std::endl;
 				sim->setupNetwork();
 				std::cout << "9" << std::endl;
