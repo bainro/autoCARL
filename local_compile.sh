@@ -3,7 +3,7 @@ rm -fr build
 mkdir build
 cd ./build && rm -fr ./*
 cmake -DCMAKE_INSTALL_PREFIX=/tmp/autoCARL \
-      -DCMAKE_BUILD_TYPE=Debug .. \ # Release .. \
+      -DCMAKE_BUILD_TYPE=Release .. \ # Debug
       -DCARLSIM_TEST=ON 
       #-DCARLSIM_NO_CUDA=OFF \
       #-DCARLSIM_PYCARL=OFF \
