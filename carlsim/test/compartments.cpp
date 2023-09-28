@@ -261,6 +261,7 @@ TEST(COMPARTMENTS, spikeTimesCPUvsGPU) {
 				}
 				else {
 					std::cout << "numIntSteps: " << numIntSteps << std::endl;
+					std::cout << "hasCOBA: " << hasCOBA << std::endl;
 					EXPECT_EQ(spkMonSP->getPopNumSpikes(), cpu_numSpikesSP);
 					if (spkMonSP->getPopNumSpikes() == cpu_numSpikesSP) {
 						std::vector<std::vector<int> > gpu_spkTimesSP = spkMonSP->getSpikeVector2D();
